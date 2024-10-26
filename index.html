@@ -61,7 +61,16 @@
       padding: 10px 0;
       display: flex;
       justify-content: center;
+      align-items: center; /* Alinha verticalmente */
       z-index: 1000;
+    }
+
+    /* Texto no rodapé alinhado à esquerda */
+    #rodape-texto {
+      color: white;
+      font-weight: bold;
+      margin-left: 20px; /* Espaçamento à esquerda */
+      flex: 1; /* Permite que o texto ocupe o espaço restante */
     }
 
     #comprar {
@@ -115,10 +124,11 @@
     </iframe>
   </div>
 
-  <!-- Botão Comprar fixo no rodapé -->
+  <!-- Botão Comprar e texto fixos no rodapé -->
   <div id="comprar-container">
+    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
     <button id="comprar">
-      <img src="buygumroad.png" alt="Comprar">
+      <img src="botao-comprar.png" alt="Comprar">
     </button>
   </div>
 
