@@ -8,7 +8,11 @@
   <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
 </head>
 <body>
-  <button id="comprar">Comprar</button>
+  <!-- Esta é a seção do iframe -->
+  <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true" width="100%" height="800px">
+    Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
+  </iframe>
+    <button id="comprar">Comprar</button>
 <script src="https://gumroad.com/js/gumroad.js"></script>
 <script>
    document.getElementById("comprar").onclick = function() {
@@ -18,9 +22,5 @@
    };
 </script>
 
-  <!-- Esta é a seção do iframe -->
-  <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true" width="100%" height="800px">
-    Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
-  </iframe>
 </body>
 </html>
