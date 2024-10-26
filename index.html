@@ -116,6 +116,8 @@
       background-color: #ccc; /* Cor de fundo padrão */
       border-radius: 5px;
       position: relative;
+      overflow: hidden; /* Esconder o conteúdo que excede a borda */
+      transition: transform 0.3s; /* Transição suave */
     }
 
     .capa img {
@@ -126,6 +128,12 @@
       height: 100%;
       object-fit: cover;
       border-radius: 5px;
+    }
+
+    /* Efeito de zoom ao passar o mouse */
+    .capa:hover {
+      transform: scale(1.1); /* Aumenta o tamanho da capa */
+      z-index: 1; /* Eleva a capa ao passar o mouse */
     }
 
     /* Botão Comprar e texto fixos no rodapé */
@@ -185,23 +193,29 @@
     <h2>PORTFOLIO</h2>
     <div class="colunas">
       <div class="coluna">
-        <div class="capa">
-          <img src="novosessions.png" alt="Projetos">
-        </div>
+        <a href="URL_DO_PROJETO_1"> <!-- Link para o projeto 1 -->
+          <div class="capa">
+            <img src="novosessions.png" alt="Projetos">
+          </div>
+        </a>
         <h3>PROJETOS</h3>
         <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
       </div>
       <div class="coluna">
-        <div class="capa">
-          <img src="mrrt.png" alt="Produções">
-        </div>
+        <a href="URL_DO_PROJETO_2"> <!-- Link para o projeto 2 -->
+          <div class="capa">
+            <img src="mrrt.png" alt="Produções">
+          </div>
+        </a>
         <h3>PRODUÇÕES</h3>
         <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
       </div>
       <div class="coluna">
-        <div class="capa">
-          <img src="bbl.png" alt="Audiovisual">
-        </div>
+        <a href="URL_DO_PROJETO_3"> <!-- Link para o projeto 3 -->
+          <div class="capa">
+            <img src="bbl.png" alt="Audiovisual">
+          </div>
+        </a>
         <h3>AUDIOVISUAL</h3>
         <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
       </div>
@@ -227,26 +241,4 @@
     </div>
   </div>
 
-  <!-- Seção CONTRATE com o PDF -->
-  <div class="section" id="contrate">
-    <h2>CONTRATE</h2>
-    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
-      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
-    </iframe>
-  </div>
-
-  <!-- Botão Comprar e texto fixos no rodapé -->
-  <div id="comprar-container">
-    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-    <button id="comprar">
-      <img src="buygumroad.png" alt="Comprar">
-    </button>
-  </div>
-
-  <script>
-    document.getElementById("comprar").onclick = function() {
-      window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
-    };
-  </script>
-</body>
-</html>
+  <!-- Seção CONTRATE com o
