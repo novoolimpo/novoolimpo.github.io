@@ -216,39 +216,54 @@
       </div>
   </div>
 
-  <!-- Seção PORTFOLIO -->
-  <div class="section" id="portfolio">
-    <h2>PORTFOLIO</h2>
-    <div class="colunas">
-      <div class="coluna">
-        <div class="capa">
-          <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
-          <img src="novosessions.png" alt="Projetos">
-            </a>
-        </div>
-        <h3>PROJETOS</h3>
-        <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
+ <!-- Seção PORTFOLIO -->
+<div class="section" id="portfolio">
+  <h2>PORTFOLIO</h2>
+  <div class="colunas">
+    <div class="coluna">
+      <div class="capa">
+        <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
+          <img class="parallax-image" src="novosessions.png" alt="Projetos">
+        </a>
       </div>
-      <div class="coluna">
-        <div class="capa">
-          <a href="https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ">
-          <img src="mrrt.png" alt="Produções">
-            </a>
-        </div>
-        <h3>PRODUÇÕES</h3>
-        <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
+      <h3>PROJETOS</h3>
+      <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
+    </div>
+    <div class="coluna">
+      <div class="capa">
+        <a href="https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ">
+          <img class="parallax-image" src="mrrt.png" alt="Produções">
+        </a>
       </div>
-      <div class="coluna">
-        <div class="capa">
-          <a href="">
-          <img src="bbl.png" alt="Audiovisual">
-            </a>
-        </div>
-        <h3>AUDIOVISUAL</h3>
-        <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
+      <h3>PRODUÇÕES</h3>
+      <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
+    </div>
+    <div class="coluna">
+      <div class="capa">
+        <a href="">
+          <img class="parallax-image" src="bbl.png" alt="Audiovisual">
+        </a>
       </div>
+      <h3>AUDIOVISUAL</h3>
+      <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
     </div>
   </div>
+</div>
+
+<script>
+  window.addEventListener('deviceorientation', (event) => {
+    const x = event.gamma; // Inclinação no eixo X
+    const y = event.beta;  // Inclinação no eixo Y
+
+    // Ajusta a quantidade de movimento das imagens de acordo com a inclinação
+    document.querySelectorAll('.parallax-image').forEach(image => {
+      const moveX = x * 0.5; // Sensibilidade do movimento no eixo X
+      const moveY = y * 0.5; // Sensibilidade do movimento no eixo Y
+
+      image.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.2)`; // Aplica movimento e zoom
+    });
+  });
+</script>
 
   <!-- Seção PRODUTOS -->
   <div class="section" id="produtos">
