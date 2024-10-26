@@ -52,11 +52,16 @@
       border: none;
     }
 
-    /* Botão comprar centralizado */
+    /* Botão Comprar fixo no rodapé */
     #comprar-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
       display: flex;
       justify-content: center;
-      margin-top: 20px;
+      z-index: 1000;
     }
 
     #comprar {
@@ -110,10 +115,10 @@
     </iframe>
   </div>
 
-  <!-- Botão Comprar, centralizado na última seção -->
+  <!-- Botão Comprar fixo no rodapé -->
   <div id="comprar-container">
     <button id="comprar">
-      <img src="botao-comprar.png" alt="Comprar">
+      <img src="buygumroad.png" alt="Comprar">
     </button>
   </div>
 
