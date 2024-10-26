@@ -10,6 +10,8 @@
     /* Estilo para a barra de navegação */
     body {
       font-family: 'Bebas Neue', sans-serif;
+      overflow-x: hidden; /* Impede a rolagem horizontal */
+      box-sizing: border-box; /* Inclui padding e bordas na largura total */
     }
 
     nav {
@@ -32,6 +34,7 @@
     /* Estilo para as seções de tela cheia */
     .section {
       height: 100vh;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -165,6 +168,7 @@
       width: 150px;
       height: auto;
     }
+    
   </style>
 </head>
 <body>
@@ -230,11 +234,10 @@
       USADOS NESSES 6 ANOS DE CARREIRA.
       </p>
       <div style="display: flex; justify-content: center; align-items: center;">
-  <button id="comprar">
-    <img src="buygumroad.png" alt="Comprar">
-  </button>
-</div>
-
+        <button id="comprar">
+          <img src="buygumroad.png" alt="Comprar">
+        </button>
+      </div>
     </div>
   </div>
 
@@ -250,10 +253,10 @@
   <div id="comprar-container">
     <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
      <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
-    <button id="comprar">
-      <img src="buygumroad.png" alt="Comprar">
-    </button>
-       </div>
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
   </div>
 
   <script>
