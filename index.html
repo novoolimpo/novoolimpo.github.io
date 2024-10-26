@@ -58,6 +58,9 @@
     #sobre {
       /*position: relative; */
     }
+    #mobileimg {
+      /*position: relative; */
+    }
 
     .imagem-girando {
       animation: girar 5s linear infinite; /* Animação de rotação */
@@ -182,7 +185,7 @@
         min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
         padding: 20px; /* Reduzir o padding em telas menores */
       }
-       #sobre {
+       .mobileimg {
     width: 80%;
     height: 80%;
   }
@@ -205,10 +208,12 @@
   <!-- Seção SOBRE com a imagem girando -->
   <div class="section" id="sobre">
     <div>
+      <div class="mobileimg">
       <div class="imagem-girando">
         <img src="novoolimpogrey2.png" alt="Imagem Girando">
       </div>
     </div>
+      </div>
   </div>
 
   <!-- Seção PORTFOLIO -->
