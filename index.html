@@ -40,9 +40,15 @@
     }
 
     /* Estilo específico para a seção "Sobre" com PDF */
+    #sobre {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
     #sobre iframe {
       width: 100%;
-      height: 80%;
+      height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
       border: none;
     }
 
@@ -95,11 +101,14 @@
       <p>Conteúdo da Seção 3</p>
     </div>
   </div>
-      <!-- Seção do PDF -->
-      <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
-        Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
-      </iframe>
- 
+
+  <div class="section" id="sobre">
+    <h2>Sobre</h2>
+    <!-- Seção do PDF -->
+    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
+      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
+    </iframe>
+  </div>
 
   <!-- Botão Comprar, centralizado na última seção -->
   <div id="comprar-container">
