@@ -24,31 +24,28 @@
       font-weight: bold;
     }
 
-    /* Estilo para as seções de tela cheia */
-    .section {
-      height: 100vh;
+    /* Estilo para as seções, sem ocupar tela cheia */
+    .container {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 60px; /* Compensar altura da barra de navegação */
-      box-sizing: border-box;
-      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-top: 60px; /* Compensa a barra de navegação fixa */
     }
 
-    .section h2 {
-      margin-bottom: 20px;
+    .section {
+      flex: 1;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      min-width: 200px;
     }
 
     /* Estilo específico para a seção "Sobre" com PDF */
-    #sobre {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
     #sobre iframe {
       width: 100%;
-      height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
+      height: 600px; /* Ajuste conforme necessário */
       border: none;
     }
 
@@ -80,34 +77,30 @@
     <a href="#sobre">Sobre</a>
   </nav>
 
-  <!-- Seções em tela cheia -->
-  <div class="section" id="section1">
-    <div>
+  <!-- Container com as seções -->
+  <div class="container">
+    <div class="section" id="section1">
       <h2>Seção 1</h2>
       <p>Conteúdo da Seção 1</p>
     </div>
-  </div>
 
-  <div class="section" id="section2">
-    <div>
+    <div class="section" id="section2">
       <h2>Seção 2</h2>
       <p>Conteúdo da Seção 2</p>
     </div>
-  </div>
 
-  <div class="section" id="section3">
-    <div>
+    <div class="section" id="section3">
       <h2>Seção 3</h2>
       <p>Conteúdo da Seção 3</p>
     </div>
-  </div>
 
-  <div class="section" id="sobre">
-    <h2>Sobre</h2>
-    <!-- Seção do PDF -->
-    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
-      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
-    </iframe>
+    <div class="section" id="sobre">
+      <h2>Sobre</h2>
+      <!-- Seção do PDF -->
+      <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
+        Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
+      </iframe>
+    </div>
   </div>
 
   <!-- Botão Comprar, centralizado na última seção -->
