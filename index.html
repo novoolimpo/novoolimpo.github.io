@@ -44,6 +44,26 @@
       margin-bottom: 20px;
     }
 
+    /* Estilo específico para a seção "Sobre" com imagem girando */
+    #sobre {
+      position: relative; /* Para posicionar a imagem girando */
+    }
+
+    .imagem-girando {
+      animation: girar 5s linear infinite; /* Animação de rotação */
+      max-width: 100%; /* Limitar a largura da imagem */
+      max-height: 100%; /* Limitar a altura da imagem */
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     /* Estilo específico para a seção "Contrate" com PDF */
     #contrate {
       display: flex;
@@ -144,7 +164,9 @@
   <div class="section" id="sobre">
     <div>
       <h2>SOBRE</h2>
-      <p>Conteúdo da Seção SOBRE</p>
+      <div class="imagem-girando">
+        <img src="novoolimpogrey.png" alt="Imagem Girando">
+      </div>
     </div>
   </div>
 
