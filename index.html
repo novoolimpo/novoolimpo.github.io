@@ -174,6 +174,19 @@
       width: 150px;
       height: auto;
     }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .section {
+        height: auto; /* Permitir que a altura seja definida pelo conteúdo */
+        min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
+        padding: 20px; /* Reduzir o padding em telas menores */
+      }
+      
+      #contrate iframe {
+        height: 60vh; /* Ajusta a altura do iframe em telas menores */
+      }
+    }
     
   </style>
 </head>
