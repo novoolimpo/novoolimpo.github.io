@@ -116,8 +116,6 @@
       background-color: #ccc; /* Cor de fundo padrão */
       border-radius: 5px;
       position: relative;
-      overflow: hidden; /* Esconder o conteúdo que excede a borda */
-      transition: transform 0.3s; /* Transição suave */
     }
 
     .capa img {
@@ -128,12 +126,6 @@
       height: 100%;
       object-fit: cover;
       border-radius: 5px;
-    }
-
-    /* Efeito de zoom ao passar o mouse */
-    .capa:hover {
-      transform: scale(1.1); /* Aumenta o tamanho da capa */
-      z-index: 1; /* Eleva a capa ao passar o mouse */
     }
 
     /* Botão Comprar e texto fixos no rodapé */
@@ -193,29 +185,23 @@
     <h2>PORTFOLIO</h2>
     <div class="colunas">
       <div class="coluna">
-        <a href="URL_DO_PROJETO_1"> <!-- Link para o projeto 1 -->
-          <div class="capa">
-            <img src="novosessions.png" alt="Projetos">
-          </div>
-        </a>
+        <div class="capa">
+          <img src="novosessions.png" alt="Projetos">
+        </div>
         <h3>PROJETOS</h3>
         <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
       </div>
       <div class="coluna">
-        <a href="URL_DO_PROJETO_2"> <!-- Link para o projeto 2 -->
-          <div class="capa">
-            <img src="mrrt.png" alt="Produções">
-          </div>
-        </a>
+        <div class="capa">
+          <img src="mrrt.png" alt="Produções">
+        </div>
         <h3>PRODUÇÕES</h3>
         <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
       </div>
       <div class="coluna">
-        <a href="URL_DO_PROJETO_3"> <!-- Link para o projeto 3 -->
-          <div class="capa">
-            <img src="bbl.png" alt="Audiovisual">
-          </div>
-        </a>
+        <div class="capa">
+          <img src="bbl.png" alt="Audiovisual">
+        </div>
         <h3>AUDIOVISUAL</h3>
         <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
       </div>
