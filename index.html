@@ -1,3 +1,9 @@
+
+
+Compartilhar
+
+
+Você disse:
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,17 +11,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Olimpo</title>
   <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Fonte Bebas Neue -->
   <style>
+    /* Estilo para a barra de navegação */
     body {
       font-family: 'Bebas Neue', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-      box-sizing: border-box;
+      margin: 0; /* Remove margens padrão */
+      overflow-x: hidden; /* Impede a rolagem horizontal */
+      box-sizing: border-box; /* Inclui padding e bordas na largura total */
     }
 
     * {
-      box-sizing: inherit;
+      box-sizing: inherit; /* Aplica o box-sizing a todos os elementos */
     }
 
     nav {
@@ -35,47 +42,83 @@
       font-weight: bold;
     }
 
+    /* Estilo para as seções de tela cheia */
     .section {
       height: 100vh;
-      width: 100vw;
+      width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 60px;
+      padding-top: 60px; /* Compensar altura da barra de navegação */
       border-bottom: 1px solid #ddd;
-      overflow: hidden;
+      overflow: hidden; /* Impede que o conteúdo transborde */
     }
 
     .section h2 {
       margin-bottom: 20px;
-      text-align: center;
+      text-align: center; /* Centralizar o título */
       width: 100%;
     }
 
+    /* Estilo específico para a seção "SOBRE" com imagem girando */
+    #sobre {
+      /*position: relative; */
+    }
+
+    .imagem-girando {
+      animation: girar 5s linear infinite; /* Animação de rotação */
+      max-width: 100%; /* Define uma largura máxima da imagem */
+      max-height: 100%; /* Define uma altura máxima da imagem */
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Estilo específico para a seção "Contrate" com PDF */
+    #contrate {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
+    }
+
+    #contrate iframe {
+      width: 100%;
+      height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
+      border: none;
+    }
+
+    /* Estilo para a seção PORTFOLIO em colunas */
     #portfolio {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
     }
 
     .colunas {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 0 20px;
-      width: 100%;
+      padding: 0 20px; /* Adiciona espaçamento lateral */
+      width: 100%; /* Garante que a seção preencha 100% da largura */
     }
 
     .coluna {
-      flex: 1;
-      margin: 10px;
-      min-width: 250px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 5px;
+      flex: 1; /* Cada coluna ocupa o mesmo espaço */
+      margin: 10px; /* Margem entre as colunas */
+      min-width: 250px; /* Largura mínima para as colunas */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+      padding: 20px; /* Espaçamento interno */
+      background-color: #f9f9f9; /* Cor de fundo para as colunas */
+      border-radius: 5px; /* Bordas arredondadas */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -84,8 +127,8 @@
     .capa {
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%;
-      background-color: #ccc;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      background-color: #ccc; /* Cor de fundo padrão */
       border-radius: 5px;
       position: relative;
     }
@@ -98,32 +141,77 @@
       height: 100%;
       object-fit: cover;
       border-radius: 5px;
-      transform-origin: center;
-      transition: transform 0.1s ease-out;
-      will-change: transform;
+      transition: transform 0.3s ease; /* Adiciona uma transição suave */
     }
 
+    .capa img:hover {
+      transform: scale(1.1); /* Zoom in ao passar o mouse */
+    }
+
+    /* Botão Comprar e texto fixos no rodapé */
+    #comprar-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Texto no rodapé alinhado à esquerda */
+    #rodape-texto {
+      color: white;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    /* Estilo do botão de comprar */
+    #comprar {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+
+    #comprar img {
+      width: 150px;
+      height: auto;
+    }
+
+    /* Responsividade */
     @media (max-width: 768px) {
       .section {
-        height: auto;
-        min-height: 100vh;
-        padding: 20px;
+        height: auto; /* Permitir que a altura seja definida pelo conteúdo */
+        min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
+        padding: 20px; /* Reduzir o padding em telas menores */
       }
-
       #contrate iframe {
-        height: 60vh;
+        height: 60vh; /* Ajusta a altura do iframe em telas menores */
       }
     }
+    
   </style>
 </head>
 <body>
-  <!-- Barra de navegação -->
+  <!-- Barra de navegação fixa no topo -->
   <nav>
     <a href="#sobre">INICIO</a>
     <a href="#portfolio">PORTFOLIO</a>
     <a href="#produtos">PRODUTOS</a>
     <a href="#contrate">CONTRATE</a>
   </nav>
+
+  <!-- Seção SOBRE com a imagem girando -->
+  <div class="section" id="sobre">
+    <div>
+      <div class="imagem-girando">
+        <img src="novoolimpogrey2.png" alt="Imagem Girando">
+      </div>
+    </div>
+  </div>
 
   <!-- Seção PORTFOLIO -->
   <div class="section" id="portfolio">
@@ -132,8 +220,8 @@
       <div class="coluna">
         <div class="capa">
           <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
-            <img class="parallax-image" src="novosessions.png" alt="Projetos">
-          </a>
+          <img src="novosessions.png" alt="Projetos">
+            </a>
         </div>
         <h3>PROJETOS</h3>
         <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
@@ -141,8 +229,8 @@
       <div class="coluna">
         <div class="capa">
           <a href="https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ">
-            <img class="parallax-image" src="mrrt.png" alt="Produções">
-          </a>
+          <img src="mrrt.png" alt="Produções">
+            </a>
         </div>
         <h3>PRODUÇÕES</h3>
         <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
@@ -150,8 +238,8 @@
       <div class="coluna">
         <div class="capa">
           <a href="">
-            <img class="parallax-image" src="bbl.png" alt="Audiovisual">
-          </a>
+          <img src="bbl.png" alt="Audiovisual">
+            </a>
         </div>
         <h3>AUDIOVISUAL</h3>
         <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
@@ -159,19 +247,46 @@
     </div>
   </div>
 
+  <!-- Seção PRODUTOS -->
+  <div class="section" id="produtos">
+    <div>
+       <h2>PRODUTOS</h2>
+      <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
+      <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
+      <p style="text-align: center;"> NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
+      DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
+      USADOS NESSES 6 ANOS DE CARREIRA.
+      </p>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <button id="comprar">
+          <img src="buygumroad.png" alt="Comprar">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção CONTRATE com o PDF -->
+  <div class="section" id="contrate">
+    <h2>CONTRATE</h2>
+    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
+      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
+    </iframe>
+  </div>
+
+  <!-- Botão Comprar e texto fixos no rodapé -->
+  <div id="comprar-container">
+    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+    <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
+  </div>
+
   <script>
-    window.addEventListener('deviceorientation', (event) => {
-      const maxTilt = 20; // Limita o ângulo de inclinação
-      const gamma = Math.min(Math.max(event.gamma, -maxTilt), maxTilt); // Controle no eixo X
-      const beta = Math.min(Math.max(event.beta, -maxTilt), maxTilt);   // Controle no eixo Y
-
-      document.querySelectorAll('.parallax-image').forEach(image => {
-        const moveX = (gamma / maxTilt) * 15; // Ajusta a sensibilidade do eixo X
-        const moveY = (beta / maxTilt) * 15;  // Ajusta a sensibilidade do eixo Y
-
-        image.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.2)`; // Aplica movimento e zoom
-      });
-    });
+    document.getElementById("comprar").onclick = function() {
+      window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
+    };
   </script>
 </body>
 </html>
