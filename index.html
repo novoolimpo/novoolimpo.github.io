@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Olimpo</title>
   <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Adicionando a fonte Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Fonte Bebas Neue -->
   <style>
     /* Estilo para a barra de navegação */
     body {
-      font-family: 'Bebas Neue', sans-serif; /* Definindo a fonte para todo o corpo */
+      font-family: 'Bebas Neue', sans-serif;
     }
 
     nav {
@@ -42,17 +42,21 @@
 
     .section h2 {
       margin-bottom: 20px;
+      text-align: center; /* Centralizar o título */
+      width: 100%;
     }
 
-    /* Estilo específico para a seção "Sobre" com imagem girando */
+    /* Estilo específico para a seção "SOBRE" com imagem girando */
     #sobre {
-      position: relative; /* Para posicionar a imagem girando */
+      position: relative;
+      overflow: hidden; /* Impedir que elementos invadam outras seções */
     }
 
     .imagem-girando {
       animation: girar 5s linear infinite; /* Animação de rotação */
-      max-width: 100%; /* Limitar a largura da imagem */
-      max-height: 100%; /* Limitar a altura da imagem */
+      width: auto;
+      max-width: 80%; /* Define uma largura máxima da imagem */
+      max-height: 80%; /* Define uma altura máxima da imagem */
     }
 
     @keyframes girar {
@@ -80,9 +84,17 @@
     /* Estilo para a seção PORTFOLIO em colunas */
     #portfolio {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .colunas {
+      display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 0 20px; /* Adiciona um pouco de espaçamento lateral */
+      padding: 0 20px; /* Adiciona espaçamento lateral */
+      width: 100%;
     }
 
     .coluna {
@@ -95,16 +107,16 @@
       border-radius: 5px; /* Bordas arredondadas */
       display: flex;
       flex-direction: column;
-      align-items: center; /* Centraliza o conteúdo na coluna */
+      align-items: center;
     }
 
     .capa {
-      width: 100%; /* Ajusta a largura da capa */
-      height: 0; /* Define altura inicial para manter a proporção */
+      width: 100%;
+      height: 0;
       padding-bottom: 56.25%; /* Proporção 16:9 */
-      background-color: #ccc; /* Cor de fundo padrão para a capa */
-      border-radius: 5px; /* Bordas arredondadas na capa */
-      position: relative; /* Para posicionar a imagem corretamente */
+      background-color: #ccc; /* Cor de fundo padrão */
+      border-radius: 5px;
+      position: relative;
     }
 
     .capa img {
@@ -113,8 +125,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Cobre a área da capa */
-      border-radius: 5px; /* Bordas arredondadas na imagem */
+      object-fit: cover;
+      border-radius: 5px;
     }
 
     /* Botão Comprar e texto fixos no rodapé */
@@ -125,7 +137,7 @@
       background-color: #333;
       padding: 10px 0;
       display: flex;
-      align-items: center; /* Alinha verticalmente */
+      align-items: center;
       z-index: 1000;
     }
 
@@ -133,7 +145,7 @@
     #rodape-texto {
       color: white;
       font-weight: bold;
-      margin-left: 20px; /* Espaçamento à esquerda */
+      margin-left: 20px;
     }
 
     /* Estilo do botão de comprar */
@@ -142,11 +154,11 @@
       border: none;
       cursor: pointer;
       display: flex;
-      justify-content: center; /* Centraliza a imagem do botão */
+      justify-content: center;
     }
 
     #comprar img {
-      width: 150px; /* Ajuste o tamanho conforme necessário */
+      width: 150px;
       height: auto;
     }
   </style>
@@ -160,7 +172,7 @@
     <a href="#contrate">CONTRATE</a>
   </nav>
 
-  <!-- Seções em tela cheia -->
+  <!-- Seção SOBRE com a imagem girando -->
   <div class="section" id="sobre">
     <div>
       <h2>SOBRE</h2>
@@ -170,31 +182,35 @@
     </div>
   </div>
 
+  <!-- Seção PORTFOLIO -->
   <div class="section" id="portfolio">
     <h2>PORTFOLIO</h2>
-    <div class="coluna">
-      <div class="capa">
-        <img src="caminho_da_imagem_projetos.jpg" alt="Projetos">
+    <div class="colunas">
+      <div class="coluna">
+        <div class="capa">
+          <img src="caminho_da_imagem_projetos.jpg" alt="Projetos">
+        </div>
+        <h3>PROJETOS</h3>
+        <p>Conteúdo da Coluna PROJETOS</p>
       </div>
-      <h3>PROJETOS</h3>
-      <p>Conteúdo da Coluna PROJETOS</p>
-    </div>
-    <div class="coluna">
-      <div class="capa">
-        <img src="caminho_da_imagem_producoes.jpg" alt="Produções">
+      <div class="coluna">
+        <div class="capa">
+          <img src="caminho_da_imagem_producoes.jpg" alt="Produções">
+        </div>
+        <h3>PRODUÇÕES</h3>
+        <p>Conteúdo da Coluna PRODUÇÕES</p>
       </div>
-      <h3>PRODUÇÕES</h3>
-      <p>Conteúdo da Coluna PRODUÇÕES</p>
-    </div>
-    <div class="coluna">
-      <div class="capa">
-        <img src="caminho_da_imagem_audiovisual.jpg" alt="Audiovisual">
+      <div class="coluna">
+        <div class="capa">
+          <img src="caminho_da_imagem_audiovisual.jpg" alt="Audiovisual">
+        </div>
+        <h3>AUDIOVISUAL</h3>
+        <p>Conteúdo da Coluna AUDIOVISUAL</p>
       </div>
-      <h3>AUDIOVISUAL</h3>
-      <p>Conteúdo da Coluna AUDIOVISUAL</p>
     </div>
   </div>
 
+  <!-- Seção PRODUTOS -->
   <div class="section" id="produtos">
     <div>
       <h2>PRODUTOS</h2>
@@ -202,9 +218,9 @@
     </div>
   </div>
 
+  <!-- Seção CONTRATE com o PDF -->
   <div class="section" id="contrate">
     <h2>CONTRATE</h2>
-    <!-- Seção do PDF -->
     <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
       Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
     </iframe>
