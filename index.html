@@ -10,8 +10,13 @@
     /* Estilo para a barra de navegação */
     body {
       font-family: 'Bebas Neue', sans-serif;
+      margin: 0; /* Remove margens padrão */
       overflow-x: hidden; /* Impede a rolagem horizontal */
       box-sizing: border-box; /* Inclui padding e bordas na largura total */
+    }
+
+    * {
+      box-sizing: inherit; /* Aplica o box-sizing a todos os elementos */
     }
 
     nav {
@@ -34,13 +39,13 @@
     /* Estilo para as seções de tela cheia */
     .section {
       height: 100vh;
-      width: 100%; /* Garante que a seção preencha 100% da largura */
+      width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
       display: flex;
       align-items: center;
       justify-content: center;
       padding-top: 60px; /* Compensar altura da barra de navegação */
-      box-sizing: border-box;
       border-bottom: 1px solid #ddd;
+      overflow: hidden; /* Impede que o conteúdo transborde */
     }
 
     .section h2 {
@@ -52,7 +57,6 @@
     /* Estilo específico para a seção "SOBRE" com imagem girando */
     #sobre {
       position: relative;
-      overflow: hidden; /* Impedir que elementos invadam outras seções */
     }
 
     .imagem-girando {
@@ -75,6 +79,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
     }
 
     #contrate iframe {
@@ -89,6 +94,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
     }
 
     .colunas {
@@ -96,7 +102,7 @@
       justify-content: space-between;
       flex-wrap: wrap;
       padding: 0 20px; /* Adiciona espaçamento lateral */
-      width: 100%;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
     }
 
     .coluna {
@@ -252,7 +258,7 @@
   <!-- Botão Comprar e texto fixos no rodapé -->
   <div id="comprar-container">
     <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-     <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
+    <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
       <button id="comprar">
         <img src="buygumroad.png" alt="Comprar">
       </button>
