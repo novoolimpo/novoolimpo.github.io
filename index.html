@@ -11,6 +11,10 @@
       background-color: #333;
       padding: 10px;
       text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
     }
 
     nav a {
@@ -20,32 +24,49 @@
       font-weight: bold;
     }
 
-    /* Estilo para as seções */
-    .container {
-      display: flex;
-      justify-content: space-around;
-      padding: 20px;
-    }
-
+    /* Estilo para as seções de tela cheia */
     .section {
-      flex: 1;
-      margin: 0 10px;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 60px; /* Compensar altura da barra de navegação */
+      box-sizing: border-box;
+      border-bottom: 1px solid #ddd;
     }
 
-    /* Seção do PDF para ocupar mais altura */
+    .section h2 {
+      margin-bottom: 20px;
+    }
+
+    /* Estilo específico para a seção "Sobre" com PDF */
     #sobre iframe {
       width: 100%;
-      height: 500px;
+      height: 80%;
+      border: none;
+    }
+
+    /* Botão comprar centralizado */
+    #comprar-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    #comprar {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    #comprar img {
+      width: 150px; /* Ajuste o tamanho conforme necessário */
+      height: auto;
     }
   </style>
 </head>
 <body>
-  <!-- Barra de navegação -->
+  <!-- Barra de navegação fixa no topo -->
   <nav>
     <a href="#section1">Seção 1</a>
     <a href="#section2">Seção 2</a>
@@ -53,24 +74,30 @@
     <a href="#sobre">Sobre</a>
   </nav>
 
-  <!-- Container com as seções lado a lado -->
-  <div class="container">
-    <div class="section" id="section1">
+  <!-- Seções em tela cheia -->
+  <div class="section" id="section1">
+    <div>
       <h2>Seção 1</h2>
       <p>Conteúdo da Seção 1</p>
     </div>
+  </div>
 
-    <div class="section" id="section2">
+  <div class="section" id="section2">
+    <div>
       <h2>Seção 2</h2>
       <p>Conteúdo da Seção 2</p>
     </div>
+  </div>
 
-    <div class="section" id="section3">
+  <div class="section" id="section3">
+    <div>
       <h2>Seção 3</h2>
       <p>Conteúdo da Seção 3</p>
     </div>
+  </div>
 
-    <div class="section" id="sobre">
+  <div class="section" id="sobre">
+    <div>
       <h2>Sobre</h2>
       <!-- Seção do PDF -->
       <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
@@ -79,7 +106,7 @@
     </div>
   </div>
 
-  <!-- Botão Comprar, alinhado ao centro -->
+  <!-- Botão Comprar, centralizado na última seção -->
   <div id="comprar-container">
     <button id="comprar">
       <img src="botao-comprar.png" alt="Comprar">
