@@ -233,6 +233,38 @@
       height: auto;
     }
 
+    /* Ajustes para o formulário */
+#contact-form {
+  display: flex;
+  justify-content: center; /* Alinha os elementos no centro */
+  flex-wrap: wrap; /* Permite que os campos se ajustem ao tamanho da tela */
+  gap: 10px; /* Adiciona espaçamento entre os campos */
+  margin-top: 20px; /* Espaçamento superior */
+  width: 100%; /* Garante que o formulário ocupe 100% da largura */
+  max-width: 600px; /* Define uma largura máxima para o formulário */
+  margin: 0 auto; /* Centraliza o formulário horizontalmente */
+}
+
+#contact-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1; /* Permite que os campos cresçam de forma uniforme */
+  min-width: 0; /* Garante que o campo diminua até um limite razoável */
+  width: calc(50% - 10px); /* Cada campo ocupa 50% da largura disponível, com margem */
+}
+
+#contact-form button {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 0 0 auto; /* Garante que o botão não se expanda */
+  width: calc(100%); /* Botão ocupa 100% da largura */
+}
+
     /* Responsividade */
     @media (max-width: 768px) {
       .section {
@@ -243,12 +275,16 @@
       #contrate iframe {
         height: 60vh; /* Ajusta a altura do iframe em telas menores */
       }
-      #contact-form input {
-    width: 100%; /* Os campos ocupam 100% da largura em dispositivos móveis */
+       #contact-form {
+    flex-direction: column; /* Empilha os campos verticalmente */
   }
 
-  #contact-form {
-    flex-direction: column; /* Os campos ficam empilhados verticalmente */
+  #contact-form input {
+    width: 100%; /* Campos ocupam 100% da largura em telas pequenas */
+  }
+
+  #contact-form button {
+    width: 100%; /* Botão ocupa 100% da largura */
   }
     }
     
