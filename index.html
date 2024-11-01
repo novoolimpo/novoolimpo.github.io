@@ -334,9 +334,10 @@ parallaxContainer.addEventListener('touchmove', (e) => {
     const y = (touch.clientY / window.innerHeight) - 0.5;
     const isMobile = window.innerWidth <= 768; // Detecta se é mobile pela largura da janela
     updateLayers(x, y, isMobile); // true indica que é mobile
-    e.preventDefault(); // Previne o scroll da página
+    // e.preventDefault(); // Previne o scroll da página
 }, { passive: false });
 
+     
 
         // Inicializa a posição do mouse
         const initialX = 0; // Simulando posição inicial do mouse
