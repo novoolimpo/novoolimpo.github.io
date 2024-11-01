@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Olimpo</title>
   <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Fonte Bebas Neue -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     /* Estilo para a barra de navegação */
     body {
       font-family: 'Bebas Neue', sans-serif;
-      margin: 0; /* Remove margens padrão */
-      overflow-x: hidden; /* Impede a rolagem horizontal */
-      box-sizing: border-box; /* Inclui padding e bordas na largura total */
+      margin: 0; 
+      overflow-x: hidden; 
+      box-sizing: border-box; 
     }
 
     * {
-      box-sizing: inherit; /* Aplica o box-sizing a todos os elementos */
+      box-sizing: inherit; 
     }
 
     nav {
@@ -34,100 +34,74 @@
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s; /* Adicionando transição ao hover */
     }
 
-    /* Estilo para as seções de tela cheia */
+    nav a:hover {
+      color: #ff0; /* Cor ao passar o mouse */
+    }
+
     .section {
       height: 100vh;
-      width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
+      width: 100vw; 
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-top: 60px; /* Compensar altura da barra de navegação */
+      padding-top: 60px; 
       border-bottom: 1px solid #ddd;
-      overflow: hidden; /* Impede que o conteúdo transborde */
+      overflow: hidden; 
     }
 
     .section h2 {
       margin-bottom: 20px;
-      text-align: center; /* Centralizar o título */
+      text-align: center; 
       width: 100%;
     }
 
     /* Estilo para o contêiner de parallax */
-.parallax-container {
-    position: relative;
-    width: 600px; /* Largura da área da imagem */
-    height: 400px; /* Altura da área da imagem */
-    perspective: 1000px; /* Perspectiva para o efeito de parallax */
-}
+    .parallax-container {
+      position: relative;
+      width: 600px; 
+      height: 400px; 
+      perspective: 1000px; 
+    }
 
-/* Estilo para as camadas */
-.layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: contain; /* Evita corte */
-    background-position: center;
-    background-repeat: no-repeat; /* Evita repetição da imagem */
-    transform-origin: center; /* Define o ponto de origem das transformações */
-    transition: transform 0.1s, filter 0.1s; /* Suaviza transições */
-}
+    /* Estilo para as camadas */
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: contain; 
+      background-position: center;
+      background-repeat: no-repeat; 
+      transform-origin: center; 
+      transition: transform 0.1s, filter 0.1s; 
+    }
 
-/* Camadas da imagem */
-.layer0 {
-    background-image: url('camada0.png');
-    transform: translateZ(-300px);
-}
-
-.layer1 {
-    background-image: url('camada1.png');
-    transform: translateZ(-200px);
-}
-
-.layer2 {
-    background-image: url('camada2.png');
-    transform: translateZ(-100px);
-}
-
-.layer3 {
-    background-image: url('camada3.png');
-    transform: translateZ(0);
-}
-
-.layer4 {
-    background-image: url('camada4.png');
-    transform: translateZ(100px);
-    z-index: 1; /* A camada 4 está acima da camada 3 */
-}
-
-.layer5 {
-    background-image: url('camada5.png');
-    transform: translateZ(250px) scale(1.2); /* Camada mais próxima com um leve zoom */
-    z-index: 2; /* A camada 5 está acima das demais */
-}
-
+    /* Camadas da imagem */
+    .layer0 { background-image: url('camada0.png'); transform: translateZ(-300px); }
+    .layer1 { background-image: url('camada1.png'); transform: translateZ(-200px); }
+    .layer2 { background-image: url('camada2.png'); transform: translateZ(-100px); }
+    .layer3 { background-image: url('camada3.png'); transform: translateZ(0); }
+    .layer4 { background-image: url('camada4.png'); transform: translateZ(100px); z-index: 1; }
+    .layer5 { background-image: url('camada5.png'); transform: translateZ(250px) scale(1.2); z-index: 2; }
 
     /* Estilo específico para a seção "SOBRE" com imagem girando */
     #sobre {
-      /*position: relative; */
+      position: relative; 
     }
 
     .imagem-girando {
-      animation: girar 5s linear infinite; /* Animação de rotação */
-      max-width: 100%; /* Define uma largura máxima da imagem */
-      max-height: 100%; /* Define uma altura máxima da imagem */
+      animation: girar 5s linear infinite; 
+      max-width: 100%; 
+      max-height: 100%; 
     }
 
     @keyframes girar {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
     /* Estilo específico para a seção "Contrate" com PDF */
@@ -135,12 +109,12 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 100%; /* Garante que a seção preencha 100% da largura */
+      width: 100%; 
     }
 
     #contrate iframe {
       width: 100%;
-      height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
+      height: calc(100vh - 120px); 
       border: none;
     }
 
@@ -150,25 +124,25 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100%; /* Garante que a seção preencha 100% da largura */
+      width: 100%; 
     }
 
     .colunas {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      padding: 0 20px; /* Adiciona espaçamento lateral */
-      width: 100%; /* Garante que a seção preencha 100% da largura */
+      padding: 0 20px; 
+      width: 100%; 
     }
 
     .coluna {
-      flex: 1; /* Cada coluna ocupa o mesmo espaço */
-      margin: 10px; /* Margem entre as colunas */
-      min-width: 250px; /* Largura mínima para as colunas */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
-      padding: 20px; /* Espaçamento interno */
-      background-color: #f9f9f9; /* Cor de fundo para as colunas */
-      border-radius: 5px; /* Bordas arredondadas */
+      flex: 1; 
+      margin: 10px; 
+      min-width: 250px; 
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+      padding: 20px; 
+      background-color: #f9f9f9; 
+      border-radius: 5px; 
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -177,8 +151,8 @@
     .capa {
       width: 100%;
       height: 0;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
-      background-color: #ccc; /* Cor de fundo padrão */
+      padding-bottom: 56.25%; 
+      background-color: #ccc; 
       border-radius: 5px;
       position: relative;
     }
@@ -191,11 +165,11 @@
       height: 100%;
       object-fit: cover;
       border-radius: 5px;
-      transition: transform 0.3s ease; /* Adiciona uma transição suave */
+      transition: transform 0.3s ease; 
     }
 
     .capa img:hover {
-      transform: scale(1.1); /* Zoom in ao passar o mouse */
+      transform: scale(1.1); 
     }
 
     /* Botão Comprar e texto fixos no rodapé */
@@ -210,14 +184,12 @@
       z-index: 1000;
     }
 
-    /* Texto no rodapé alinhado à esquerda */
     #rodape-texto {
       color: white;
       font-weight: bold;
       margin-left: 20px;
     }
 
-    /* Estilo do botão de comprar */
     #comprar {
       background: none;
       border: none;
@@ -234,19 +206,17 @@
     /* Responsividade */
     @media (max-width: 768px) {
       .section {
-        height: auto; /* Permitir que a altura seja definida pelo conteúdo */
-        min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
-        padding: 20px; /* Reduzir o padding em telas menores */
+        height: auto; 
+        min-height: 100vh; 
+        padding: 20px; 
       }
       #contrate iframe {
-        height: 60vh; /* Ajusta a altura do iframe em telas menores */
+        height: 60vh; 
       }
     }
-    
   </style>
 </head>
 <body>
-  <!-- Barra de navegação fixa no topo -->
   <nav>
     <a href="#sobre">INICIO</a>
     <a href="#portfolio">PORTFOLIO</a>
@@ -254,86 +224,47 @@
     <a href="#contrate">CONTRATE</a>
   </nav>
 
-<!-- Seção SOBRE com a imagem girando e a imagem de lançamento -->
-<div class="section" id="sobre">
-  <div style="position: relative;">
-    <div class="imagem-girando">
-      <img src="novoolimpogrey2.png" alt="Imagem Girando">
-    </div>
-    
-    <!-- Texto centralizado acima da imagem de lançamento -->
-    <div style="text-align: center; margin: 20px 0; position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%);">
-      <h2>NK & MRRT - ABENÇOADO ??/12</h2>
-      <p>FAÇA O PRÉ SAVE</p>
-    </div>
-
-   <!-- <div class="imagem-lancamento" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-      <img src="imagemlancamento.png" alt="Imagem de Lançamento" style="max-width: 100%; height: auto;">
-    </div>-->
-
-     <div class="parallax-container">
+  <div class="section" id="sobre">
+    <div style="position: relative;">
+      <div class="imagem-girando">
+        <img src="novoolimpogrey2.png" alt="Imagem Girando">
+      </div>
+      <div style="text-align: center; margin: 20px 0; position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%);">
+        <h2>NK & MRRT - ABENÇOADO ??/12</h2>
+        <p>FAÇA O PRÉ SAVE</p>
+      </div>
+      <div class="parallax-container">
         <div class="layer layer0"></div>
         <div class="layer layer1"></div>
         <div class="layer layer2"></div>
         <div class="layer layer3"></div>
         <div class="layer layer4"></div>
         <div class="layer layer5"></div>
+      </div>
     </div>
   </div>
-</div>
-   <script>
-        const parallaxContainer = document.querySelector('.parallax-container');
-        const layers = document.querySelectorAll('.layer');
 
-        const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3]; // Multiplicadores para cada camada
-        const depthMultipliers = [-300, -200, -100, 0, 100, 200]; // Profundidade de cada camada
+  <script>
+    const parallaxContainer = document.querySelector('.parallax-container');
+    const layers = document.querySelectorAll('.layer');
 
-        // Função para atualizar as transformações das camadas
-        function updateLayers(x, y, isMobile) {
-            layers.forEach((layer, index) => {
-                const depth = depthMultipliers[index];
-                const movementX = x * depth * movementMultipliers[index];
-                const movementY = (y * depth * movementMultipliers[index]) / 2.6; // Cortar o movimento vertical pela metade
+    function moveLayers(event) {
+      const x = event.clientX / window.innerWidth;
+      const y = event.clientY / window.innerHeight;
 
-                // Desativa a rotação se for mobile
-                const rotationY = isMobile ? 0 : x * 100 * movementMultipliers[index];
-                const rotationX = isMobile ? 0 : y * 100 * movementMultipliers[index];
+      layers.forEach(layer => {
+        const depth = layer.style.transform.split('(')[1].split(')')[0];
+        layer.style.transform = `translateZ(${depth}) translateX(${(x * 100)}%) translateY(${(y * 100)}%)`;
+      });
+    }
 
-                // Se for mobile, a camada 5 se move 2x mais devagar
-                const slowDownFactor = isMobile && index === 5 ? 2 : 1;
-
-                // Mantém o scale(1.2) apenas para a camada 5
-                const scaleValue = index === 5 ? 'scale(1.3)' : '';
-
-                // Aplica o movimento, rotação e inclinação
-                layer.style.transform = `translateX(${movementX / slowDownFactor}px) translateY(${movementY / slowDownFactor}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
-
-                // Aplica o filtro de brilho
-                layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
-            });
-        }
-
-        // Evento de movimento do mouse
-        parallaxContainer.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) - 0.5;
-            const y = (e.clientY / window.innerHeight) - 0.5;
-            updateLayers(x, y, false); // false indica que não é mobile
-        });
-
-        // Evento de movimento do toque
-        parallaxContainer.addEventListener('touchmove', (e) => {
-            const touch = e.touches[0];
-            const x = (touch.clientX / window.innerWidth) - 0.5;
-            const y = (touch.clientY / window.innerHeight) - 0.5;
-            updateLayers(x, y, true); // true indica que é mobile
-            e.preventDefault(); // Previne o scroll da página
-        }, { passive: false });
-
-        // Inicializa a posição do mouse
-        const initialX = 0; // Simulando posição inicial do mouse
-        const initialY = 0; // Simulando posição inicial do mouse
-        updateLayers(initialX, initialY, false); // false indica que não é mobile
-    </script>
+    // Adicionando eventos de movimento do mouse e toque
+    document.addEventListener('mousemove', moveLayers);
+    document.addEventListener('touchmove', function (event) {
+      const touch = event.touches[0];
+      moveLayers({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+  </script>
 
 
 
