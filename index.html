@@ -294,8 +294,13 @@
 function updateLayers(x, y, isMobile) {
     layers.forEach((layer, index) => {
         const depth = depthMultipliers[index];
-        const movementX = x * depth * movementMultipliers[index];
-        const movementY = isMobile ? 0 : (y * depth * movementMultipliers[index]) / 2.6; // Define o movimento Y como 0 no mobile
+        
+        // Aplica um multiplicador menor para o movimento horizontal no mobile
+        const mobileHorizontalLimit = isMobile ? 0.5 : 1; // Limita o movimento horizontal no mobile
+        const movementX = x * depth * movementMultipliers[index] * mobileHorizontalLimit;
+        
+        // Define o movimento Y como 0 no mobile
+        const movementY = isMobile ? 0 : (y * depth * movementMultipliers[index]) / 2.6;
 
         // Desativa a rotação se for mobile
         const rotationY = isMobile ? 0 : x * 100 * movementMultipliers[index];
@@ -331,6 +336,7 @@ parallaxContainer.addEventListener('touchmove', (e) => {
     updateLayers(x, y, isMobile); // true indica que é mobile
     e.preventDefault(); // Previne o scroll da página
 }, { passive: false });
+
 
         // Inicializa a posição do mouse
         const initialX = 0; // Simulando posição inicial do mouse
