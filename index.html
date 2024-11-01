@@ -291,45 +291,46 @@
         const depthMultipliers = [-300, -200, -100, 0, 100, 200]; // Profundidade de cada camada
 
         // Função para atualizar as transformações das camadas
-        function updateLayers(x, y, isMobile) {
-            layers.forEach((layer, index) => {
-                const depth = depthMultipliers[index];
-                const movementX = x * depth * movementMultipliers[index];
-                const movementY = (y * depth * movementMultipliers[index]) / 2.6; // Cortar o movimento vertical pela metade
+function updateLayers(x, y, isMobile) {
+    layers.forEach((layer, index) => {
+        const depth = depthMultipliers[index];
+        const movementX = x * depth * movementMultipliers[index];
+        const movementY = isMobile ? 0 : (y * depth * movementMultipliers[index]) / 2.6; // Define o movimento Y como 0 no mobile
 
-                // Desativa a rotação se for mobile
-                const rotationY = isMobile ? 0 : x * 100 * movementMultipliers[index];
-                const rotationX = isMobile ? 0 : y * 100 * movementMultipliers[index];
+        // Desativa a rotação se for mobile
+        const rotationY = isMobile ? 0 : x * 100 * movementMultipliers[index];
+        const rotationX = isMobile ? 0 : y * 100 * movementMultipliers[index];
 
-                // Se for mobile, a camada 5 se move 2x mais devagar
-                const slowDownFactor = isMobile && index === 5 ? 2 : 1;
+        // Se for mobile, a camada 5 se move 2x mais devagar
+        const slowDownFactor = isMobile && index === 5 ? 2 : 1;
 
-                // Mantém o scale(1.2) apenas para a camada 5
-                const scaleValue = index === 5 ? 'scale(1.3)' : '';
+        // Mantém o scale(1.2) apenas para a camada 5
+        const scaleValue = index === 5 ? 'scale(1.3)' : '';
 
-                // Aplica o movimento, rotação e inclinação
-                layer.style.transform = `translateX(${movementX / slowDownFactor}px) translateY(${movementY / slowDownFactor}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
+        // Aplica o movimento, rotação e inclinação
+        layer.style.transform = `translateX(${movementX / slowDownFactor}px) translateY(${movementY / slowDownFactor}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
 
-                // Aplica o filtro de brilho
-                layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
-            });
-        }
+        // Aplica o filtro de brilho
+        layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+    });
+}
 
-        // Evento de movimento do mouse
-        parallaxContainer.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth) - 0.5;
-            const y = (e.clientY / window.innerHeight) - 0.5;
-            updateLayers(x, y, false); // false indica que não é mobile
-        });
+// Evento de movimento do mouse
+parallaxContainer.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) - 0.5;
+    const y = (e.clientY / window.innerHeight) - 0.5;
+    updateLayers(x, y, false); // false indica que não é mobile
+});
 
-        // Evento de movimento do toque
-        parallaxContainer.addEventListener('touchmove', (e) => {
-            const touch = e.touches[0];
-            const x = (touch.clientX / window.innerWidth) - 0.5;
-            const y = (touch.clientY / window.innerHeight) - 0.5;
-            updateLayers(x, y, true); // true indica que é mobile
-            e.preventDefault(); // Previne o scroll da página
-        }, { passive: false });
+// Evento de movimento do toque
+parallaxContainer.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const x = (touch.clientX / window.innerWidth) - 0.5;
+    const y = (touch.clientY / window.innerHeight) - 0.5;
+    const isMobile = window.innerWidth <= 768; // Detecta se é mobile pela largura da janela
+    updateLayers(x, y, isMobile); // true indica que é mobile
+    e.preventDefault(); // Previne o scroll da página
+}, { passive: false });
 
         // Inicializa a posição do mouse
         const initialX = 0; // Simulando posição inicial do mouse
