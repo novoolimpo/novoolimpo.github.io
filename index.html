@@ -284,66 +284,50 @@
   </div>
 </div>
    <script>
-        const parallaxContainer = document.querySelector('.parallax-container');
-        const layers = document.querySelectorAll('.layer');
+    const parallaxContainer = document.querySelector('.parallax-container');
+    const layers = document.querySelectorAll('.layer');
+    const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3];
+    const depthMultipliers = [-300, -200, -100, 0, 100, 200];
 
-        const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3]; // Multiplicadores para cada camada
-        const depthMultipliers = [-300, -200, -100, 0, 100, 200]; // Profundidade de cada camada
+    // Função para detectar se o dispositivo é mobile
+    const isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        // Função para atualizar as transformações das camadas
-function updateLayers(x, y, isMobile) {
-    layers.forEach((layer, index) => {
-        const depth = depthMultipliers[index];
-        
-        // Aplica um multiplicador menor para o movimento horizontal no mobile
-        const mobileHorizontalLimit = isMobile ? 0.5 : 1; // Limita o movimento horizontal no mobile
-        const movementX = x * depth * movementMultipliers[index] * mobileHorizontalLimit;
-        
-        // Define o movimento Y como 0 no mobile
-        const movementY = isMobile ? 0 : (y * depth * movementMultipliers[index]) / 2.6;
+    // Função para atualizar as transformações das camadas
+    function updateLayers(x, y) {
+        layers.forEach((layer, index) => {
+            const depth = depthMultipliers[index];
+            const movementX = x * depth * movementMultipliers[index];
+            const movementY = isMobileDevice ? 0 : (y * depth * movementMultipliers[index]) / 2.6;
 
-        // Desativa a rotação se for mobile
-        const rotationY = isMobile ? 0 : x * 100 * movementMultipliers[index];
-        const rotationX = isMobile ? 0 : y * 100 * movementMultipliers[index];
+            // Desativa rotação se for mobile
+            const rotationY = isMobileDevice ? 0 : x * 100 * movementMultipliers[index];
+            const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
+            const scaleValue = index === 5 ? 'scale(1.3)' : '';
+            
+            layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
+            layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+        });
+    }
 
-        // Se for mobile, a camada 5 se move 2x mais devagar
-        const slowDownFactor = isMobile && index === 5 ? 2 : 1;
-
-        // Mantém o scale(1.2) apenas para a camada 5
-        const scaleValue = index === 5 ? 'scale(1.3)' : '';
-
-        // Aplica o movimento, rotação e inclinação
-        layer.style.transform = `translateX(${movementX / slowDownFactor}px) translateY(${movementY / slowDownFactor}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
-
-        // Aplica o filtro de brilho
-        layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+    // Evento de movimento do mouse
+    parallaxContainer.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
     });
-}
 
-// Evento de movimento do mouse
-parallaxContainer.addEventListener('mousemove', (e) => {
-    const x = (e.clientX / window.innerWidth) - 0.5;
-    const y = (e.clientY / window.innerHeight) - 0.5;
-    updateLayers(x, y, false); // false indica que não é mobile
-});
+    // Evento de movimento do toque
+    parallaxContainer.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const x = (touch.clientX / window.innerWidth) - 0.5;
+        const y = (touch.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
+    }, { passive: false });
 
-// Evento de movimento do toque
-parallaxContainer.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    const x = (touch.clientX / window.innerWidth) - 0.5;
-    const y = (touch.clientY / window.innerHeight) - 0.5;
-    const isMobile = window.innerWidth <= 768; // Detecta se é mobile pela largura da janela
-    updateLayers(x, y, isMobile); // true indica que é mobile
-    // e.preventDefault(); // Previne o scroll da página
-}, { passive: false });
+    // Inicializa a posição do parallax
+    updateLayers(0, 0);
+</script>
 
-     
-
-        // Inicializa a posição do mouse
-        const initialX = 0; // Simulando posição inicial do mouse
-        const initialY = 0; // Simulando posição inicial do mouse
-        updateLayers(initialX, initialY, false); // false indica que não é mobile
-    </script>
 
 
 
