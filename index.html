@@ -54,6 +54,62 @@
       width: 100%;
     }
 
+    /* Estilo para o contêiner de parallax */
+.parallax-container {
+    position: relative;
+    width: 600px; /* Largura da área da imagem */
+    height: 400px; /* Altura da área da imagem */
+    perspective: 1000px; /* Perspectiva para o efeito de parallax */
+}
+
+/* Estilo para as camadas */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain; /* Evita corte */
+    background-position: center;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    transform-origin: center; /* Define o ponto de origem das transformações */
+    transition: transform 0.1s, filter 0.1s; /* Suaviza transições */
+}
+
+/* Camadas da imagem */
+.layer0 {
+    background-image: url('camada0.png');
+    transform: translateZ(-300px);
+}
+
+.layer1 {
+    background-image: url('camada1.png');
+    transform: translateZ(-200px);
+}
+
+.layer2 {
+    background-image: url('camada2.png');
+    transform: translateZ(-100px);
+}
+
+.layer3 {
+    background-image: url('camada3.png');
+    transform: translateZ(0);
+}
+
+.layer4 {
+    background-image: url('camada4.png');
+    transform: translateZ(100px);
+    z-index: 1; /* A camada 4 está acima da camada 3 */
+}
+
+.layer5 {
+    background-image: url('camada5.png');
+    transform: translateZ(250px) scale(1.2); /* Camada mais próxima com um leve zoom */
+    z-index: 2; /* A camada 5 está acima das demais */
+}
+
+
     /* Estilo específico para a seção "SOBRE" com imagem girando */
     #sobre {
       /*position: relative; */
@@ -211,8 +267,17 @@
       <p>FAÇA O PRÉ SAVE</p>
     </div>
 
-    <div class="imagem-lancamento" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+   <!-- <div class="imagem-lancamento" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
       <img src="imagemlancamento.png" alt="Imagem de Lançamento" style="max-width: 100%; height: auto;">
+    </div>-->
+
+     <div class="parallax-container">
+        <div class="layer layer0"></div>
+        <div class="layer layer1"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer3"></div>
+        <div class="layer layer4"></div>
+        <div class="layer layer5"></div>
     </div>
   </div>
 </div>
@@ -296,3 +361,4 @@
   </script>
 </body>
 </html>
+
