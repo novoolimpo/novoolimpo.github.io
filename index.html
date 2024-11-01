@@ -282,7 +282,6 @@
         <div class="layer layer5"></div>
     </div>
   </div>
-</div>
 <script>
     const parallaxContainer = document.querySelector('.parallax-container');
     const layers = document.querySelectorAll('.layer');
@@ -296,19 +295,24 @@
     function updateLayers(x, y) {
         layers.forEach((layer, index) => {
             const depth = depthMultipliers[index];
-            
-            // Aplica uma divisão no movimento lateral (x) se for mobile
-            const movementXMultiplier = isMobileDevice ? 0.5 : 1; // Reduz movimento lateral em 50% para mobile
-            const movementX = x * depth * movementMultipliers[index] * movementXMultiplier;
 
-            // Mantém o movimento Y
+            // Movimentação lateral (X)
+            let movementX = x * depth * movementMultipliers[index];
+
+            // Aplica divisão no movementX apenas para a camada 5 em mobile
+            if (isMobileDevice && index === 5) {
+                movementX *= 0.3; // Reduz movimento lateral da camada 5 em 50% para mobile
+            }
+
+            // Movimentação vertical (Y)
             const movementY = (y * depth * movementMultipliers[index]) / 2.6; // Movimento vertical
 
             // Desativa rotação apenas para dispositivos móveis
             const rotationY = isMobileDevice ? 0 : x * 100 * movementMultipliers[index];
             const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
             const scaleValue = index === 5 ? 'scale(1.3)' : '';
-            
+
+            // Aplica as transformações
             layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
             layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
         });
@@ -332,6 +336,7 @@
     // Inicializa a posição do parallax
     updateLayers(0, 0);
 </script>
+
 
 
 
