@@ -37,16 +37,32 @@
     }
 
     /* Estilo para as seções de tela cheia */
-    .section {
-      height: 100vh;
-      width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 60px; /* Compensar altura da barra de navegação */
-      border-bottom: 1px solid #ddd;
-      overflow: hidden; /* Impede que o conteúdo transborde */
-    }
+.section {
+  min-height: 100vh; /* Permite que a seção cresça com o conteúdo */
+  width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px; /* Compensar altura da barra de navegação */
+  border-bottom: 1px solid #ddd;
+  overflow: hidden; /* Impede que o conteúdo transborde */
+}
+
+/* Estilo específico para a seção "Contrate" com PDF */
+#contrate {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+#contrate iframe {
+  width: 100%;
+  height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
+  border: none;
+}
 
     .section h2 {
       margin-bottom: 20px;
@@ -466,13 +482,13 @@
   </div>
 </div>
 
-  <!-- Seção CONTRATE com o PDF -->
-  <div class="section" id="contrate">
-    <h2>CONTRATE</h2>
-    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
-      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
-    </iframe>
-  </div>
+ <!-- Seção CONTRATE com o PDF -->
+<div class="section" id="contrate">
+  <h2>CONTRATE</h2>
+  <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
+    Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="novoolimpo.github.io/novoolimpo.pdf">Download</a>
+  </iframe>
+</div>
 
   <!-- Botão Comprar e texto fixos no rodapé -->
   <div id="comprar-container">
