@@ -85,14 +85,19 @@
       margin-right: 20px;
     }
 
-   /* Botão VOLTAR no canto superior esquerdo, mais próximo do título */
+  /* Botão VOLTAR fixo e responsivo */
 #voltar {
-  position: absolute;
-  top: 20px; /* Ajuste a altura do botão a partir do topo da página */
-  margin-left: -20px; /* Ajuste a distância da borda esquerda */
-  font-size: 1.5rem; /* Aumentar tamanho da fonte para melhor visibilidade */
+  position: fixed; /* Alterado para fixed para garantir que o botão permaneça visível ao rolar a página */
+  top: 2vh; /* Margem a partir do topo usando uma unidade responsiva */
+  left: 2vw; /* Margem a partir da esquerda usando uma unidade responsiva */
+  font-size: 2.5vw; /* Tamanho do texto em relação à largura da viewport */
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo semi-transparente para melhorar a visibilidade */
+  color: white; /* Cor do texto */
+  padding: 10px; /* Espaço ao redor do texto para torná-lo mais clicável */
+  border-radius: 5px; /* Canto arredondado para estilo */
 }
+
   </style>
 </head>
 <body>
