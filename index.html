@@ -433,10 +433,9 @@
       USADOS NESSES 6 ANOS DE CARREIRA.
     </p>
     <div style="display: flex; justify-content: center; align-items: center;">
-      <!-- Botão principal -->
-<button id="comprar-principal">
-  <img src="buygumroad.png" alt="Comprar">
-</button>
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
     </div>
 
     <<!-- Seção PRODUTOS -->
@@ -475,26 +474,20 @@
     </iframe>
   </div>
 
-  <!-- Botão do rodapé -->
-<div id="comprar-container">
-  <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-  <div style="margin-left: 20px;">
-    <button id="comprar-rodape">
-      <img src="buygumroad.png" alt="Comprar">
-    </button>
+  <!-- Botão Comprar e texto fixos no rodapé -->
+  <div id="comprar-container">
+    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+    <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
   </div>
-</div>
 
-<script>
-  // Ação para o botão principal
-  document.getElementById("comprar-principal").onclick = function() {
-    window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
-  };
-
-  // Ação para o botão do rodapé
-  document.getElementById("comprar-rodape").onclick = function() {
-    window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
-  };
-</script>
+  <script>
+    document.getElementById("comprar").onclick = function() {
+      window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
+    };
+  </script>
 </body>
 </html>
