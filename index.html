@@ -73,6 +73,10 @@
       font-weight: bold;
       margin-right: 20px;
     }
+    
+    #img-rodape {
+  margin-top: -10px; /* Margem superior negativa apenas para a imagem do rodapé */
+}
   </style>
 </head>
 <body>
@@ -103,13 +107,13 @@ MÉTODO COMPLETO, PRÁTICO E EFICAZ.
   <br>
   <br>
 
-  <!-- Botão Comprar e texto fixos no rodapé -->
-  <div id="comprar-container">
-    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-    <button id="comprar">
-      <img src="buygumroad.png" alt="Comprar">
-    </button>
-  </div>
+<!-- Botão Comprar e texto fixos no rodapé -->
+<div id="comprar-container">
+  <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+  <button id="comprar">
+    <img src="buygumroad.png" alt="Comprar" id="img-rodape">
+  </button>
+</div>
 
   <script>
     document.getElementById("comprar").onclick = function() {
