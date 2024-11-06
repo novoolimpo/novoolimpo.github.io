@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Olimpo</title>
+  <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> <!-- Fonte Bebas Neue -->
+  <style>
+    /* Estilo para a barra de navegação */
+    body {
+      font-family: 'Bebas Neue', sans-serif;
+      margin: 0; /* Remove margens padrão */
+      overflow-x: hidden; /* Impede a rolagem horizontal */
+      box-sizing: border-box; /* Inclui padding e bordas na largura total */
+    }
+
+    * {
+      box-sizing: inherit; /* Aplica o box-sizing a todos os elementos */
+    }
+
+    nav {
+      background-color: #333;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Estilo para as seções de tela cheia */
+    .section {
+      height: 100vh;
+      width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 60px; /* Compensar altura da barra de navegação */
+      border-bottom: 1px solid #ddd;
+      overflow: hidden; /* Impede que o conteúdo transborde */
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      text-align: center; /* Centralizar o título */
+      width: 100%;
+    }
+
+    /* Estilo para o contêiner de parallax */
+.parallax-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 300px; /* Largura da área da imagem */
+    height: 300px; /* Altura da área da imagem */
+    perspective: 1000px; /* Perspectiva para o efeito de parallax */
+}
+
+/* Estilo para as camadas */
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain; /* Evita corte */
+    background-position: center;
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    transform-origin: center; /* Define o ponto de origem das transformações */
+    transition: transform 0.1s, filter 0.1s; /* Suaviza transições */
+}
+
+/* Camadas da imagem */
+.layer0 {
+    background-image: url('camada0.png');
+    transform: translateZ(-300px);
+}
+
+.layer1 {
+    background-image: url('camada1.png');
+    transform: translateZ(-200px);
+}
+
+.layer2 {
+    background-image: url('camada2.png');
+    transform: translateZ(-100px);
+}
+
+.layer3 {
+    background-image: url('camada3.png');
+    transform: translateZ(0);
+}
+
+.layer4 {
+    background-image: url('camada4.png');
+    transform: translateZ(100px);
+    z-index: 1; /* A camada 4 está acima da camada 3 */
+}
+
+.layer5 {
+    background-image: url('camada5.png');
+    transform: translateZ(250px) scale(1.2); /* Camada mais próxima com um leve zoom */
+    z-index: 2; /* A camada 5 está acima das demais */
+}
+
+
+    /* Estilo específico para a seção "SOBRE" com imagem girando */
+    #sobre {
+      /*position: relative; */
+    }
+
+    .imagem-girando {
+      animation: girar 5s linear infinite; /* Animação de rotação */
+      max-width: 100%; /* Define uma largura máxima da imagem */
+      max-height: 100%; /* Define uma altura máxima da imagem */
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Estilo específico para a seção "Contrate" com PDF */
+    #contrate {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
+    }
+
+    #contrate iframe {
+      width: 100%;
+      height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
+      border: none;
+    }
+
+    /* Estilo para a seção PORTFOLIO em colunas */
+    #portfolio {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%; /* Garante que a seção preencha 100% da largura */
+    }
+
+    .colunas {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 0 20px; /* Adiciona espaçamento lateral */
+      width: 100%; /* Garante que a seção preencha 100% da largura */
+    }
+
+    .coluna {
+      flex: 1; /* Cada coluna ocupa o mesmo espaço */
+      margin: 10px; /* Margem entre as colunas */
+      min-width: 250px; /* Largura mínima para as colunas */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+      padding: 20px; /* Espaçamento interno */
+      background-color: #f9f9f9; /* Cor de fundo para as colunas */
+      border-radius: 5px; /* Bordas arredondadas */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .capa {
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      background-color: #ccc; /* Cor de fundo padrão */
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .capa img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: transform 0.3s ease; /* Adiciona uma transição suave */
+    }
+
+    .capa img:hover {
+      transform: scale(1.1); /* Zoom in ao passar o mouse */
+    }
+
+    /* Botão Comprar e texto fixos no rodapé */
+    #comprar-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Texto no rodapé alinhado à esquerda */
+    #rodape-texto {
+      color: white;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    /* Estilo do botão de comprar */
+    #comprar {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+
+    #comprar img {
+      width: 150px;
+      height: auto;
+    }
+
+ /* Ajustes para o formulário */
+#contact-form {
+  display: flex;
+  justify-content: center; /* Alinha os elementos no centro */
+  flex-wrap: wrap; /* Permite que os campos se ajustem ao tamanho da tela */
+  gap: 10px; /* Adiciona espaçamento entre os campos */
+  margin-top: 20px; /* Espaçamento superior */
+  width: 100%; /* Garante que o formulário ocupe 100% da largura */
+  max-width: 600px; /* Define uma largura máxima para o formulário */
+  margin: 0 auto; /* Centraliza o formulário horizontalmente */
+}
+
+#contact-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1 1 45%; /* Permite que os campos cresçam e fiquem lado a lado */
+  min-width: 0; /* Garante que o campo diminua até um limite razoável */
+  box-sizing: border-box; /* Inclui padding e borda no cálculo da largura */
+}
+
+#contact-form button {
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1 1 100%; /* Botão ocupa toda a linha */
+  max-width: 100%; /* Limita a largura máxima */
+  box-sizing: border-box; /* Garante que o padding seja considerado no tamanho */
+}
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .section {
+        height: auto; /* Permitir que a altura seja definida pelo conteúdo */
+        min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
+        padding: 20px; /* Reduzir o padding em telas menores */
+      }
+      #contrate iframe {
+        height: 60vh; /* Ajusta a altura do iframe em telas menores */
+      }
+       #contact-form {
+    flex-direction: row; /* Mantém os campos lado a lado no mobile */
+  }
+
+  #contact-form input {
+    flex: 1 1 45%; /* Cada campo ocupa cerca de 45% da largura no mobile */
+  }
+
+  #contact-form button {
+    flex: 1 1 100%; /* Botão ocupa 100% da largura */
+    width: auto; /* Garante que o botão não fique esticado */
+  }
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <!-- Barra de navegação fixa no topo -->
+  <nav>
+    <a href="#sobre">INICIO</a>
+    <a href="#portfolio">PORTFOLIO</a>
+    <a href="#produtos">PRODUTOS</a>
+    <a href="#contrate">CONTRATE</a>
+  </nav>
+
+<!-- Seção SOBRE com a imagem girando e a imagem de lançamento -->
+<div class="section" id="sobre">
+  <div style="position: relative;">
+    <div class="imagem-girando">
+      <img src="novoolimpogrey2.png" alt="Imagem Girando">
+    </div>
+    
+    <!-- Texto centralizado acima da imagem de lançamento -->
+    <div style="text-align: center; margin: 20px 0; position: absolute; top: 19%; left: 50%; transform: translate(-50%, -50%);">
+      <h2 style="margin-bottom: -15px;">NK & MRRT - ABENÇOADO ??/12</h2>
+<p style="margin-top: 202;">FAÇA O PRÉ SAVE</p>
+    </div>
+
+   <!-- <div class="imagem-lancamento" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <img src="imagemlancamento.png" alt="Imagem de Lançamento" style="max-width: 100%; height: auto;">
+    </div>-->
+
+      <div class="parallax-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+        <div class="layer layer0"></div>
+        <div class="layer layer1"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer3"></div>
+        <div class="layer layer4"></div>
+        <div class="layer layer5"></div>
+    </div>
+  </div>
+  </div>
+<script>
+    const parallaxContainer = document.querySelector('.parallax-container');
+    const layers = document.querySelectorAll('.layer');
+    const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3];
+    const depthMultipliers = [-300, -200, -100, 0, 100, 200];
+
+    // Detecta se o dispositivo é mobile
+    const isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Função para atualizar as transformações das camadas
+    function updateLayers(x, y) {
+        layers.forEach((layer, index) => {
+            const depth = depthMultipliers[index];
+
+            // Movimentação lateral (X)
+            let movementX = x * depth * movementMultipliers[index];
+
+            // Aplica divisão no movementX apenas para a camada 5 em mobile
+            if (isMobileDevice && index === 5) {
+                movementX *= 0.1; // Reduz movimento lateral da camada 5 em 50% para mobile
+            }
+
+            // Movimentação vertical (Y)
+            const movementY = (y * depth * movementMultipliers[index]) / 2.6; // Movimento vertical
+
+            // Desativa rotação apenas para dispositivos móveis
+            const rotationY = isMobileDevice ? 0 : x * 100 * movementMultipliers[index];
+            const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
+            const scaleValue = index === 5 ? 'scale(1.3)' : '';
+
+            // Aplica as transformações
+            layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
+            layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+        });
+    }
+
+    // Evento de movimento do mouse
+    parallaxContainer.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
+    });
+
+    // Evento de movimento do toque
+    parallaxContainer.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const x = (touch.clientX / window.innerWidth) - 0.5;
+        const y = (touch.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
+    }, { passive: false });
+
+    // Inicializa a posição do parallax
+    updateLayers(0, 0);
+</script>
+
+
+
+
+
+
+  <!-- Seção PORTFOLIO -->
+  <div class="section" id="portfolio">
+    <h2>PORTFOLIO</h2>
+    <div class="colunas">
+      <div class="coluna">
+        <div class="capa">
+          <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
+          <img src="novosessions.png" alt="Projetos">
+            </a>
+        </div>
+        <h3>PROJETOS</h3>
+        <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
+      </div>
+      <div class="coluna">
+        <div class="capa">
+          <a href="https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ">
+          <img src="mrrt.png" alt="Produções">
+            </a>
+        </div>
+        <h3>PRODUÇÕES</h3>
+        <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
+      </div>
+      <div class="coluna">
+        <div class="capa">
+          <a href="">
+          <img src="bbl.png" alt="Audiovisual">
+            </a>
+        </div>
+        <h3>AUDIOVISUAL</h3>
+        <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seção PRODUTOS -->
+<div class="section" id="produtos">
+  <div>
+    <h2>PRODUTOS</h2>
+    <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
+    <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
+    <p style="text-align: center;"> NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
+      DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
+      USADOS NESSES 6 ANOS DE CARREIRA.
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
+
+    <<!-- Seção PRODUTOS -->
+<div class="section" id="produtos">
+  <div>
+    <h2>PRODUTOS</h2>
+    <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
+    <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
+    <p style="text-align: center;"> NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
+      DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
+      USADOS NESSES 6 ANOS DE CARREIRA.
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
+
+    <!-- Formulário de contato -->
+    <div style="margin-top: 20px; text-align: center;">
+      <h3>INSCREVA-SE PARA RECEBER MMM EBOOK</h3>
+      <form id="contact-form" action="https://formspree.io/f/xyzyedzl" method="POST">
+        <input type="text" name="name" placeholder="Seu Nome" required style="padding: 10px; margin-right: 10px; width: 200px; border: 1px solid #ccc; border-radius: 5px;">
+        <input type="email" name="email" placeholder="Seu Email" required style="padding: 10px; margin-right: 10px; width: 200px; border: 1px solid #ccc; border-radius: 5px;">
+        <button type="submit" style="padding: 10px 15px; background-color: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Enviar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- Seção CONTRATE com o PDF -->
+  <div class="section" id="contrate">
+    <h2>CONTRATE</h2>
+    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
+      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="URL_DO_PDF">Download</a>
+    </iframe>
+  </div>
+
+  <!-- Botão Comprar e texto fixos no rodapé -->
+  <div id="comprar-container">
+    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+    <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("comprar").onclick = function() {
+      window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
+    };
+  </script>
+</body>
+</html>
