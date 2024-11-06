@@ -30,7 +30,7 @@
     /* Estilo específico para o primeiro título */
     #titulo-principal {
       margin-top: 40px; /* Mover o título para baixo */
-       margin-bottom: 0px; /* Reduz o espaço entre o título e a imagem */
+      margin-bottom: 0px; /* Reduz o espaço entre o título e a imagem */
       font-size: 3rem; /* Aumenta o tamanho da fonte do título principal */
     }
 
@@ -57,8 +57,14 @@
     }
 
     #img-rodape {
-  margin-top: 0px; /* Margem superior negativa apenas para a imagem do rodapé */
-}
+      margin-top: 0px; /* Margem superior negativa apenas para a imagem do rodapé */
+    }
+
+    /* Ajuste para os botões ficarem lado a lado */
+    #comprar {
+      display: flex;
+      gap: 10px; /* Espaço entre os botões */
+    }
 
     /* Botão Comprar e texto fixos no rodapé */
     #comprar-container {
@@ -88,35 +94,43 @@
     <h2>PROMOÇÃO LIMITADA</h2> <!-- Mantendo o estilo original desta frase -->
     <p>
       NK DRUMKIT VOL. I INCLUI:<br>
-<br>
-15 808'S<br>
-15 KICKS<br>
-15 CLAPS<br>
-15 SNARES<br>
-20 HI HATS<br>
-20 PERCS<br>
-35 FX'S<br>
-5 OPENHATS + 7 RIMS<br>
-+<br>
-EBOOK GUIA DE PLUGINS COMPACTO PARA INICIANTES E AVANÇADOS<br>
-MÉTODO COMPLETO, PRÁTICO E EFICAZ.
+      <br>
+      15 808'S<br>
+      15 KICKS<br>
+      15 CLAPS<br>
+      15 SNARES<br>
+      20 HI HATS<br>
+      20 PERCS<br>
+      35 FX'S<br>
+      5 OPENHATS + 7 RIMS<br>
+      +<br>
+      EBOOK GUIA DE PLUGINS COMPACTO PARA INICIANTES E AVANÇADOS<br>
+      MÉTODO COMPLETO, PRÁTICO E EFICAZ.
     </p>
-    <button id="comprar">
-      <img src="buygumroad.png" alt="Comprar">
-      <img src="buyhotmart.png" alt="Comprar">
-    </button>
+    <div id="comprar">
+      <button>
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+      <button>
+        <img src="buyhotmart.png" alt="Comprar">
+      </button>
+    </div>
   </div>
   <br>
   <br>
 
-<!-- Botão Comprar e texto fixos no rodapé -->
-<div id="comprar-container">
-  <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-  <button id="comprar">
-    <img src="buygumroad.png" alt="Comprar" id="img-rodape">
-    <img src="buyhotmart.png" alt="Comprar" id="img-rodape">
-  </button>
-</div>
+  <!-- Botão Comprar e texto fixos no rodapé -->
+  <div id="comprar-container">
+    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+    <div id="comprar">
+      <button>
+        <img src="buygumroad.png" alt="Comprar" id="img-rodape">
+      </button>
+      <button>
+        <img src="buyhotmart.png" alt="Comprar" id="img-rodape">
+      </button>
+    </div>
+  </div>
 
   <script>
     document.getElementById("comprar").onclick = function() {
