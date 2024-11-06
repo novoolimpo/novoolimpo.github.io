@@ -63,8 +63,9 @@
     /* Ajuste para os botões ficarem lado a lado */
     #comprar {
       display: flex;
-      gap: 10px; /* Espaço entre os botões */
+      gap: 5px; /* Espaço entre os botões */
     }
+    
 
     /* Botão Comprar e texto fixos no rodapé */
     #comprar-container {
@@ -107,14 +108,16 @@
       EBOOK GUIA DE PLUGINS COMPACTO PARA INICIANTES E AVANÇADOS<br>
       MÉTODO COMPLETO, PRÁTICO E EFICAZ.
     </p>
-    <div id="comprar">
+    <div id="comprargumroard">
       <button>
         <img src="buygumroad.png" alt="Comprar">
       </button>
-      <button>
+    </div>
+<div id="comprarhotmart">
+     <button>
         <img src="buyhotmart.png" alt="Comprar">
       </button>
-    </div>
+  </div>
   </div>
   <br>
   <br>
@@ -133,8 +136,11 @@
   </div>
 
   <script>
-    document.getElementById("comprar").onclick = function() {
+    document.getElementById("comprargumroad").onclick = function() {
       window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
+    };
+    document.getElementById("comprarhotmart").onclick = function() {
+      window.open("https://pay.hotmart.com/O96435069N", "_blank");
     };
   </script>
 </body>
