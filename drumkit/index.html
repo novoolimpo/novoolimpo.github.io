@@ -6,12 +6,12 @@
   <title>NK DRUMKIT VOL. I + MMM EBOOK</title>
   <link rel="icon" href="novoolimpo.github.io/novoolimpoicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-   <style>
+    <style>
     body {
       font-family: 'Bebas Neue', sans-serif;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Impede a rolagem horizontal */
       box-sizing: border-box;
       padding-bottom: 80px; /* Espaço extra no rodapé */
     }
@@ -25,8 +25,10 @@
       justify-content: center;
       text-align: center;
       padding: 20px;
+      box-sizing: border-box; /* Garante que o padding não cause overflow */
     }
 
+    /* Estilo específico para o primeiro título */
     #titulo-principal {
       margin-top: 40px;
       margin-bottom: 0px;
@@ -34,15 +36,15 @@
     }
 
     img {
-      width: 80%;
-      max-width: 800px;
+      width: 100%; /* Faz as imagens se ajustarem à largura da tela */
+      max-width: 800px; /* Define um limite máximo de largura */
+      height: auto; /* Mantém a proporção das imagens */
       display: block;
       margin: 0 auto;
     }
 
     p {
       margin-bottom: 10px;
-      font-size: 1.2rem; /* Adiciona um tamanho de fonte mais legível */
     }
 
     button {
@@ -81,7 +83,6 @@
       color: white;
       font-weight: bold;
       margin-right: 20px;
-      font-size: 1.2rem; /* Ajusta o tamanho da fonte no rodapé */
     }
 
     /* Botão VOLTAR fixo e responsivo */
@@ -97,51 +98,51 @@
       border-radius: 5px;
     }
 
-    /* Media queries para dispositivos menores */
+    /* Media Query para telas menores */
     @media (max-width: 768px) {
       #titulo-principal {
-        font-size: 2.5rem; /* Reduz o tamanho da fonte em telas menores */
-      }
-
-      img {
-        width: 90%; /* Alarga as imagens para dispositivos menores */
+        font-size: 2.5rem; /* Ajusta o tamanho do título em telas menores */
       }
 
       p {
-        font-size: 1rem; /* Reduz o tamanho da fonte */
+        font-size: 1.2rem; /* Ajusta o tamanho da fonte */
+        line-height: 1.5;
       }
 
       button img {
-        width: 120px; /* Reduz o tamanho dos botões de imagem em telas menores */
+        width: 120px; /* Reduz o tamanho das imagens dos botões */
       }
 
       #voltar {
-        font-size: 4vw; /* Tamanho da fonte relativo à viewport para manter legível */
-      }
-    }
-
-    @media (max-width: 480px) {
-      #titulo-principal {
-        font-size: 2rem; /* Título principal menor ainda para dispositivos muito pequenos */
+        font-size: 4vw; /* Ajusta o tamanho da fonte para telas menores */
+        padding: 8px; /* Ajusta o padding */
       }
 
-      p {
-        font-size: 0.9rem; /* Reduz mais o texto */
-      }
-
-      button img {
-        width: 100px; /* Botões menores */
-      }
-
-      #voltar {
-        font-size: 5vw;
+      #comprar-container {
+        flex-direction: column; /* Organiza os botões em coluna no mobile */
+        padding: 20px 0; /* Ajusta o padding */
       }
 
       #rodape-texto {
-        font-size: 1rem; /* Texto menor no rodapé */
+        margin-right: 0;
+        margin-bottom: 10px; /* Ajusta o layout do texto no rodapé */
       }
     }
+
+    /* Media Query para telas menores que 480px */
+    @media (max-width: 480px) {
+      img {
+        max-width: 100%; /* Garante que a imagem ocupe toda a largura da tela */
+      }
+
+      #voltar {
+        font-size: 5vw; /* Ajusta mais o tamanho da fonte */
+        padding: 10px;
+      }
+    }
+
   </style>
+
 
 </head>
 <body>
