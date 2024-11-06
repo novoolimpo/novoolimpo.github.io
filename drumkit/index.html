@@ -85,10 +85,15 @@
       margin-right: 20px;
     }
 
-    /* Botão VOLTAR no canto superior esquerdo */
-    #voltar {
-      margin: 10px; /* Adiciona uma margem ao redor do botão VOLTAR */
-    }
+   /* Botão VOLTAR no canto superior esquerdo, mais próximo do título */
+#voltar {
+  position: absolute;
+  top: 20px; /* Ajuste a altura do botão a partir do topo da página */
+  left: 20px; /* Ajuste a distância da borda esquerda */
+  margin: 0; /* Remover margem extra */
+  font-size: 1.5rem; /* Aumentar tamanho da fonte para melhor visibilidade */
+  cursor: pointer;
+}
   </style>
 </head>
 <body>
