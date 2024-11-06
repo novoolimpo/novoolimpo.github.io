@@ -243,8 +243,25 @@
       display: flex;
       justify-content: center;
     }
+
+     /* Estilo do botão de comprar */
+    #comprar2 {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
     
     #comprarrodape {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+    }
+
+    #comprarrodape2 {
       background: none;
       border: none;
       cursor: pointer;
@@ -257,7 +274,17 @@
       height: auto;
     }
     
+    #comprar2 img {
+      width: 150px;
+      height: auto;
+    }
+    
     #comprarrodape img {
+      width: 150px;
+      height: auto;
+    }
+
+    #comprarrodape2 img {
       width: 150px;
       height: auto;
     }
@@ -465,6 +492,9 @@
       <button id="comprar">
         <img src="buygumroad.png" alt="Comprar">
       </button>
+      <button id="comprar2">
+        <img src="buyhotmart.png" alt="Comprar">
+      </button>
     </div>
 
     <!-- Formulário de contato -->
@@ -495,15 +525,25 @@
         <img src="buygumroad.png" alt="Comprar">
       </button>
     </div>
+    <div style="margin-left: 20px;"> <!-- Adiciona uma div para criar espaço -->
+      <button id="comprarrodape2">
+        <img src="buyhotmart.png" alt="Comprar">
+      </button>
+    </div>
   </div>
 
   <script>
     document.getElementById("comprar").onclick = function() {
       window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
     };
-
+    document.getElementById("comprar2").onclick = function() {
+      window.open("https://pay.hotmart.com/O96435069N", "_blank");
+    };
      document.getElementById("comprarrodape").onclick = function() {
     window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
+  };
+    document.getElementById("comprarrodape2").onclick = function() {
+    window.open("https://pay.hotmart.com/O96435069N", "_blank");
   };
   </script>
 </body>
