@@ -6,14 +6,14 @@
   <title>NK DRUMKIT VOL. I + MMM EBOOK</title>
   <link rel="icon" href="novoolimpo.github.io/novoolimpoicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <style>
+   <style>
     body {
       font-family: 'Bebas Neue', sans-serif;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
       box-sizing: border-box;
-      padding-bottom: 80px; /* Adiciona espaço extra na parte inferior para evitar sobreposição com o rodapé */
+      padding-bottom: 80px; /* Espaço extra no rodapé */
     }
 
     .section {
@@ -27,22 +27,22 @@
       padding: 20px;
     }
 
-    /* Estilo específico para o primeiro título */
     #titulo-principal {
-      margin-top: 40px; /* Mover o título para baixo */
-      margin-bottom: 0px; /* Reduz o espaço entre o título e a imagem */
-      font-size: 3rem; /* Aumenta o tamanho da fonte do título principal */
+      margin-top: 40px;
+      margin-bottom: 0px;
+      font-size: 3rem;
     }
 
     img {
       width: 80%;
       max-width: 800px;
       display: block;
-      margin: 0 auto 0px;
+      margin: 0 auto;
     }
 
     p {
       margin-bottom: 10px;
+      font-size: 1.2rem; /* Adiciona um tamanho de fonte mais legível */
     }
 
     button {
@@ -57,22 +57,20 @@
     }
 
     #img-rodape {
-      margin-top: 0px; /* Margem superior negativa apenas para a imagem do rodapé */
+      margin-top: 0px;
     }
 
-    /* Ajuste para os botões ficarem lado a lado */
     #comprar {
       display: flex;
-      gap: 5px; /* Espaço entre os botões */
+      gap: 5px;
     }
 
-    /* Botão Comprar e texto fixos no rodapé */
     #comprar-container {
       position: fixed;
       bottom: 0;
       width: 100%;
       background-color: #333;
-      padding: 10px 0; /* Ajusta o padding para dar mais espaço */
+      padding: 10px 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -83,22 +81,68 @@
       color: white;
       font-weight: bold;
       margin-right: 20px;
+      font-size: 1.2rem; /* Ajusta o tamanho da fonte no rodapé */
     }
 
-  /* Botão VOLTAR fixo e responsivo */
-#voltar {
-  position: fixed; /* Alterado para fixed para garantir que o botão permaneça visível ao rolar a página */
-  top: 2vh; /* Margem a partir do topo usando uma unidade responsiva */
-  left: 2vw; /* Margem a partir da esquerda usando uma unidade responsiva */
-  font-size: 2.5vw; /* Tamanho do texto em relação à largura da viewport */
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo semi-transparente para melhorar a visibilidade */
-  color: white; /* Cor do texto */
-  padding: 10px; /* Espaço ao redor do texto para torná-lo mais clicável */
-  border-radius: 5px; /* Canto arredondado para estilo */
-}
+    /* Botão VOLTAR fixo e responsivo */
+    #voltar {
+      position: fixed;
+      top: 2vh;
+      left: 2vw;
+      font-size: 2.5vw;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
 
+    /* Media queries para dispositivos menores */
+    @media (max-width: 768px) {
+      #titulo-principal {
+        font-size: 2.5rem; /* Reduz o tamanho da fonte em telas menores */
+      }
+
+      img {
+        width: 90%; /* Alarga as imagens para dispositivos menores */
+      }
+
+      p {
+        font-size: 1rem; /* Reduz o tamanho da fonte */
+      }
+
+      button img {
+        width: 120px; /* Reduz o tamanho dos botões de imagem em telas menores */
+      }
+
+      #voltar {
+        font-size: 4vw; /* Tamanho da fonte relativo à viewport para manter legível */
+      }
+    }
+
+    @media (max-width: 480px) {
+      #titulo-principal {
+        font-size: 2rem; /* Título principal menor ainda para dispositivos muito pequenos */
+      }
+
+      p {
+        font-size: 0.9rem; /* Reduz mais o texto */
+      }
+
+      button img {
+        width: 100px; /* Botões menores */
+      }
+
+      #voltar {
+        font-size: 5vw;
+      }
+
+      #rodape-texto {
+        font-size: 1rem; /* Texto menor no rodapé */
+      }
+    }
   </style>
+
 </head>
 <body>
   <!-- Botão VOLTAR -->
