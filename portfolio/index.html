@@ -67,28 +67,30 @@
 
         /* Ajustes para telas menores */
         @media (max-width: 600px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr); /* Menos colunas em telas pequenas */
-            }
+    audio {
+        max-width: 70%; /* Ajuste a largura do player para caber o ícone ao lado */
+        left: auto; /* Remove o alinhamento central */
+        right: 0; /* Alinha o player à direita */
+        transform: none; /* Remove o deslocamento central */
+    }
 
-            audio {
-                max-width: 90%; /* Reduz a largura do player em telas menores */
-            }
+    .spotify-icon {
+        top: 15px; /* Mantém o ícone alinhado */
+        left: auto; /* Remove a posição fixa à esquerda */
+        right: 0; /* Alinha o ícone à direita, próximo ao player */
+    }
 
-            .spotify-icon {
-                top: 60px; /* Ajusta a posição do ícone para baixo quando o player ocupa mais espaço */
-            }
+    /* Ajusta ainda mais para telas muito pequenas */
+    @media (max-width: 400px) {
+        audio {
+            max-width: 65%; /* Reduz um pouco mais o player */
         }
 
-        @media (max-width: 400px) {
-            .grid-container {
-                grid-template-columns: 1fr; /* Apenas uma coluna em telas muito pequenas */
-            }
-
-            .spotify-icon {
-                top: 80px; /* Ajusta ainda mais a posição do ícone se necessário */
-            }
+        .spotify-icon {
+            top: 20px; /* Ajusta ligeiramente a posição vertical */
         }
+    }
+}
     </style>
 </head>
 <body>
