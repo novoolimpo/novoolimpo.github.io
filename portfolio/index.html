@@ -65,29 +65,32 @@
             cursor: pointer;
         }
 
-        /* Ajustes para telas menores */
-        @media (max-width: 600px) {
-    audio {
-        max-width: 70%; /* Ajuste a largura do player para caber o ícone ao lado */
-        left: auto; /* Remove o alinhamento central */
-        right: 0; /* Alinha o player à direita */
-        transform: none; /* Remove o deslocamento central */
+       /* Ajustes para telas menores */
+@media (max-width: 600px) {
+    body {
+        display: flex;
+        flex-direction: column; /* Organiza os elementos de forma vertical */
+        align-items: center; /* Alinha os elementos no centro */
+        padding: 0 10px;
     }
 
     .spotify-icon {
-        top: 15px; /* Mantém o ícone alinhado */
-        left: auto; /* Remove a posição fixa à esquerda */
-        right: 0; /* Alinha o ícone à direita, próximo ao player */
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
     }
 
-    /* Ajusta ainda mais para telas muito pequenas */
+    audio {
+        max-width: 60%; /* Ajusta a largura do player */
+        width: auto;
+        margin-top: 50px; /* Espaço entre o ícone e o player */
+    }
+
+    /* Ajusta ainda mais para telas menores */
     @media (max-width: 400px) {
         audio {
-            max-width: 65%; /* Reduz um pouco mais o player */
-        }
-
-        .spotify-icon {
-            top: 20px; /* Ajusta ligeiramente a posição vertical */
+            max-width: 50%; /* Diminui ainda mais a largura do player */
         }
     }
 }
