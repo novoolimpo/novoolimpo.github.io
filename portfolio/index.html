@@ -17,7 +17,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             max-width: 1000px;
-            margin: 80px auto 0; /* Ajuste o topo para não sobrepor o player */
+            margin: 80px auto 0;
             padding: 20px;
         }
 
@@ -42,27 +42,52 @@
             display: block;
             width: 100%;
             max-width: 500px;
-            position: fixed; /* Mantém o player fixo na tela */
-            top: 0; /* Alinha o player no topo */
+            position: fixed;
+            top: 0;
             left: 50%;
-            transform: translateX(-50%); /* Centraliza horizontalmente */
-            z-index: 1000; /* Garante que o player fique por cima de outros elementos */
-            background-color: white; /* Opcional: cor de fundo para destacá-lo */
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: white;
             padding: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .spotify-icon {
             position: fixed;
-            top: 10px; /* Alinhado com o topo do player */
-            left: 10px; /* Fica à esquerda da tela */
-            z-index: 1001; /* Um pouco acima do player */
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
         }
 
         .spotify-icon img {
-            width: 40px; /* Tamanho do ícone */
+            width: 40px;
             height: 40px;
             cursor: pointer;
+        }
+
+        /* Ajustes para telas menores */
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* Menos colunas em telas pequenas */
+            }
+
+            audio {
+                max-width: 90%; /* Reduz a largura do player em telas menores */
+            }
+
+            .spotify-icon {
+                top: 60px; /* Ajusta a posição do ícone para baixo quando o player ocupa mais espaço */
+            }
+        }
+
+        @media (max-width: 400px) {
+            .grid-container {
+                grid-template-columns: 1fr; /* Apenas uma coluna em telas muito pequenas */
+            }
+
+            .spotify-icon {
+                top: 80px; /* Ajusta ainda mais a posição do ícone se necessário */
+            }
         }
     </style>
 </head>
@@ -121,8 +146,6 @@
         <div class="album-tile" data-audio="audio15.mp3">
             <img src="album15.png" alt="Álbum 6">
         </div>
-
-        <!-- Adicione mais tiles de álbum conforme necessário -->
     </div>
 
     <script>
@@ -135,9 +158,9 @@
         // Adiciona o evento de clique em cada tile
         albumTiles.forEach(tile => {
             tile.addEventListener('click', () => {
-                const audioFile = tile.getAttribute('data-audio'); // Pega o arquivo de áudio correspondente
-                audioPlayer.src = audioFile; // Define o source do player de áudio
-                audioPlayer.play(); // Toca o áudio
+                const audioFile = tile.getAttribute('data-audio');
+                audioPlayer.src = audioFile;
+                audioPlayer.play();
             });
         });
     </script>
