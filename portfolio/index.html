@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 1000px;
+            margin: 80px auto 0; /* Ajuste o topo para não sobrepor o player */
+            padding: 20px;
+        }
+
+        .album-tile {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .album-tile img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .album-tile:hover {
+            transform: scale(1.05);
+        }
+
+        audio {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            position: fixed; /* Mantém o player fixo na tela */
+            top: 0; /* Alinha o player no topo */
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza horizontalmente */
+            z-index: 1000; /* Garante que o player fique por cima de outros elementos */
+            background-color: white; /* Opcional: cor de fundo para destacá-lo */
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="audio-player" controls></audio>
+
+    <div class="grid-container">
+        <div class="album-tile" data-audio="audio1.mp3">
+            <img src="album1.png" alt="Álbum 1">
+        </div>
+        <div class="album-tile" data-audio="audio2.mp3">
+            <img src="album2.png" alt="Álbum 2">
+        </div>
+        <div class="album-tile" data-audio="audio3.mp3">
+            <img src="album3.png" alt="Álbum 3">
+        </div>
+        <div class="album-tile" data-audio="audio4.mp3">
+            <img src="album4.png" alt="Álbum 4">
+        </div>
+        <div class="album-tile" data-audio="audio5.mp3">
+            <img src="album5.png" alt="Álbum 5">
+        </div>
+        <div class="album-tile" data-audio="audio6.mp3">
+            <img src="album6.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio7.mp3">
+            <img src="album7.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio8.mp3">
+            <img src="album8.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio9.mp3">
+            <img src="album9.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio10.mp3">
+            <img src="album10.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio11.mp3">
+            <img src="album11.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio12.mp3">
+            <img src="album12.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio13.mp3">
+            <img src="album13.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio14.mp3">
+            <img src="album14.png" alt="Álbum 6">
+        </div>
+        <div class="album-tile" data-audio="audio15.mp3">
+            <img src="album15.png" alt="Álbum 6">
+        </div>
+
+        <!-- Adicione mais tiles de álbum conforme necessário -->
+    </div>
+
+    <script>
+        // Seleciona o player de áudio
+        const audioPlayer = document.getElementById('audio-player');
+
+        // Seleciona todos os tiles de álbum
+        const albumTiles = document.querySelectorAll('.album-tile');
+
+        // Adiciona o evento de clique em cada tile
+        albumTiles.forEach(tile => {
+            tile.addEventListener('click', () => {
+                const audioFile = tile.getAttribute('data-audio'); // Pega o arquivo de áudio correspondente
+                audioPlayer.src = audioFile; // Define o source do player de áudio
+                audioPlayer.play(); // Toca o áudio
+            });
+        });
+    </script>
+    
+</body>
+</html>
