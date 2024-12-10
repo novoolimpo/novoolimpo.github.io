@@ -51,12 +51,29 @@
             padding: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
         }
+
+        .spotify-icon {
+            position: fixed;
+            top: 10px; /* Alinhado com o topo do player */
+            left: 10px; /* Fica à esquerda da tela */
+            z-index: 1001; /* Um pouco acima do player */
+        }
+
+        .spotify-icon img {
+            width: 40px; /* Tamanho do ícone */
+            height: 40px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Ícone do Spotify -->
+    <a href="https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ" target="_blank" class="spotify-icon">
+        <img src="spotify.png" alt="Spotify">
+    </a>
+
     <audio id="audio-player" controls></audio>
-    /* https://open.spotify.com/playlist/6yA15W8O8NHlABZb5EespQ */
 
     <div class="grid-container">
         <div class="album-tile" data-audio="audio1.mp3">
