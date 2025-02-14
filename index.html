@@ -559,5 +559,27 @@
     window.open("https://pay.hotmart.com/O96435069N", "_blank");
   };
   </script>
+
+    <script>
+    // Variáveis booleanas para controle manual
+    const parallaxEnabled = false; // Altere para false para desativar o parallax
+    const titleEnabled = false; // Altere para false para desativar o título e subtítulo
+
+    // Aplicar o estado inicial ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      const parallaxContainer = document.querySelector('.parallax-container');
+      const titleContainer = document.querySelector('.titulo-subtitulo');
+
+      // Ativar/desativar o parallax
+      if (parallaxContainer) {
+        parallaxContainer.style.display = parallaxEnabled ? 'block' : 'none';
+      }
+
+      // Ativar/desativar o título e subtítulo
+      if (titleContainer) {
+        titleContainer.style.display = titleEnabled ? 'block' : 'none';
+      }
+    });
+  </script>
 </body>
 </html>
