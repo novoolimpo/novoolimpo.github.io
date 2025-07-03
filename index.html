@@ -422,32 +422,41 @@
     const parallaxContainer = document.querySelector('.parallax-container');
     const layers = document.querySelectorAll('.layer');
     const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3];
-    const depthMultipliers = [-300, -200, -100, 0, 100, 200];
+    const depthMultipliers = [-300, -200, -100, 0, 100, 250];
     const isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     function updateLayers(x, y) {
-      // Se for dispositivo móvel, não aplica o efeito parallax
-      if (isMobileDevice) return;
-      
       layers.forEach((layer, index) => {
+        if (isMobileDevice) {
+          // Em dispositivos móveis, apenas mantemos a posição Z sem efeito parallax
+          const zValue = depthMultipliers[index];
+          const scaleValue = index === 5 ? 'scale(1.2)' : '';
+          layer.style.transform = `translateZ(${zValue}px) ${scaleValue}`;
+          return;
+        }
+        
         const depth = depthMultipliers[index];
         let movementX = x * depth * movementMultipliers[index];
         const movementY = (y * depth * movementMultipliers[index]) / 2.6;
         const rotationY = x * 100 * movementMultipliers[index];
         const rotationX = y * 100 * movementMultipliers[index];
-        const scaleValue = index === 5 ? 'scale(1.3)' : '';
-        layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
+        const scaleValue = index === 5 ? 'scale(1.2)' : '';
+        layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) translateZ(${depth}px) ${scaleValue}`;
         layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
       });
     }
 
-    if (parallaxContainer && !isMobileDevice) { // Só adiciona listeners se não for mobile
-      parallaxContainer.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) - 0.5;
-        const y = (e.clientY / window.innerHeight) - 0.5;
-        updateLayers(x, y);
-      });
-
+    if (parallaxContainer) {
+      if (!isMobileDevice) {
+        // Só adiciona o mousemove para desktop
+        parallaxContainer.addEventListener('mousemove', (e) => {
+          const x = (e.clientX / window.innerWidth) - 0.5;
+          const y = (e.clientY / window.innerHeight) - 0.5;
+          updateLayers(x, y);
+        });
+      }
+      
+      // Inicializa as camadas na posição padrão
       updateLayers(0, 0);
     }
 
