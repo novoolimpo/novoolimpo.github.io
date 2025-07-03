@@ -42,11 +42,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #ddd;
   padding: 0;
   min-height: unset;
   margin: 0;
- /* overflow: hidden; /* Impede que o conteúdo transborde */
+  position: relative;
 }
 
 /* Ocultar a seção Contrate visualmente */
@@ -309,7 +308,7 @@
     @media (max-width: 768px) {
       .section {
         height: auto; /* Permitir que a altura seja definida pelo conteúdo */
-        min-height: 100vh; /* Garante que cada seção tenha pelo menos 100vh */
+        min-height: unset; /* Remove a altura mínima */
         padding: 20px; /* Reduzir o padding em telas menores */
       }
       #contrate iframe {
