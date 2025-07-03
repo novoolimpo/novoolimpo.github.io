@@ -254,6 +254,32 @@
     }
 
     @media (max-width: 768px) {
+
+      #sobre {
+    height: 100vh; /* Usar toda a altura da viewport */
+    min-height: 600px; /* Altura mínima para garantir espaço */
+  }
+  
+  .imagem-girando-container {
+    width: 100vw;
+    height: 100vw; /* Criar um quadrado baseado na largura */
+    max-height: 70vh; /* Limitar a altura máxima */
+    max-width: 70vh; /* Limitar a largura máxima para manter proporção */
+  }
+  
+  .parallax-container {
+    width: 70vw;
+    height: 70vw; /* Manter proporção quadrada */
+    max-width: 300px;
+    max-height: 300px;
+  }
+  
+  .imagem-girando {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
       .section {
         height: auto;
       }
