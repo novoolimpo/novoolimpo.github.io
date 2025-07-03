@@ -46,26 +46,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
 
     #sobre {
       height: 100vh;
-      justify-content: center;
     }
 
     #contrate {
       display: none !important;
     }
 
-    /* Correção da imagem girante */
-    .imagem-girando {
-      animation: girar 5s linear infinite;
-      max-width: 100%;
-      max-height: 100%;
+    /* Container para centralização perfeita */
+    .centro-tela {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Imagem giratória centralizada */
+    .imagem-girando {
+      animation: girar 5s linear infinite;
+      position: absolute;
+      z-index: 1;
+      max-width: 80%;
+      max-height: 80%;
     }
     
     .imagem-girando img {
@@ -77,12 +88,13 @@
       to { transform: rotate(360deg); }
     }
 
+    /* Container parallax centralizado sobre a imagem giratória */
     .parallax-container {
-      position: relative;
+      position: absolute;
       width: 300px;
       height: 300px;
       perspective: 1000px;
-      margin: 0 auto;
+      z-index: 2; /* Fica acima da imagem giratória */
     }
 
     .layer {
@@ -258,6 +270,10 @@
       .titulo-subtitulo p {
         font-size: 1.2em !important;
       }
+      
+      .imagem-girando {
+        max-width: 90%;
+      }
     }
   </style>
 </head>
@@ -272,18 +288,13 @@
   
   <!-- Seção SOBRE -->
   <div class="section" id="sobre">
-    <div style="position: relative; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <div class="centro-tela">
+      <!-- Imagem giratória centralizada -->
       <div class="imagem-girando">
         <img src="novoolimpogrey2.png" alt="Imagem Girando">
       </div>
 
-      <div class="titulo-subtitulo">
-        <h1 style="color: black; font-size: 3em; margin: 0; margin-bottom: 5px;">ABENÇOADO JÁ DISPONÍVEL</h1>
-        <p style="color: grey; font-size: 1.5em; margin: 0; margin-top: 5px;">
-          <a href="https://www.youtube.com/watch?v=0Eak8HJRb1M"> ASSISTA AO VIDEOCLIPE </a>
-        </p> 
-      </div>
-
+      <!-- Imagem em camadas sobreposta e centralizada -->
       <div class="parallax-container">
         <div class="layer layer0"></div>
         <div class="layer layer1"></div>
@@ -292,6 +303,14 @@
         <div class="layer layer4"></div>
         <div class="layer layer5"></div>
       </div>
+    </div>
+
+    <!-- Título e subtítulo -->
+    <div class="titulo-subtitulo">
+      <h1 style="color: black; font-size: 3em; margin: 0; margin-bottom: 5px;">ABENÇOADO JÁ DISPONÍVEL</h1>
+      <p style="color: grey; font-size: 1.5em; margin: 0; margin-top: 5px;">
+        <a href="https://www.youtube.com/watch?v=0Eak8HJRb1M"> ASSISTA AO VIDEOCLIPE </a>
+      </p> 
     </div>
   </div>
 
