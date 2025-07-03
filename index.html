@@ -70,7 +70,7 @@
       height: 100%;
     }
 
-    /* Imagem giratória centralizada - CORREÇÃO PRINCIPAL */
+    /* Imagem giratória centralizada */
     .imagem-girando-container {
       position: absolute;
       display: flex;
@@ -84,7 +84,7 @@
       animation: girar 5s linear infinite;
       max-width: 80%;
       max-height: 80%;
-      transform-origin: center center; /* Isso faz a imagem girar em torno do próprio centro */
+      transform-origin: center center;
     }
 
     @keyframes girar {
@@ -98,7 +98,7 @@
       width: 300px;
       height: 300px;
       perspective: 1000px;
-      z-index: 2; /* Fica acima da imagem giratória */
+      z-index: 2;
     }
 
     .layer {
@@ -114,14 +114,18 @@
       transition: transform 0.1s, filter 0.1s;
     }
 
-    .layer0 { background-image: url('camada0.png'); transform: translateZ(-300px); }
+    .layer0 { 
+      background-image: url('camada0.png'); 
+      transform: translateZ(-300px) !important;
+      filter: brightness(1) !important;
+    }
     .layer1 { background-image: url('camada1.png'); transform: translateZ(-200px); }
     .layer2 { background-image: url('camada2.png'); transform: translateZ(-100px); }
     .layer3 { background-image: url('camada3.png'); transform: translateZ(0); }
     .layer4 { background-image: url('camada4.png'); transform: translateZ(100px); z-index: 1; }
     .layer5 { background-image: url('camada5.png'); transform: translateZ(250px) scale(1.2); z-index: 2; }
 
-    /* Restante do CSS permanece igual... */
+    /* Restante do CSS... */
     #portfolio, #produtos {
       padding-top: -10px;
       padding-bottom: -10px;
@@ -254,34 +258,32 @@
     }
 
     @media (max-width: 768px) {
-
-      #sobre {
-    height: 100vh; /* Usar toda a altura da viewport */
-    min-height: 600px; /* Altura mínima para garantir espaço */
-  }
-  
-  .imagem-girando-container {
-    width: 100vw;
-    height: 100vw; /* Criar um quadrado baseado na largura */
-    max-height: 70vh; /* Limitar a altura máxima */
-    max-width: 70vh; /* Limitar a largura máxima para manter proporção */
-  }
-  
-  .parallax-container {
-    width: 70vw;
-    height: 70vw; /* Manter proporção quadrada */
-    max-width: 300px;
-    max-height: 300px;
-  }
-  
-  .imagem-girando {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-  }
       .section {
         height: auto;
+      }
+      
+      #sobre {
+        height: 100vh;
+        min-height: 600px;
+      }
+      
+      .imagem-girando-container {
+        width: 100vw;
+        height: 100vw;
+        max-height: 70vh;
+        max-width: 70vh;
+      }
+      
+      .parallax-container {
+        width: 70vw;
+        height: 70vw;
+        max-width: 300px;
+        max-height: 300px;
+      }
+      
+      .imagem-girando {
+        max-width: 100%;
+        max-height: 100%;
       }
       
       #contact-form input {
@@ -289,19 +291,36 @@
       }
       
       .titulo-subtitulo {
-        top: 30px;
+        top: 20%;
+        transform: translate(-50%, 0);
       }
       
       .titulo-subtitulo h1 {
-        font-size: 2em !important;
+        font-size: 1.8em !important;
       }
       
       .titulo-subtitulo p {
-        font-size: 1.2em !important;
+        font-size: 1em !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .imagem-girando-container {
+        max-height: 60vh;
+        max-width: 60vh;
       }
       
-      .imagem-girando {
-        max-width: 90%;
+      .parallax-container {
+        width: 80vw;
+        height: 80vw;
+      }
+      
+      .titulo-subtitulo {
+        top: 15%;
+      }
+      
+      .titulo-subtitulo h1 {
+        font-size: 1.5em !important;
       }
     }
   </style>
@@ -318,7 +337,7 @@
   <!-- Seção SOBRE -->
   <div class="section" id="sobre">
     <div class="centro-tela">
-      <!-- Container da imagem giratória - CORREÇÃO PRINCIPAL -->
+      <!-- Container da imagem giratória -->
       <div class="imagem-girando-container">
         <img class="imagem-girando" src="novoolimpogrey2.png" alt="Imagem Girando">
       </div>
@@ -343,9 +362,8 @@
     </div>
   </div>
 
-  <!-- Restante do HTML permanece igual... -->
+  <!-- Restante do HTML... -->
   <div class="section" id="portfolio">
-      <!-- <h2>PORTFOLIO</h2> -->
     <div class="colunas">
       <div class="coluna">
         <div class="capa">
@@ -385,7 +403,6 @@
   </div>
 
   <div class="section" id="produtos">
-    <!-- <h2>PRODUTOS</h2>   -->
     <a href="https://novoolimpo.github.io/drumkit">
       <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
     </a>
@@ -439,21 +456,28 @@
     // Parallax effect
     const parallaxContainer = document.querySelector('.parallax-container');
     const layers = document.querySelectorAll('.layer');
-    const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3];
+    const movementMultipliers = [0, 0.2, 0.15, 0.35, 0.25, 0.3]; // 0 para a primeira camada
     const depthMultipliers = [-300, -200, -100, 0, 100, 200];
     const isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     function updateLayers(x, y) {
       layers.forEach((layer, index) => {
+        // Camada 0 sempre estática
+        if (index === 0) {
+          layer.style.transform = `translateZ(${depthMultipliers[index]}px)`;
+          layer.style.filter = 'brightness(1)';
+          return;
+        }
+        
         const depth = depthMultipliers[index];
-        let movementX = x * depth * movementMultipliers[index];
-        if (isMobileDevice && index === 5) movementX *= 0.1;
-        const movementY = (y * depth * movementMultipliers[index]) / 2.6;
-        const rotationY = isMobileDevice ? 0 : x * 100 * movementMultipliers[index];
-        const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
+        const mobileMultiplier = isMobileDevice ? 0.3 : 1;
+        let movementX = x * depth * movementMultipliers[index] * mobileMultiplier;
+        const movementY = (y * depth * movementMultipliers[index] * mobileMultiplier) / 2.6;
+        const rotationY = isMobileDevice ? x * 20 * movementMultipliers[index] : x * 100 * movementMultipliers[index];
+        const rotationX = isMobileDevice ? y * 20 * movementMultipliers[index] : y * 100 * movementMultipliers[index];
         const scaleValue = index === 5 ? 'scale(1.3)' : '';
-        layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
-        layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+        layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue} translateZ(${depth}px)`;
+        layer.style.filter = `brightness(${1 + Math.abs(x * movementMultipliers[index] * mobileMultiplier)})`;
       });
     }
 
