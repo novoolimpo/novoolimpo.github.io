@@ -38,12 +38,14 @@
 
     /* Estilo para as seções de tela cheia */
 .section {
-  min-height: 70vh; /* Permite que a seção cresça com o conteúdo */
   width: 100vw; /* Garante que a seção preencha 100% da largura da janela */
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #ddd;
+  padding: 0;
+  min-height: unset;
+  margin: 0;
  /* overflow: hidden; /* Impede que o conteúdo transborde */
 }
 
@@ -55,7 +57,6 @@
 /* Estilo específico para a seção "SOBRE" com imagem girando */
     #sobre {
       /*position: relative; */
-      padding-top: 0px; /* Compensar altura da barra de navegação */
     }
 
     .imagem-girando {
