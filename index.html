@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -48,26 +48,29 @@
   overflow: hidden; /* Impede que o conteúdo transborde */
 }
 
-/* Estilo específico para a seção "Contrate" com PDF */
+/* Ocultar a seção Contrate visualmente */
 #contrate {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
+  display: none !important;
 }
 
-#contrate iframe {
-  width: 100%;
-  height: calc(100vh - 120px); /* Subtraindo altura da barra e título */
-  border: none;
-}
+/* Estilo específico para a seção "SOBRE" com imagem girando */
+    #sobre {
+      /*position: relative; */
+    }
 
-    .section h2 {
-      margin-bottom: 20px;
-      text-align: center; /* Centralizar o título */
-      width: 100%;
+    .imagem-girando {
+      animation: girar 5s linear infinite; /* Animação de rotação */
+      max-width: 100%; /* Define uma largura máxima da imagem */
+      max-height: 100%; /* Define uma altura máxima da imagem */
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Estilo para o contêiner de parallax */
@@ -126,27 +129,6 @@
     transform: translateZ(250px) scale(1.2); /* Camada mais próxima com um leve zoom */
     z-index: 2; /* A camada 5 está acima das demais */
 }
-
-
-    /* Estilo específico para a seção "SOBRE" com imagem girando */
-    #sobre {
-      /*position: relative; */
-    }
-
-    .imagem-girando {
-      animation: girar 5s linear infinite; /* Animação de rotação */
-      max-width: 100%; /* Define uma largura máxima da imagem */
-      max-height: 100%; /* Define uma altura máxima da imagem */
-    }
-
-    @keyframes girar {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
 
     /* Estilo específico para a seção "Contrate" com PDF */
     #contrate {
@@ -344,8 +326,6 @@
     width: auto; /* Garante que o botão não fique esticado */
   }
     }
-    
-    
   </style>
 </head>
 <body>
@@ -442,11 +422,6 @@
     updateLayers(0, 0);
 </script>
 
-
-
-
-
-
   <!-- Seção PORTFOLIO -->
   <div class="section" id="portfolio">
     <h2>PORTFOLIO</h2>
@@ -522,7 +497,7 @@
   </div>
 </div>
 
- <!-- Seção CONTRATE com o PDF -->
+ <!-- Seção CONTRATE (oculta visualmente mas mantida no HTML) -->
 <div class="section" id="contrate">
   <h2>CONTRATE</h2>
   <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
