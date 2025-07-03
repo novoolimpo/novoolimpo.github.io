@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      background-color: #fff;
     }
 
     * {
@@ -42,20 +43,33 @@
       margin: 0;
       padding: 0;
       overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     #sobre {
       height: 100vh;
+      justify-content: center;
     }
 
     #contrate {
       display: none !important;
     }
 
+    /* Correção da imagem girante */
     .imagem-girando {
       animation: girar 5s linear infinite;
       max-width: 100%;
       max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .imagem-girando img {
+      transform-origin: center center;
     }
 
     @keyframes girar {
@@ -68,6 +82,7 @@
       width: 300px;
       height: 300px;
       perspective: 1000px;
+      margin: 0 auto;
     }
 
     .layer {
@@ -91,22 +106,32 @@
     .layer5 { background-image: url('camada5.png'); transform: translateZ(250px) scale(1.2); z-index: 2; }
 
     #portfolio, #produtos {
-      padding-top: 60px; /* Espaço para a navbar */
-      padding-bottom: 60px; /* Espaço para o rodapé */
+      padding-top: 60px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+
+    /* Centralização de títulos */
+    h2, h3 {
+      text-align: center;
+      width: 100%;
     }
 
     .colunas {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap;
       padding: 0 20px;
       width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .coluna {
       flex: 1;
       margin: 10px;
       min-width: 250px;
+      max-width: 350px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       padding: 20px;
       background-color: #f9f9f9;
@@ -149,12 +174,13 @@
       display: flex;
       align-items: center;
       z-index: 1000;
+      justify-content: center;
     }
 
     #rodape-texto {
       color: white;
       font-weight: bold;
-      margin-left: 20px;
+      margin: 0 20px;
     }
 
     #comprar, #comprar2, #comprarrodape, #comprarrodape2 {
@@ -200,6 +226,18 @@
       max-width: 100%;
     }
 
+    /* Centralização adicional */
+    .titulo-subtitulo {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+      max-width: 1000px;
+      width: 100%;
+    }
+
     @media (max-width: 768px) {
       .section {
         height: auto;
@@ -207,6 +245,18 @@
       
       #contact-form input {
         flex: 1 1 100%;
+      }
+      
+      .titulo-subtitulo {
+        top: 30px;
+      }
+      
+      .titulo-subtitulo h1 {
+        font-size: 2em !important;
+      }
+      
+      .titulo-subtitulo p {
+        font-size: 1.2em !important;
       }
     }
   </style>
@@ -222,19 +272,19 @@
   
   <!-- Seção SOBRE -->
   <div class="section" id="sobre">
-    <div style="position: relative; height: 100vh;">
+    <div style="position: relative; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
       <div class="imagem-girando">
         <img src="novoolimpogrey2.png" alt="Imagem Girando">
       </div>
 
-      <div class="titulo-subtitulo" style="position: absolute; top: 60px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; max-width: 1000px; white-space: nowrap;">
+      <div class="titulo-subtitulo">
         <h1 style="color: black; font-size: 3em; margin: 0; margin-bottom: 5px;">ABENÇOADO JÁ DISPONÍVEL</h1>
         <p style="color: grey; font-size: 1.5em; margin: 0; margin-top: 5px;">
           <a href="https://www.youtube.com/watch?v=0Eak8HJRb1M"> ASSISTA AO VIDEOCLIPE </a>
         </p> 
       </div>
 
-      <div class="parallax-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
+      <div class="parallax-container">
         <div class="layer layer0"></div>
         <div class="layer layer1"></div>
         <div class="layer layer2"></div>
@@ -288,34 +338,32 @@
 
   <!-- Seção PRODUTOS -->
   <div class="section" id="produtos">
-    <div>
-      <h2>PRODUTOS</h2>
-      <a href="https://novoolimpo.github.io/drumkit">
-        <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
-      </a>
-      <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
-      <p style="text-align: center;">
-        NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
-        DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
-        USADOS NESSES 6 ANOS DE CARREIRA.
-      </p>
-      <div style="display: flex; justify-content: center; align-items: center;">
-        <button id="comprar">
-          <img src="buygumroad.png" alt="Comprar">
-        </button>
-        <button id="comprar2">
-          <img src="buyhotmart.png" alt="Comprar">
-        </button>
-      </div>
+    <h2>PRODUTOS</h2>
+    <a href="https://novoolimpo.github.io/drumkit">
+      <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
+    </a>
+    <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
+    <p style="text-align: center;">
+      NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
+      DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
+      USADOS NESSES 6 ANOS DE CARREIRA.
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+      <button id="comprar">
+        <img src="buygumroad.png" alt="Comprar">
+      </button>
+      <button id="comprar2">
+        <img src="buyhotmart.png" alt="Comprar">
+      </button>
+    </div>
 
-      <div style="margin-top: 20px; text-align: center;">
-        <h3>INSCREVA-SE PARA RECEBER MMM EBOOK</h3>
-        <form id="contact-form" action="https://formspree.io/f/xyzyedzl" method="POST">
-          <input type="text" name="name" placeholder="Seu Nome" required>
-          <input type="email" name="email" placeholder="Seu Email" required>
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
+    <div style="margin-top: 20px; text-align: center; width: 100%;">
+      <h3>INSCREVA-SE PARA RECEBER MMM EBOOK</h3>
+      <form id="contact-form" action="https://formspree.io/f/xyzyedzl" method="POST">
+        <input type="text" name="name" placeholder="Seu Nome" required>
+        <input type="email" name="email" placeholder="Seu Email" required>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   </div>
 
@@ -364,20 +412,22 @@
       });
     }
 
-    parallaxContainer.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth) - 0.5;
-      const y = (e.clientY / window.innerHeight) - 0.5;
-      updateLayers(x, y);
-    });
+    if (parallaxContainer) {
+      parallaxContainer.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) - 0.5;
+        const y = (e.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
+      });
 
-    parallaxContainer.addEventListener('touchmove', (e) => {
-      const touch = e.touches[0];
-      const x = (touch.clientX / window.innerWidth) - 0.5;
-      const y = (touch.clientY / window.innerHeight) - 0.5;
-      updateLayers(x, y);
-    }, { passive: false });
+      parallaxContainer.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const x = (touch.clientX / window.innerWidth) - 0.5;
+        const y = (touch.clientY / window.innerHeight) - 0.5;
+        updateLayers(x, y);
+      }, { passive: false });
 
-    updateLayers(0, 0);
+      updateLayers(0, 0);
+    }
 
     // Botões de compra
     document.getElementById("comprar").onclick = 
