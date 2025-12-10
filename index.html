@@ -447,7 +447,7 @@
         const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
         const scaleValue = index === 5 ? 'scale(1.3)' : '';
         layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
-        layer.style.filter = `grayscale(100%) contrast(1.5) brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
+        layer.style.filter = `invert(100%) grayscale(100%) contrast(1.5) brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
       });
     }
 
