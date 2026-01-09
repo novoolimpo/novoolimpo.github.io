@@ -3,15 +3,15 @@
   position: fixed;
   top: 60px;
   left: 10px;
-  width: 280px;
-  background-color: rgba(0, 0, 0, 0.85);
+  width: 280px; /* Largura fixa */
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 8px;
   z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease; /* Transição mais rápida */
   font-family: 'Bebas Neue', sans-serif;
 }
 
@@ -20,9 +20,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: rgba(51, 51, 51, 0.9);
+  background-color: rgba(51, 51, 51, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: move;
+  user-select: none; /* Evita seleção de texto ao arrastar */
 }
 
 #radio-title {
@@ -42,6 +43,7 @@
   width: 20px;
   height: 20px;
   line-height: 1;
+  z-index: 10000; /* Garante que o botão fique acima */
 }
 
 #radio-content {
