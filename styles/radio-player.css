@@ -26,11 +26,15 @@
   user-select: none; /* Evita seleção de texto ao arrastar */
 }
 
-#radio-title {
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 1px;
+#radio-logo {
+  height: 20px; /* Ajuste conforme sua logo */
+  width: auto;
+  filter: brightness(0) invert(1); /* Deixa branco se for logo preta */
+}
+
+/* Estado minimizado - ajuste também */
+#radio-player.minimizado #radio-logo {
+  height: 16px; /* Menor quando minimizado */
 }
 
 #radio-toggle {
