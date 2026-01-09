@@ -1,0 +1,65 @@
+/* Media Queries para responsividade */
+@media (max-width: 768px) {
+  .section {
+    height: auto;
+  }
+  
+  #contact-form input {
+    flex: 1 1 100%;
+  }
+  
+  .titulo-subtitulo {
+    top: 30px;
+  }
+  
+  .titulo-subtitulo h1 {
+    font-size: 2em !important;
+  }
+  
+  .titulo-subtitulo p {
+    font-size: 1.2em !important;
+  }
+  
+  .imagem-girando {
+    max-width: 100%;
+  }
+
+  #comprar-container {
+    display: none !important;
+  }
+  
+  #radio-player {
+    top: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+    max-width: 300px;
+  }
+  
+  #radio-player.minimizado {
+    width: 180px;
+  }
+}
+
+@media (hover: none) {
+  .parallax-container {
+    pointer-events: none;
+  }
+  .layer {
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Classe para desativar scroll durante arraste */
+.no-scroll {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.no-scroll a,
+.no-scroll button,
+.no-scroll [onclick] {
+  pointer-events: auto !important;
+}
