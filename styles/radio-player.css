@@ -3,38 +3,32 @@
   position: fixed;
   top: 60px;
   left: 10px;
-  width: 280px; /* Largura fixa */
-  background-color: rgba(0, 0, 0, 0.95);
+  width: 280px;
+  background: rgba(0, 0, 0, 0.95);
   border-radius: 8px;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
   overflow: hidden;
-  transition: all 0.1s ease; /* Transição mais rápida */
-  font-family: 'Bebas Neue', sans-serif;
 }
 
 #radio-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 8px 12px;
-  background-color: rgba(51, 51, 51, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(51,51,51,0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   cursor: move;
-  user-select: none; /* Evita seleção de texto ao arrastar */
+}
+
+#radio-title-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 #radio-logo {
-  height: 20px; /* Ajuste conforme sua logo */
-  width: auto;
-  filter: brightness(0) invert(1); /* Deixa branco se for logo preta */
-}
-
-/* Estado minimizado - ajuste também */
-#radio-player.minimizado #radio-logo {
-  height: 16px; /* Menor quando minimizado */
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 #radio-toggle {
@@ -45,9 +39,6 @@
   cursor: pointer;
   padding: 0;
   width: 20px;
-  height: 20px;
-  line-height: 1;
-  z-index: 10000; /* Garante que o botão fique acima */
 }
 
 #radio-content {
@@ -57,22 +48,11 @@
 #radio-audio {
   width: 100%;
   height: 30px;
-  margin-bottom: 5px;
-}
-
-#radio-audio::-webkit-media-controls-panel {
-  background-color: #333;
-}
-
-#radio-audio::-webkit-media-controls-play-button,
-#radio-audio::-webkit-media-controls-volume-slider {
-  filter: invert(1);
 }
 
 #radio-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   font-size: 12px;
   color: #ccc;
   padding: 0 5px;
@@ -80,7 +60,6 @@
 
 #radio-status {
   color: #ff4444;
-  font-weight: bold;
 }
 
 #radio-volume {
@@ -96,6 +75,6 @@
   display: none;
 }
 
-#radio-player.minimizado #radio-title {
-  font-size: 12px;
+#radio-player.minimizado #radio-logo {
+  height: 16px;
 }
