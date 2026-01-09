@@ -64,3 +64,11 @@
 .no-scroll [onclick] {
   pointer-events: auto !important;
 }
+
+/* Bloquear scroll lateral no mobile */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+}
