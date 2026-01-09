@@ -4,7 +4,7 @@
   top: 60px;
   left: 10px;
   width: 280px;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(232, 232, 232, 0.95); /* Alterado para cinza claro */
   border-radius: 8px;
   z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -20,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: rgba(51, 51, 51, 0.95);
+  background-color: rgba(51, 51, 51, 0.95); /* Mantido original */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: move;
   user-select: none;
@@ -34,7 +34,7 @@
 #radio-logo {
   height: 20px;
   width: auto;
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1); /* Mantido para logo branca */
 }
 
 .sr-only {
@@ -52,7 +52,7 @@
 #radio-toggle {
   background: none;
   border: none;
-  color: white;
+  color: white; /* Mantido branco */
   font-size: 18px;
   cursor: pointer;
   padding: 0;
@@ -64,6 +64,7 @@
 
 #radio-content {
   padding: 10px;
+  background-color: #e8e8e8; /* Adicionado fundo cinza claro */
 }
 
 #radio-audio {
@@ -73,12 +74,13 @@
 }
 
 #radio-audio::-webkit-media-controls-panel {
-  background-color: #333;
+  background-color: #e8e8e8; /* Alterado para cinza claro */
+  color: #333; /* Adicionado para melhor contraste */
 }
 
 #radio-audio::-webkit-media-controls-play-button,
 #radio-audio::-webkit-media-controls-volume-slider {
-  filter: invert(1);
+  filter: none; /* Removido invert para melhor visibilidade no fundo claro */
 }
 
 #radio-info {
@@ -86,8 +88,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: #ccc;
+  color: #333; /* Alterado para cor escura para contraste no fundo claro */
   padding: 0 5px;
+  background-color: #e8e8e8; /* Adicionado fundo cinza claro */
 }
 
 #radio-status {
@@ -96,12 +99,13 @@
 }
 
 #radio-volume {
-  color: #999;
+  color: #666; /* Alterado para cinza mais escuro */
 }
 
 #radio-player.minimizado {
   height: 36px;
   width: 200px;
+  background-color: rgba(51, 51, 51, 0.95); /* Mantido original quando minimizado */
 }
 
 #radio-player.minimizado #radio-content {
