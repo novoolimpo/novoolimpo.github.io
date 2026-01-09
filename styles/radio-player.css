@@ -25,6 +25,12 @@
   background: #f5f5f5; /* ADICIONE ESTA LINHA */
 }
 
+#radio-audio {
+  width: 100%;
+  background: #fff; /* ADICIONE ESTA LINHA */
+  border-radius: 4px;
+}
+
 /* O resto mantém igual... */
 #radio-title-container {
   flex: 1;
