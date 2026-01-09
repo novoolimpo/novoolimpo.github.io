@@ -4,30 +4,32 @@
   top: 60px;
   left: 10px;
   width: 280px;
-  background: rgba(0, 0, 0, 0.95);
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 8px;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
 #radio-header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 8px 12px;
-  background: rgba(51,51,51,0.95);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(51, 51, 51, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: move;
 }
 
 #radio-title-container {
   flex: 1;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 #radio-logo {
-  height: 20px;
+  height: 25px; /* AUMENTEI AQUI */
+  width: auto;
   filter: brightness(0) invert(1);
 }
 
@@ -39,6 +41,7 @@
   cursor: pointer;
   padding: 0;
   width: 20px;
+  height: 20px;
 }
 
 #radio-content {
@@ -76,5 +79,5 @@
 }
 
 #radio-player.minimizado #radio-logo {
-  height: 16px;
+  height: 20px; /* Ajuste proporcional */
 }
