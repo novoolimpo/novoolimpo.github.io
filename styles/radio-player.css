@@ -1,47 +1,42 @@
-/* Player de Rádio Flutuante */
+/* Player de Rádio */
 #radio-player {
   position: fixed;
   top: 60px;
   left: 10px;
   width: 280px;
-  background-color: rgba(0, 0, 0, 0.95);
+  background: #f0f0f0;
   border-radius: 8px;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border: 1px solid #ccc;
 }
 
 #radio-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 8px 12px;
-  background-color: rgba(51, 51, 51, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  background: #e0e0e0;
+  border-bottom: 1px solid #ccc;
   cursor: move;
 }
 
 #radio-title-container {
   flex: 1;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 #radio-logo {
-  height: 25px; /* AUMENTEI AQUI */
-  width: auto;
-  filter: brightness(0) invert(1);
+  height: 30px;
 }
 
 #radio-toggle {
   background: none;
   border: none;
-  color: white;
-  font-size: 18px;
+  color: #333;
+  font-size: 20px;
   cursor: pointer;
   padding: 0;
-  width: 20px;
-  height: 20px;
 }
 
 #radio-content {
@@ -50,34 +45,20 @@
 
 #radio-audio {
   width: 100%;
-  height: 30px;
 }
 
 #radio-info {
   display: flex;
   justify-content: space-between;
+  margin-top: 5px;
   font-size: 12px;
-  color: #ccc;
-  padding: 0 5px;
-}
-
-#radio-status {
-  color: #ff4444;
-}
-
-#radio-volume {
-  color: #999;
+  color: #666;
 }
 
 #radio-player.minimizado {
-  height: 36px;
-  width: 200px;
+  height: 50px;
 }
 
 #radio-player.minimizado #radio-content {
   display: none;
-}
-
-#radio-player.minimizado #radio-logo {
-  height: 20px; /* Ajuste proporcional */
 }
