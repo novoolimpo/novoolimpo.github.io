@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!radioPlayer) return;
   
-  // Substitua pela URL real da sua rádio
-  // radioAudio.src = "https://SUA_URL_DA_RADIO_AQUI/stream.mp3";
-  
   // Alternar minimizar/expandir
   radioToggle.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -18,25 +15,28 @@ document.addEventListener('DOMContentLoaded', function() {
     radioToggle.textContent = radioPlayer.classList.contains('minimizado') ? '+' : '×';
   });
   
-  // Arrastar o player - RESPONSIVO E DIRETO
+  // Arrastar o player - VERSÃO SIMPLES
   let isDragging = false;
   let startX, startY, initialX, initialY;
   
-  // Limites da tela
   const headerHeight = document.querySelector('nav').offsetHeight;
   const playerWidth = radioPlayer.offsetWidth;
   const playerHeight = radioPlayer.offsetHeight;
   
   radioHeader.addEventListener('mousedown', startDrag);
-  radioHeader.addEventListener('touchstart', startDrag, { passive: false });
+  radioHeader.addEventListener('touchstart', startDrag);
   
   function startDrag(e) {
+    // SÓ ISSA: Permite scroll normal, não reseta nada
+    if (e.type === "touchstart" && isDragging) {
+      return; // Já está arrastando, não faz nada
+    }
+    
     e.preventDefault();
     e.stopPropagation();
     
     isDragging = true;
     
-    // Posição inicial do mouse/toque
     if (e.type === "touchstart") {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
@@ -45,16 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
       startY = e.clientY;
     }
     
-    // Posição atual do player
     const rect = radioPlayer.getBoundingClientRect();
     initialX = rect.left;
     initialY = rect.top;
     
-    // Desativa scroll durante o arraste
-    document.body.classList.add('no-scroll');
+    // NÃO MEXE EM NADA DO BODY, NÃO ALTERA SCROLL
     
     document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchmove', drag);
     document.addEventListener('mouseup', stopDrag);
     document.addEventListener('touchend', stopDrag);
   }
@@ -62,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function drag(e) {
     if (!isDragging) return;
     
+    // MANTÉM: previne scroll DURANTE arraste mas não reseta
     e.preventDefault();
     
     let currentX, currentY;
@@ -74,65 +73,35 @@ document.addEventListener('DOMContentLoaded', function() {
       currentY = e.clientY;
     }
     
-    // Calcula nova posição
     let newX = initialX + (currentX - startX);
     let newY = initialY + (currentY - startY);
     
-    // Limites da tela
     const maxX = window.innerWidth - playerWidth;
     const maxY = window.innerHeight - playerHeight;
-    const minY = headerHeight + 5; // 5px abaixo do menu
+    const minY = headerHeight + 5;
     
-    // Aplica limites
     newX = Math.max(0, Math.min(newX, maxX));
     newY = Math.max(minY, Math.min(newY, maxY));
     
-    // Move o player - DIRETO, SEM TRANSITION
     radioPlayer.style.transition = 'none';
     radioPlayer.style.left = newX + 'px';
     radioPlayer.style.top = newY + 'px';
-    radioPlayer.style.transform = 'none'; // Remove transform antigo
   }
   
   function stopDrag() {
     isDragging = false;
     
-    // Reativa scroll após o arraste
-    document.body.classList.remove('no-scroll');
-    
-    // Restaura transition suave
-    setTimeout(() => {
-      radioPlayer.style.transition = 'all 0.1s ease';
-    }, 10);
+    // NÃO PRECISA RESTAURAR NADA
     
     document.removeEventListener('mousemove', drag);
     document.removeEventListener('touchmove', drag);
     document.removeEventListener('mouseup', stopDrag);
     document.removeEventListener('touchend', stopDrag);
+    
+    setTimeout(() => {
+      radioPlayer.style.transition = 'all 0.1s ease';
+    }, 10);
   }
-  
-  // Impede que o player saia dos limites ao redimensionar a janela
-  window.addEventListener('resize', function() {
-    const rect = radioPlayer.getBoundingClientRect();
-    const headerHeight = document.querySelector('nav').offsetHeight;
-    
-    // Verifica limites
-    if (rect.top < headerHeight + 5) {
-      radioPlayer.style.top = (headerHeight + 5) + 'px';
-    }
-    
-    if (rect.left < 0) {
-      radioPlayer.style.left = '0px';
-    }
-    
-    if (rect.right > window.innerWidth) {
-      radioPlayer.style.left = (window.innerWidth - playerWidth) + 'px';
-    }
-    
-    if (rect.bottom > window.innerHeight) {
-      radioPlayer.style.top = (window.innerHeight - playerHeight) + 'px';
-    }
-  });
   
   // Atualizar status da rádio
   radioAudio.addEventListener('play', function() {
