@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   padding: 10px;
-  background: #333; /* AQUI JÁ ESTAVA CINZA */
+  background: #333333; /* AQUI JÁ ESTAVA CINZA */
   border-bottom: 1px solid #ddd;
   cursor: move;
 }
