@@ -4,7 +4,7 @@
   top: 60px;
   left: 10px;
   width: 280px;
-  background-color: rgba(232, 232, 232, 0.95); /* Alterado para cinza claro */
+  background-color: rgba(232, 232, 232, 0.95);
   border-radius: 8px;
   z-index: 9999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -20,7 +20,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: rgba(51, 51, 51, 0.95); /* Mantido original */
+  background-color: rgba(51, 51, 51, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: move;
   user-select: none;
@@ -34,7 +34,7 @@
 #radio-logo {
   height: 20px;
   width: auto;
-  filter: brightness(0) invert(1); /* Mantido para logo branca */
+  filter: brightness(0) invert(1);
 }
 
 .sr-only {
@@ -52,7 +52,7 @@
 #radio-toggle {
   background: none;
   border: none;
-  color: white; /* Mantido branco */
+  color: white;
   font-size: 18px;
   cursor: pointer;
   padding: 0;
@@ -64,7 +64,7 @@
 
 #radio-content {
   padding: 10px;
-  background-color: #e8e8e8; /* Adicionado fundo cinza claro */
+  background-color: #e8e8e8;
 }
 
 #radio-audio {
@@ -74,13 +74,13 @@
 }
 
 #radio-audio::-webkit-media-controls-panel {
-  background-color: #e8e8e8; /* Alterado para cinza claro */
-  color: #333; /* Adicionado para melhor contraste */
+  background-color: #e8e8e8;
+  color: #333;
 }
 
 #radio-audio::-webkit-media-controls-play-button,
 #radio-audio::-webkit-media-controls-volume-slider {
-  filter: none; /* Removido invert para melhor visibilidade no fundo claro */
+  filter: none;
 }
 
 #radio-info {
@@ -88,9 +88,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: #333; /* Alterado para cor escura para contraste no fundo claro */
+  color: #333;
   padding: 0 5px;
-  background-color: #e8e8e8; /* Adicionado fundo cinza claro */
+  background-color: #e8e8e8;
 }
 
 #radio-status {
@@ -99,13 +99,14 @@
 }
 
 #radio-volume {
-  color: #666; /* Alterado para cinza mais escuro */
+  color: #666;
+  min-height: 1em;
 }
 
 #radio-player.minimizado {
   height: 36px;
   width: 200px;
-  background-color: rgba(51, 51, 51, 0.95); /* Mantido original quando minimizado */
+  background-color: rgba(51, 51, 51, 0.95);
 }
 
 #radio-player.minimizado #radio-content {
@@ -114,4 +115,119 @@
 
 #radio-player.minimizado #radio-logo {
   height: 16px;
+}
+
+/* Overlay de Ativação */
+#audio-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.overlay-content {
+  text-align: center;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 16px;
+  padding: 40px 30px;
+  max-width: 380px;
+  width: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  animation: subtlePulse 4s infinite;
+  backdrop-filter: blur(5px);
+}
+
+.overlay-icon {
+  font-size: 52px;
+  margin-bottom: 20px;
+  animation: subtleBounce 3s infinite;
+  color: rgba(255, 255, 255, 0.9);
+  opacity: 0.8;
+}
+
+.overlay-content h2 {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 28px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.overlay-content p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+
+.overlay-hint {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-bottom: 25px;
+  font-family: Arial, sans-serif;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.overlay-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 35px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  opacity: 0.9;
+}
+
+.overlay-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  }
+  50% { 
+    transform: scale(1.005); 
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes subtleBounce {
+  0%, 100% { 
+    transform: translateY(0) scale(1); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-5px) scale(1.05); 
+    opacity: 1;
+  }
 }
