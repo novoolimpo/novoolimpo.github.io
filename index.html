@@ -84,7 +84,7 @@
       animation: girar 5s linear infinite;
       max-width: 80%;
       max-height: 80%;
-      transform-origin: center center; /* Isso faz a imagem girar em torno do próprio centro */
+      transform-origin: center center;
     }
 
     @keyframes girar {
@@ -98,7 +98,7 @@
       width: 300px;
       height: 300px;
       perspective: 1000px;
-      z-index: 2; /* Fica acima da imagem giratória */
+      z-index: 2;
     }
 
     .layer {
@@ -280,20 +280,132 @@
       }
 
       #comprar-container {
-    display: none !important;
-  }
+        display: none !important;
+      }
     }
 
     /* Desativa o parallax em dispositivos touch */
-@media (hover: none) {
-  .parallax-container {
-    pointer-events: none; /* Ignora toques */
-  }
-  .layer {
-    transform: none !important; /* Remove animações */
-    filter: none !important;
-  }
-}
+    @media (hover: none) {
+      .parallax-container {
+        pointer-events: none;
+      }
+      .layer {
+        transform: none !important;
+        filter: none !important;
+      }
+    }
+
+    /* Player de Rádio Flutuante */
+    #radio-player {
+      position: fixed;
+      top: 60px;
+      left: 10px;
+      width: 280px;
+      background-color: rgba(0, 0, 0, 0.85);
+      border-radius: 8px;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    #radio-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background-color: rgba(51, 51, 51, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: move;
+    }
+
+    #radio-title {
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    #radio-toggle {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      line-height: 1;
+    }
+
+    #radio-content {
+      padding: 10px;
+    }
+
+    #radio-audio {
+      width: 100%;
+      height: 30px;
+      margin-bottom: 5px;
+    }
+
+    /* Estilização customizada do player de áudio */
+    #radio-audio::-webkit-media-controls-panel {
+      background-color: #333;
+    }
+
+    #radio-audio::-webkit-media-controls-play-button,
+    #radio-audio::-webkit-media-controls-volume-slider {
+      filter: invert(1);
+    }
+
+    #radio-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: #ccc;
+      padding: 0 5px;
+    }
+
+    #radio-status {
+      color: #ff4444;
+      font-weight: bold;
+    }
+
+    #radio-volume {
+      color: #999;
+    }
+
+    /* Estado minimizado */
+    #radio-player.minimizado {
+      height: 36px;
+      width: 200px;
+    }
+
+    #radio-player.minimizado #radio-content {
+      display: none;
+    }
+
+    #radio-player.minimizado #radio-title {
+      font-size: 12px;
+    }
+
+    /* Para mobile */
+    @media (max-width: 768px) {
+      #radio-player {
+        top: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+        max-width: 300px;
+      }
+      
+      #radio-player.minimizado {
+        width: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -305,6 +417,24 @@
     <a href="https://linktr.ee/novoolimpo">CONTRATE</a>
   </nav>
   
+  <!-- Player de Rádio Flutuante -->
+  <div id="radio-player">
+    <div id="radio-header">
+      <span id="radio-title">RÁDIO NOVO OLIMPO</span>
+      <button id="radio-toggle">×</button>
+    </div>
+    <div id="radio-content">
+      <audio id="radio-audio" controls>
+        <source src="http://radionovo247.duckdns.org:8000/radio.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div id="radio-info">
+        <span id="radio-status">● AO VIVO</span>
+        <span id="radio-volume">Vol: 70%</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Seção SOBRE -->
   <div class="section" id="sobre">
     <div class="centro-tela">
@@ -335,7 +465,6 @@
 
   <!-- Restante do HTML permanece igual... -->
   <div class="section" id="portfolio">
-      <!-- <h2>PORTFOLIO</h2> -->
     <div class="colunas">
       <div class="coluna">
         <div class="capa">
@@ -375,7 +504,6 @@
   </div>
 
   <div class="section" id="produtos">
-    <!-- <h2>PRODUTOS</h2>   -->
     <a href="https://novoolimpo.github.io/drumkit">
       <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
     </a>
@@ -424,10 +552,6 @@
       </button>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
 
   <script>
     // Parallax effect
@@ -485,6 +609,109 @@
       const titleContainer = document.querySelector('.titulo-subtitulo');
       if (parallaxContainer) parallaxContainer.style.display = true ? 'block' : 'none';
       if (titleContainer) titleContainer.style.display = false ? 'block' : 'none';
+    });
+
+    // Player de Rádio Interativo
+    document.addEventListener('DOMContentLoaded', function() {
+      const radioPlayer = document.getElementById('radio-player');
+      const radioToggle = document.getElementById('radio-toggle');
+      const radioHeader = document.getElementById('radio-header');
+      const radioAudio = document.getElementById('radio-audio');
+      const radioStatus = document.getElementById('radio-status');
+      
+      // Substitua pela URL real da sua rádio
+      // radioAudio.src = "https://SUA_URL_DA_RADIO_AQUI/stream.mp3";
+      
+      // Alternar minimizar/expandir
+      radioToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        radioPlayer.classList.toggle('minimizado');
+        radioToggle.textContent = radioPlayer.classList.contains('minimizado') ? '+' : '×';
+      });
+      
+      // Arrastar o player
+      let isDragging = false;
+      let currentX;
+      let currentY;
+      let initialX;
+      let initialY;
+      let xOffset = 0;
+      let yOffset = 0;
+      
+      radioHeader.addEventListener('mousedown', dragStart);
+      radioHeader.addEventListener('touchstart', dragStart);
+      
+      function dragStart(e) {
+        if (e.type === "touchstart") {
+          initialX = e.touches[0].clientX - xOffset;
+          initialY = e.touches[0].clientY - yOffset;
+        } else {
+          initialX = e.clientX - xOffset;
+          initialY = e.clientY - yOffset;
+        }
+        
+        if (e.target === radioToggle) return;
+        
+        isDragging = true;
+        
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('touchend', dragEnd);
+      }
+      
+      function drag(e) {
+        if (isDragging) {
+          e.preventDefault();
+          
+          if (e.type === "touchmove") {
+            currentX = e.touches[0].clientX - initialX;
+            currentY = e.touches[0].clientY - initialY;
+          } else {
+            currentX = e.clientX - initialX;
+            currentY = e.clientY - initialY;
+          }
+          
+          xOffset = currentX;
+          yOffset = currentY;
+          
+          setTranslate(currentX, currentY, radioPlayer);
+        }
+      }
+      
+      function dragEnd() {
+        isDragging = false;
+        
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('mouseup', dragEnd);
+        document.removeEventListener('touchend', dragEnd);
+      }
+      
+      function setTranslate(xPos, yPos, el) {
+        el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+      }
+      
+      // Atualizar status da rádio
+      radioAudio.addEventListener('play', function() {
+        radioStatus.textContent = '● AO VIVO';
+        radioStatus.style.color = '#ff4444';
+      });
+      
+      radioAudio.addEventListener('pause', function() {
+        radioStatus.textContent = '■ PAUSADO';
+        radioStatus.style.color = '#ffaa44';
+      });
+      
+      radioAudio.addEventListener('error', function() {
+        radioStatus.textContent = '✗ ERRO';
+        radioStatus.style.color = '#999';
+      });
+      
+      // Auto-play (opcional)
+      setTimeout(() => {
+        // radioAudio.play().catch(e => console.log("Auto-play bloqueado pelo navegador"));
+      }, 1000);
     });
   </script>
 </body>
