@@ -40,6 +40,7 @@
   }
 }
 
+/* Desativa o parallax em dispositivos touch */
 @media (hover: none) {
   .parallax-container {
     pointer-events: none;
