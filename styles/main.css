@@ -1,0 +1,106 @@
+/* Estilos principais do site */
+body {
+  font-family: 'Bebas Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.section {
+  width: 100vw;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#sobre {
+  height: 85vh;
+}
+
+#contrate {
+  display: none !important;
+}
+
+.centro-tela {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imagem-girando-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imagem-girando {
+  animation: girar 5s linear infinite;
+  max-width: 80%;
+  max-height: 80%;
+  transform-origin: center center;
+}
+
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.parallax-container {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+  z-index: 2;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform-origin: center;
+  transition: transform 0.1s, filter 0.1s;
+  filter: grayscale(100%);
+}
+
+/* Continua com todos os outros estilos principais... */
