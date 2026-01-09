@@ -18,77 +18,121 @@ document.addEventListener('DOMContentLoaded', function() {
     radioToggle.textContent = radioPlayer.classList.contains('minimizado') ? '+' : '×';
   });
   
-  // Arrastar o player
+  // Arrastar o player - RESPONSIVO E DIRETO
   let isDragging = false;
-  let currentX;
-  let currentY;
-  let initialX;
-  let initialY;
-  let xOffset = 0;
-  let yOffset = 0;
+  let startX, startY, initialX, initialY;
   
-  radioHeader.addEventListener('mousedown', dragStart);
-  radioHeader.addEventListener('touchstart', dragStart, { passive: false });
+  // Limites da tela
+  const headerHeight = document.querySelector('nav').offsetHeight;
+  const playerWidth = radioPlayer.offsetWidth;
+  const playerHeight = radioPlayer.offsetHeight;
   
-  function dragStart(e) {
+  radioHeader.addEventListener('mousedown', startDrag);
+  radioHeader.addEventListener('touchstart', startDrag, { passive: false });
+  
+  function startDrag(e) {
     e.preventDefault();
     e.stopPropagation();
     
+    isDragging = true;
+    
+    // Posição inicial do mouse/toque
     if (e.type === "touchstart") {
-      initialX = e.touches[0].clientX - xOffset;
-      initialY = e.touches[0].clientY - yOffset;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
     } else {
-      initialX = e.clientX - xOffset;
-      initialY = e.clientY - yOffset;
+      startX = e.clientX;
+      startY = e.clientY;
     }
     
-    if (e.target === radioToggle) return;
-    
-    isDragging = true;
+    // Posição atual do player
+    const rect = radioPlayer.getBoundingClientRect();
+    initialX = rect.left;
+    initialY = rect.top;
     
     // Desativa scroll durante o arraste
     document.body.classList.add('no-scroll');
     
     document.addEventListener('mousemove', drag);
     document.addEventListener('touchmove', drag, { passive: false });
-    document.addEventListener('mouseup', dragEnd);
-    document.addEventListener('touchend', dragEnd);
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
   }
   
   function drag(e) {
-    if (isDragging) {
-      e.preventDefault();
-      
-      if (e.type === "touchmove") {
-        currentX = e.touches[0].clientX - initialX;
-        currentY = e.touches[0].clientY - initialY;
-      } else {
-        currentX = e.clientX - initialX;
-        currentY = e.clientY - initialY;
-      }
-      
-      xOffset = currentX;
-      yOffset = currentY;
-      
-      setTranslate(currentX, currentY, radioPlayer);
+    if (!isDragging) return;
+    
+    e.preventDefault();
+    
+    let currentX, currentY;
+    
+    if (e.type === "touchmove") {
+      currentX = e.touches[0].clientX;
+      currentY = e.touches[0].clientY;
+    } else {
+      currentX = e.clientX;
+      currentY = e.clientY;
     }
+    
+    // Calcula nova posição
+    let newX = initialX + (currentX - startX);
+    let newY = initialY + (currentY - startY);
+    
+    // Limites da tela
+    const maxX = window.innerWidth - playerWidth;
+    const maxY = window.innerHeight - playerHeight;
+    const minY = headerHeight + 5; // 5px abaixo do menu
+    
+    // Aplica limites
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(minY, Math.min(newY, maxY));
+    
+    // Move o player - DIRETO, SEM TRANSITION
+    radioPlayer.style.transition = 'none';
+    radioPlayer.style.left = newX + 'px';
+    radioPlayer.style.top = newY + 'px';
+    radioPlayer.style.transform = 'none'; // Remove transform antigo
   }
   
-  function dragEnd() {
+  function stopDrag() {
     isDragging = false;
     
     // Reativa scroll após o arraste
     document.body.classList.remove('no-scroll');
     
+    // Restaura transition suave
+    setTimeout(() => {
+      radioPlayer.style.transition = 'all 0.1s ease';
+    }, 10);
+    
     document.removeEventListener('mousemove', drag);
     document.removeEventListener('touchmove', drag);
-    document.removeEventListener('mouseup', dragEnd);
-    document.removeEventListener('touchend', dragEnd);
+    document.removeEventListener('mouseup', stopDrag);
+    document.removeEventListener('touchend', stopDrag);
   }
   
-  function setTranslate(xPos, yPos, el) {
-    el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-  }
+  // Impede que o player saia dos limites ao redimensionar a janela
+  window.addEventListener('resize', function() {
+    const rect = radioPlayer.getBoundingClientRect();
+    const headerHeight = document.querySelector('nav').offsetHeight;
+    
+    // Verifica limites
+    if (rect.top < headerHeight + 5) {
+      radioPlayer.style.top = (headerHeight + 5) + 'px';
+    }
+    
+    if (rect.left < 0) {
+      radioPlayer.style.left = '0px';
+    }
+    
+    if (rect.right > window.innerWidth) {
+      radioPlayer.style.left = (window.innerWidth - playerWidth) + 'px';
+    }
+    
+    if (rect.bottom > window.innerHeight) {
+      radioPlayer.style.top = (window.innerHeight - playerHeight) + 'px';
+    }
+  });
   
   // Atualizar status da rádio
   radioAudio.addEventListener('play', function() {
