@@ -4,409 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Olimpo</title>
-  <link rel="icon" href="novoolimpoicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/novoolimpoicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Bebas Neue', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background-color: #fff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    nav {
-      background-color: #333;
-      padding: 10px;
-      text-align: center;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Seções totalmente sobrepostas */
-    .section {
-      width: 100vw;
-      position: relative;
-      margin: 0;
-      padding: 0;
-      overflow: visible;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #sobre {
-      height: 85vh;
-    }
-
-    #contrate {
-      display: none !important;
-    }
-
-    /* Container para centralização perfeita */
-    .centro-tela {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Imagem giratória centralizada - CORREÇÃO PRINCIPAL */
-    .imagem-girando-container {
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    .imagem-girando {
-      animation: girar 5s linear infinite;
-      max-width: 80%;
-      max-height: 80%;
-      transform-origin: center center;
-    }
-
-    @keyframes girar {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* Container parallax centralizado sobre a imagem giratória */
-    .parallax-container {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      perspective: 1000px;
-      z-index: 2;
-    }
-
-    .layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      transform-origin: center;
-      transition: transform 0.1s, filter 0.1s;
-      filter: grayscale(100%);
-    }
-
-    .layer0 { background-image: url('camada0.png'); transform: translateZ(-300px); }
-    .layer1 { background-image: url('camada1.png'); transform: translateZ(-200px); }
-    .layer2 { background-image: url('camada2.png'); transform: translateZ(-100px); }
-    .layer3 { background-image: url('camada3.png'); transform: translateZ(0); }
-    .layer4 { background-image: url('camada4.png'); transform: translateZ(100px); z-index: 1; }
-    .layer5 { background-image: url('camada5.png'); transform: translateZ(250px) scale(1.2); z-index: 2; }
-
-    /* Restante do CSS permanece igual... */
-    #portfolio, #produtos {
-      padding-top: -10px;
-      padding-bottom: -10px;
-      text-align: center;
-    }
-
-    h2, h3 {
-      text-align: center;
-      width: 100%;
-    }
-
-    .colunas {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 0 20px;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .coluna {
-      flex: 1;
-      margin: 10px;
-      min-width: 250px;
-      max-width: 350px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .capa {
-      width: 100%;
-      height: 0;
-      padding-bottom: 56.25%;
-      background-color: #ccc;
-      border-radius: 5px;
-      position: relative;
-    }
-
-    .capa img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 5px;
-      transition: transform 0.3s ease;
-    }
-
-    .capa img:hover {
-      transform: scale(1.1);
-    }
-
-    #comprar-container {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #333;
-      padding: 10px 0;
-      display: flex;
-      align-items: center;
-      z-index: 1000;
-      justify-content: center;
-    }
-
-    #rodape-texto {
-      color: white;
-      font-weight: bold;
-      margin: 0 20px;
-    }
-
-    #comprar, #comprar2, #comprarrodape, #comprarrodape2 {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-    }
-
-    #comprar img, #comprar2 img, #comprarrodape img, #comprarrodape2 img {
-      width: 150px;
-      height: auto;
-    }
-
-    #contact-form {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    #contact-form input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      flex: 1 1 45%;
-      min-width: 0;
-    }
-
-    #contact-form button {
-      padding: 10px 15px;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      flex: 1 1 100%;
-      max-width: 100%;
-    }
-
-    .titulo-subtitulo {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 10;
-      max-width: 1000px;
-      width: 100%;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        height: auto;
-      }
-      
-      #contact-form input {
-        flex: 1 1 100%;
-      }
-      
-      .titulo-subtitulo {
-        top: 30px;
-      }
-      
-      .titulo-subtitulo h1 {
-        font-size: 2em !important;
-      }
-      
-      .titulo-subtitulo p {
-        font-size: 1.2em !important;
-      }
-      
-      .imagem-girando {
-        max-width: 100%;
-      }
-
-      #comprar-container {
-        display: none !important;
-      }
-    }
-
-    /* Desativa o parallax em dispositivos touch */
-    @media (hover: none) {
-      .parallax-container {
-        pointer-events: none;
-      }
-      .layer {
-        transform: none !important;
-        filter: none !important;
-      }
-    }
-
-    /* Player de Rádio Flutuante */
-    #radio-player {
-      position: fixed;
-      top: 60px;
-      left: 10px;
-      width: 280px;
-      background-color: rgba(0, 0, 0, 0.85);
-      border-radius: 8px;
-      z-index: 9999;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-      transition: all 0.3s ease;
-      font-family: 'Bebas Neue', sans-serif;
-    }
-
-    #radio-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 12px;
-      background-color: rgba(51, 51, 51, 0.9);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: move;
-    }
-
-    #radio-title {
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
-    #radio-toggle {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 0;
-      width: 20px;
-      height: 20px;
-      line-height: 1;
-    }
-
-    #radio-content {
-      padding: 10px;
-    }
-
-    #radio-audio {
-      width: 100%;
-      height: 30px;
-      margin-bottom: 5px;
-    }
-
-    /* Estilização customizada do player de áudio */
-    #radio-audio::-webkit-media-controls-panel {
-      background-color: #333;
-    }
-
-    #radio-audio::-webkit-media-controls-play-button,
-    #radio-audio::-webkit-media-controls-volume-slider {
-      filter: invert(1);
-    }
-
-    #radio-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      color: #ccc;
-      padding: 0 5px;
-    }
-
-    #radio-status {
-      color: #ff4444;
-      font-weight: bold;
-    }
-
-    #radio-volume {
-      color: #999;
-    }
-
-    /* Estado minimizado */
-    #radio-player.minimizado {
-      height: 36px;
-      width: 200px;
-    }
-
-    #radio-player.minimizado #radio-content {
-      display: none;
-    }
-
-    #radio-player.minimizado #radio-title {
-      font-size: 12px;
-    }
-
-    /* Para mobile */
-    @media (max-width: 768px) {
-      #radio-player {
-        top: 10px;
-        left: 10px;
-        width: calc(100% - 20px);
-        max-width: 300px;
-      }
-      
-      #radio-player.minimizado {
-        width: 180px;
-      }
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/radio-player.css">
+  <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
   <!-- Barra de navegação fixa no topo -->
@@ -420,13 +23,12 @@
   <!-- Player de Rádio Flutuante -->
   <div id="radio-player">
     <div id="radio-header">
-      <span id="radio-title">RÁDIO NOVO OLIMPO</span>
+      <span id="radio-title">NOVO247</span>
       <button id="radio-toggle">×</button>
     </div>
     <div id="radio-content">
       <audio id="radio-audio" controls>
         <source src="http://radionovo247.duckdns.org:8000/radio.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
       </audio>
       <div id="radio-info">
         <span id="radio-status">● AO VIVO</span>
@@ -438,9 +40,9 @@
   <!-- Seção SOBRE -->
   <div class="section" id="sobre">
     <div class="centro-tela">
-      <!-- Container da imagem giratória - CORREÇÃO PRINCIPAL -->
+      <!-- Container da imagem giratória -->
       <div class="imagem-girando-container">
-        <img class="imagem-girando" src="novoolimpogrey2.png" alt="Imagem Girando">
+        <img class="imagem-girando" src="assets/novoolimpogrey2.png" alt="Imagem Girando">
       </div>
 
       <!-- Imagem em camadas sobreposta e centralizada -->
@@ -463,22 +65,22 @@
     </div>
   </div>
 
-  <!-- Restante do HTML permanece igual... -->
+  <!-- Seção PORTFOLIO -->
   <div class="section" id="portfolio">
     <div class="colunas">
       <div class="coluna">
         <div class="capa">
           <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
-            <img src="novosessions.png" alt="Projetos">
+            <img src="assets/novosessions.png" alt="Projetos">
           </a>
         </div>
         <h3>PROJETOS</h3>
-        <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E + </p>
+        <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E +</p>
       </div>
       <div class="coluna">
         <div class="capa">
           <a href="https://novoolimpo.github.io/portfolio">
-            <img src="mrrt.png" alt="Produções">
+            <img src="assets/mrrt.png" alt="Produções">
           </a>
         </div>
         <h3>PRODUÇÕES</h3>
@@ -487,11 +89,11 @@
       <div class="coluna">
         <div class="capa">
           <a href="">
-            <img src="bbl.png" alt="Audiovisual">
+            <img src="assets/bbl.png" alt="Audiovisual">
           </a>
         </div>
         <h3>AUDIOVISUAL</h3>
-        <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E + </p>
+        <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E +</p>
       </div>
     </div>
     
@@ -503,9 +105,10 @@
     </div>
   </div>
 
+  <!-- Seção PRODUTOS -->
   <div class="section" id="produtos">
     <a href="https://novoolimpo.github.io/drumkit">
-      <img src="drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
+      <img src="assets/drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
     </a>
     <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
     <p style="text-align: center;">
@@ -515,10 +118,10 @@
     </p>
     <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
       <button id="comprar">
-        <img src="buygumroad.png" alt="Comprar">
+        <img src="assets/buygumroad.png" alt="Comprar">
       </button>
       <button id="comprar2">
-        <img src="buyhotmart.png" alt="Comprar">
+        <img src="assets/buyhotmart.png" alt="Comprar">
       </button>
     </div>
 
@@ -532,6 +135,7 @@
     </div>
   </div>
 
+  <!-- Seção CONTRATE (oculta) -->
   <div class="section" id="contrate">
     <h2>CONTRATE</h2>
     <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
@@ -539,180 +143,24 @@
     </iframe>
   </div>
 
+  <!-- Rodapé com botões de compra -->
   <div id="comprar-container">
     <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
     <div style="margin-left: 20px;">
       <button id="comprarrodape">
-        <img src="buygumroad.png" alt="Comprar">
+        <img src="assets/buygumroad.png" alt="Comprar">
       </button>
     </div>
     <div style="margin-left: 0px;">
       <button id="comprarrodape2">
-        <img src="buyhotmart.png" alt="Comprar">
+        <img src="assets/buyhotmart.png" alt="Comprar">
       </button>
     </div>
   </div>
 
-  <script>
-    // Parallax effect
-    const parallaxContainer = document.querySelector('.parallax-container');
-    const layers = document.querySelectorAll('.layer');
-    const movementMultipliers = [0.05, 0.2, 0.15, 0.35, 0.25, 0.3];
-    const depthMultipliers = [-300, -200, -100, 0, 100, 200];
-    const isMobileDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    function updateLayers(x, y) {
-      layers.forEach((layer, index) => {
-        const depth = depthMultipliers[index];
-        let movementX = x * depth * movementMultipliers[index];
-        if (isMobileDevice && index === 5) movementX *= 0.1;
-        const movementY = (y * depth * movementMultipliers[index]) / 2.6;
-        const rotationY = isMobileDevice ? 0 : x * 100 * movementMultipliers[index];
-        const rotationX = isMobileDevice ? 0 : y * 100 * movementMultipliers[index];
-        const scaleValue = index === 5 ? 'scale(1.3)' : '';
-        layer.style.transform = `translateX(${movementX}px) translateY(${movementY}px) rotateY(${rotationY}deg) rotateX(${rotationX}deg) ${scaleValue}`;
-        layer.style.filter = `invert(100%) grayscale(100%) contrast(1.5) brightness(${1 + Math.abs(x * movementMultipliers[index])})`;
-      });
-    }
-
-    if (parallaxContainer) {
-      parallaxContainer.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) - 0.5;
-        const y = (e.clientY / window.innerHeight) - 0.5;
-        updateLayers(x, y);
-      });
-
-      parallaxContainer.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        const x = (touch.clientX / window.innerWidth) - 0.5;
-        const y = (touch.clientY / window.innerHeight) - 0.5;
-        updateLayers(x, y);
-      }, { passive: false });
-
-      updateLayers(0, 0);
-    }
-
-    // Botões de compra
-    document.getElementById("comprar").onclick = 
-    document.getElementById("comprarrodape").onclick = function() {
-      window.open("https://jnowsk.gumroad.com/l/kbhaqrt", "_blank");
-    };
-    
-    document.getElementById("comprar2").onclick = 
-    document.getElementById("comprarrodape2").onclick = function() {
-      window.open("https://pay.hotmart.com/O96435069N", "_blank");
-    };
-
-    // Controle manual
-    document.addEventListener('DOMContentLoaded', () => {
-      const parallaxContainer = document.querySelector('.parallax-container');
-      const titleContainer = document.querySelector('.titulo-subtitulo');
-      if (parallaxContainer) parallaxContainer.style.display = true ? 'block' : 'none';
-      if (titleContainer) titleContainer.style.display = false ? 'block' : 'none';
-    });
-
-    // Player de Rádio Interativo
-    document.addEventListener('DOMContentLoaded', function() {
-      const radioPlayer = document.getElementById('radio-player');
-      const radioToggle = document.getElementById('radio-toggle');
-      const radioHeader = document.getElementById('radio-header');
-      const radioAudio = document.getElementById('radio-audio');
-      const radioStatus = document.getElementById('radio-status');
-      
-      // Substitua pela URL real da sua rádio
-      // radioAudio.src = "https://SUA_URL_DA_RADIO_AQUI/stream.mp3";
-      
-      // Alternar minimizar/expandir
-      radioToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        radioPlayer.classList.toggle('minimizado');
-        radioToggle.textContent = radioPlayer.classList.contains('minimizado') ? '+' : '×';
-      });
-      
-      // Arrastar o player
-      let isDragging = false;
-      let currentX;
-      let currentY;
-      let initialX;
-      let initialY;
-      let xOffset = 0;
-      let yOffset = 0;
-      
-      radioHeader.addEventListener('mousedown', dragStart);
-      radioHeader.addEventListener('touchstart', dragStart);
-      
-      function dragStart(e) {
-        if (e.type === "touchstart") {
-          initialX = e.touches[0].clientX - xOffset;
-          initialY = e.touches[0].clientY - yOffset;
-        } else {
-          initialX = e.clientX - xOffset;
-          initialY = e.clientY - yOffset;
-        }
-        
-        if (e.target === radioToggle) return;
-        
-        isDragging = true;
-        
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('touchmove', drag);
-        document.addEventListener('mouseup', dragEnd);
-        document.addEventListener('touchend', dragEnd);
-      }
-      
-      function drag(e) {
-        if (isDragging) {
-          e.preventDefault();
-          
-          if (e.type === "touchmove") {
-            currentX = e.touches[0].clientX - initialX;
-            currentY = e.touches[0].clientY - initialY;
-          } else {
-            currentX = e.clientX - initialX;
-            currentY = e.clientY - initialY;
-          }
-          
-          xOffset = currentX;
-          yOffset = currentY;
-          
-          setTranslate(currentX, currentY, radioPlayer);
-        }
-      }
-      
-      function dragEnd() {
-        isDragging = false;
-        
-        document.removeEventListener('mousemove', drag);
-        document.removeEventListener('touchmove', drag);
-        document.removeEventListener('mouseup', dragEnd);
-        document.removeEventListener('touchend', dragEnd);
-      }
-      
-      function setTranslate(xPos, yPos, el) {
-        el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-      }
-      
-      // Atualizar status da rádio
-      radioAudio.addEventListener('play', function() {
-        radioStatus.textContent = '● AO VIVO';
-        radioStatus.style.color = '#ff4444';
-      });
-      
-      radioAudio.addEventListener('pause', function() {
-        radioStatus.textContent = '■ PAUSADO';
-        radioStatus.style.color = '#ffaa44';
-      });
-      
-      radioAudio.addEventListener('error', function() {
-        radioStatus.textContent = '✗ ERRO';
-        radioStatus.style.color = '#999';
-      });
-      
-      // Auto-play (opcional)
-      setTimeout(() => {
-        // radioAudio.play().catch(e => console.log("Auto-play bloqueado pelo navegador"));
-      }, 1000);
-    });
-  </script>
+  <!-- JavaScript -->
+  <script src="scripts/main.js"></script>
+  <script src="scripts/parallax.js"></script>
+  <script src="scripts/radio-player.js"></script>
 </body>
 </html>
