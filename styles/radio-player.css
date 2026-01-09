@@ -4,34 +4,32 @@
   top: 60px;
   left: 10px;
   width: 280px;
-  background: #f5f5f5; /* AQUI JÁ ESTAVA CINZA */
+  background: #f5f5f5;
   border-radius: 8px;
   z-index: 9999;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* BORDA DA CAIXA */
 }
 
 #radio-header {
   display: flex;
   align-items: center;
   padding: 10px;
-  background: #333333; /* AQUI JÁ ESTAVA CINZA */
-  border-bottom: 1px solid #ddd;
+  background: #333;
+  border-bottom: 1px solid #ddd; /* BORDA ABAIXO DO HEADER */
   cursor: move;
 }
 
 #radio-content {
   padding: 10px;
-  background: #f5f5f5; /* ADICIONE ESTA LINHA */
+  background: #f5f5f5;
 }
 
 #radio-audio {
   width: 100%;
-  background: #f5f5f5; /* ADICIONE ESTA LINHA */
-  border-radius: 4px;
+  background: #fff; /* MUDAR PARA BRANCO PARA VER A BORDA */
 }
 
-/* O resto mantém igual... */
 #radio-title-container {
   flex: 1;
   display: flex;
@@ -40,12 +38,13 @@
 
 #radio-logo {
   height: 30px;
+  filter: brightness(0) invert(1); /* DEIXA LOGO BRANCA */
 }
 
 #radio-toggle {
   background: none;
   border: none;
-  color: #333;
+  color: white; /* MUDAR PARA BRANCO */
   font-size: 20px;
   cursor: pointer;
   padding: 0;
