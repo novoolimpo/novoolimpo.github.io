@@ -1,67 +1,113 @@
-/* Player de Rádio */
+/* Player de Rádio Flutuante */
 #radio-player {
   position: fixed;
   top: 60px;
   left: 10px;
   width: 280px;
-  background: #f5f5f5;
+  background-color: rgba(0, 0, 0, 0.95);
   border-radius: 8px;
   z-index: 9999;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  border: 1px solid #ddd; /* BORDA DA CAIXA */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.1s ease;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
 #radio-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: #333;
-  border-bottom: 1px solid #ddd; /* BORDA ABAIXO DO HEADER */
+  padding: 8px 12px;
+  background-color: rgba(51, 51, 51, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   cursor: move;
-}
-
-#radio-content {
-  padding: 10px;
-  background: #f5f5f5;
-}
-
-#radio-audio {
-  width: 100%;
-  background: #fff; /* MUDAR PARA BRANCO PARA VER A BORDA */
+  user-select: none;
 }
 
 #radio-title-container {
-  flex: 1;
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 
 #radio-logo {
-  height: 30px;
-  filter: brightness(0) invert(1); /* DEIXA LOGO BRANCA */
+  height: 20px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 #radio-toggle {
   background: none;
   border: none;
-  color: white; /* MUDAR PARA BRANCO */
-  font-size: 20px;
+  color: white;
+  font-size: 18px;
   cursor: pointer;
   padding: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 1;
+  z-index: 10000;
+}
+
+#radio-content {
+  padding: 10px;
+}
+
+#radio-audio {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+#radio-audio::-webkit-media-controls-panel {
+  background-color: #333;
+}
+
+#radio-audio::-webkit-media-controls-play-button,
+#radio-audio::-webkit-media-controls-volume-slider {
+  filter: invert(1);
 }
 
 #radio-info {
   display: flex;
   justify-content: space-between;
-  margin-top: 5px;
+  align-items: center;
   font-size: 12px;
-  color: #666;
+  color: #ccc;
+  padding: 0 5px;
+}
+
+#radio-status {
+  color: #ff4444;
+  font-weight: bold;
+}
+
+#radio-volume {
+  color: #999;
 }
 
 #radio-player.minimizado {
-  height: 50px;
+  height: 36px;
+  width: 200px;
 }
 
 #radio-player.minimizado #radio-content {
   display: none;
+}
+
+#radio-player.minimizado #radio-logo {
+  height: 16px;
 }
