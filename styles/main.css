@@ -45,6 +45,11 @@ nav a {
   height: 85vh;
 }
 
+#video-overlay {
+  filter: blur(10px); /* ajuste o valor do blur */
+  transform: scale(0.8); /* 80% do tamanho original */
+}
+
 #contrate {
   padding: 50px 20px;
   text-align: center;
