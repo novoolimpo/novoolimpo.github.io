@@ -191,7 +191,7 @@ async function atualizarMusica() {
     const r = await fetch("https://downtown-realistic-physically-cincinnati.trycloudflare.com/status-json.xsl");
     const d = await r.json();
 
-    const titulo = d.icestats.source.playlist.trackList[0].title
+    const titulo = d.icestats.source.metadata.x_icy_title
     document.getElementById("now-playing").textContent =
       titulo || "Ao vivo";
   } catch {
