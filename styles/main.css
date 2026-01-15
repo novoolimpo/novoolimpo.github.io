@@ -50,6 +50,17 @@ nav a {
   transform: scale(0.8); /* 80% do tamanho original */
 }
 
+#video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -10;
+  pointer-events: none;
+}
+
 #contrate {
   padding: 50px 20px;
   text-align: center;
