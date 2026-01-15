@@ -183,5 +183,24 @@
 
   
 </body>
+
+  
+<script>
+async function atualizarMusica() {
+  try {
+    const r = await fetch("https://SEU_SERVIDOR/status-json.xsl");
+    const d = await r.json();
+
+    const titulo = d.icestats.source.metadata.x_icy_title;
+    document.getElementById("now-playing").textContent =
+      titulo || "Ao vivo";
+  } catch {
+    document.getElementById("now-playing").textContent = "Offline";
+  }
+}
+
+atualizarMusica();
+setInterval(atualizarMusica, 10000);
+</script>
   
 </html>
