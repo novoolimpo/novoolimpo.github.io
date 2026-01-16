@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Novo Olimpo Radio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/radio-player.css">
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+
+<div id="radio-player">
+  <div id="radio-header">
+    <img id="radio-logo" src="../assets/radio-logo.png" alt="Rádio Novo Olimpo">
+    <button id="radio-toggle">×</button>
+  </div>
+
+  <div id="radio-content">
+    <audio id="radio-audio" autoplay playsinline></audio>
+
+    <div id="radio-info">
+      <span id="radio-status">AO VIVO</span>
+      <span id="now-playing"></span>
+      <span id="radio-volume"></span>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/radio-player.js"></script>
+
+<script>
+const audio = document.getElementById("radio-audio");
+audio.src = "https://downtown-realistic-physically-cincinnati.trycloudflare.com/radio.mp3";
+audio.volume = 1;
+audio.play().catch(()=>{});
+
+// --- NOW PLAYING ---
+async function atualizarMusica() {
+  try {
+    const r = await fetch("https://downtown-realistic-physically-cincinnati.trycloudflare.com/status-json.xsl");
+    const d = await r.json();
+    const titulo = d.icestats.source.metadata.x_icy_title;
+    document.getElementById("now-playing").textContent = titulo || "AO VIVO";
+  } catch {
+    document.getElementById("now-playing").textContent = "OFFLINE";
+  }
+}
+
+atualizarMusica();
+setInterval(atualizarMusica, 10000);
+</script>
+
+</body>
+</html>
