@@ -50,7 +50,7 @@ audio.play().catch(()=>{});
 // --- NOW PLAYING ---
 async function atualizarMusica() {
   try {
-    const r = await fetch("https://planned-ellen-cycles-colleague.trycloudflare.com/status-json.xsl");
+    const r = await fetch("https://send-trademarks-wedding-sizes.trycloudflare.com/status-json.xsl");
     const d = await r.json();
     const titulo = d.icestats.source.metadata.x_icy_title;
     document.getElementById("now-playing").textContent = titulo || "AO VIVO";
