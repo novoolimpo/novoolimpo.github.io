@@ -27,7 +27,7 @@ html, body {
 
   <div id="radio-content">
     <audio id="radio-audio" autoplay playsinline controls>
-  <source src="https://send-trademarks-wedding-sizes.trycloudflare.com/radio.mp3" type="audio/mpeg">
+  <source src="https://counsel-dallas-kyle-shakespeare.trycloudflare.com/radio.mp3" type="audio/mpeg">
 </audio>
 
     <div id="radio-info">
@@ -50,7 +50,7 @@ audio.play().catch(()=>{});
 // --- NOW PLAYING ---
 async function atualizarMusica() {
   try {
-    const r = await fetch("https://send-trademarks-wedding-sizes.trycloudflare.com/status-json.xsl");
+    const r = await fetch("https://counsel-dallas-kyle-shakespeare.trycloudflare.com/status-json.xsl");
     const d = await r.json();
     const titulo = d.icestats.source.metadata.x_icy_title;
     document.getElementById("now-playing").textContent = titulo || "AO VIVO";
