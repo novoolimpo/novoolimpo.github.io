@@ -6,202 +6,201 @@
   <title>Novo Olimpo</title>
   <link rel="icon" href="assets/novoolimpoicon.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <!-- CSS -->
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/radio-player.css">
   <link rel="stylesheet" href="styles/responsive.css">
 </head>
+
 <body>
-  <!-- Barra de navegação fixa no topo -->
-  <nav>
-    <a href="#sobre">INICIO</a>
-    <a href="#portfolio">PORTFOLIO</a>
-    <a href="#produtos">PRODUTOS</a>
-    <a href="https://linktr.ee/novoolimpo">CONTRATE</a>
-  </nav>
-  
-  <!-- Player de Rádio Flutuante -->
-  <div id="radio-player">
-    <div id="radio-header">
-      <!-- <span id="radio-title">NOVO247</span> -->
-       <img id="radio-logo" src="assets/radio-logo.png" alt="Rádio Novo Olimpo">
-      <button id="radio-toggle">×</button>
-    </div>
-    <div id="radio-content">
-      <audio id="radio-audio" controls>
-        <source src="https://counsel-dallas-kyle-shakespeare.trycloudflare.com/radio.mp3" type="audio/mpeg">
-      </audio>
-      <div id="radio-info">
-        <span id="radio-status">● TOCANDO</span>
-        <span id="now-playing"></span>
-        <span id="radio-volume"></span>
-      </div>
-    </div>
+
+<nav>
+  <a href="#sobre">INICIO</a>
+  <a href="#portfolio">PORTFOLIO</a>
+  <a href="#produtos">PRODUTOS</a>
+  <a href="https://linktr.ee/novoolimpo">CONTRATE</a>
+</nav>
+
+<div id="radio-player">
+  <div id="radio-header">
+    <img id="radio-logo" src="assets/radio-logo.png" alt="Rádio Novo Olimpo">
+    <button id="radio-toggle">×</button>
   </div>
-
-  <!-- Seção SOBRE -->
-  <div class="section" id="sobre">
-    <div class="centro-tela">
-      
-      <video id="video-bg" autoplay loop muted playsinline>
-  <source src="assets/novo26_3.mp4" type="video/mp4">
-</video>
-      
-      <!-- Container da imagem giratória -->
-      <div class="imagem-girando-container">
-        <img class="imagem-girando" src="assets/novoolimpogrey2.png" alt="Imagem Girando">
-      </div>
-
-      <!-- Imagem em camadas sobreposta e centralizada -->
-      <div class="parallax-container">
-        <div class="layer layer0"></div>
-        <div class="layer layer1"></div>
-        <div class="layer layer2"></div>
-        <div class="layer layer3"></div>
-        <div class="layer layer4"></div>
-        <div class="layer layer5"></div>
-      </div>
+  <div id="radio-content">
+    <audio id="radio-audio" controls>
+      <source id="radio-source" type="audio/mpeg">
+    </audio>
+    <div id="radio-info">
+      <span id="radio-status">● TOCANDO</span>
+      <span id="now-playing"></span>
+      <span id="radio-volume"></span>
     </div>
-
-    <!-- Título e subtítulo -->
-    <div class="titulo-subtitulo">
-      <h1 style="color: black; font-size: 3em; margin: 0; margin-bottom: 5px;">ABENÇOADO JÁ DISPONÍVEL</h1>
-      <p style="color: grey; font-size: 1.5em; margin: 0; margin-top: 5px;">
-        <a href="https://www.youtube.com/watch?v=0Eak8HJRb1M"> ASSISTA AO VIDEOCLIPE </a>
-      </p> 
-    </div>
-  </div>
-
-  <!-- Seção PORTFOLIO -->
-  <div class="section" id="portfolio">
-    <div class="colunas">
-      <div class="coluna">
-        <div class="capa">
-          <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
-            <img src="assets/novosessions.png" alt="Projetos">
-          </a>
-        </div>
-        <h3>PROJETOS</h3>
-        <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E +</p>
-      </div>
-      <div class="coluna">
-        <div class="capa">
-          <a href="https://novoolimpo.github.io/portfolio">
-            <img src="assets/mrrt.png" alt="Produções">
-          </a>
-        </div>
-        <h3>PRODUÇÕES</h3>
-        <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
-      </div>
-      <div class="coluna">
-        <div class="capa">
-          <a href="">
-            <img src="assets/bbl.png" alt="Audiovisual">
-          </a>
-        </div>
-        <h3>AUDIOVISUAL</h3>
-        <p style="text-align: center;">PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br> APOIO A VIDEOCLIPES CONCEITUAIS E +</p>
-      </div>
-    </div>
-    
-    <div style="max-width: 100%; display: flex; justify-content: center; margin-top: 50px;">
-      <iframe style="border-radius:12px; width: 600px; max-width: 600px; height: 150px;" 
-        src="https://open.spotify.com/embed/track/64e77ij5tCUcImphsi9ycs?utm_source=generator&theme=0" 
-        frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy"></iframe>
-    </div>
-  </div>
-
-  <!-- Seção PRODUTOS -->
-  <div class="section" id="produtos">
-    <a href="https://novoolimpo.github.io/drumkit">
-      <img src="assets/drumkitebook.png" alt="Imagem Produtos" style="width: 80%; max-width: 800px; display: block; margin: 0 auto 20px;">
-    </a>
-    <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
-    <p style="text-align: center;">
-      NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br> O PRODUTOR GERAL DISPONIBILIZA UM
-      DRUMKIT COMPACTO <br> PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br> OS PLUGINS QUE MAIS FORAM
-      USADOS NESSES 6 ANOS DE CARREIRA.
-    </p>
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-      <button id="comprar">
-        <img src="assets/buygumroad.png" alt="Comprar">
-      </button>
-      <button id="comprar2">
-        <img src="assets/buyhotmart.png" alt="Comprar">
-      </button>
-    </div>
-
-    <div style="margin-top: 20px; text-align: center; width: 100%;">
-      <h3>INSCREVA-SE PARA RECEBER MMM EBOOK</h3>
-      <form id="contact-form" action="https://formspree.io/f/xyzyedzl" method="POST">
-        <input type="text" name="name" placeholder="Seu Nome" required>
-        <input type="email" name="email" placeholder="Seu Email" required>
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Seção CONTRATE (oculta)
-  <div class="section" id="contrate">
-    <h2>CONTRATE</h2>
-    <iframe src="https://docs.google.com/viewer?url=novoolimpo.github.io/novoolimpo.pdf&embedded=true">
-      Este navegador não suporta visualização de PDFs. Baixe o PDF aqui: <a href="novoolimpo.github.io/novoolimpo.pdf">Download</a>
-    </iframe>
-  </div> -->
-
-  <!-- Rodapé com botões de compra -->
-  <div id="comprar-container">
-    <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
-    <div style="margin-left: 20px;">
-      <button id="comprarrodape">
-        <img src="assets/buygumroad.png" alt="Comprar">
-      </button>
-    </div>
-    <div style="margin-left: 0px;">
-      <button id="comprarrodape2">
-        <img src="assets/buyhotmart.png" alt="Comprar">
-      </button>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="scripts/main.js"></script>
-  <script src="scripts/parallax.js"></script>
-  <script src="scripts/radio-player.js"></script>
-
-  
-   <div id="audio-overlay" style="display: none;">
-  <div class="overlay-content">
-    <div class="overlay-icon">▶</div>
-    <h2>CONTEÚDO MULTIMÍDIA</h2>
-    <p>Clique na tela para continuar</p>
-    <div class="overlay-hint">Aguarde a inicialização</div>
-    <button class="overlay-button">CONTINUAR</button>
   </div>
 </div>
 
-  
-</body>
+<!-- Seção SOBRE -->
+<div class="section" id="sobre">
+  <div class="centro-tela">
 
-  
+    <video id="video-bg" autoplay loop muted playsinline>
+      <source src="assets/novo26_3.mp4" type="video/mp4">
+    </video>
+
+    <div class="imagem-girando-container">
+      <img class="imagem-girando" src="assets/novoolimpogrey2.png" alt="Imagem Girando">
+    </div>
+
+    <div class="parallax-container">
+      <div class="layer layer0"></div>
+      <div class="layer layer1"></div>
+      <div class="layer layer2"></div>
+      <div class="layer layer3"></div>
+      <div class="layer layer4"></div>
+      <div class="layer layer5"></div>
+    </div>
+  </div>
+
+  <div class="titulo-subtitulo">
+    <h1 style="color: black; font-size: 3em; margin: 0; margin-bottom: 5px;">ABENÇOADO JÁ DISPONÍVEL</h1>
+    <p style="color: grey; font-size: 1.5em; margin: 0; margin-top: 5px;">
+      <a href="https://www.youtube.com/watch?v=0Eak8HJRb1M">ASSISTA AO VIDEOCLIPE</a>
+    </p>
+  </div>
+</div>
+
+<!-- Seção PORTFOLIO -->
+<div class="section" id="portfolio">
+  <div class="colunas">
+
+    <div class="coluna">
+      <div class="capa">
+        <a href="https://www.youtube.com/playlist?list=PLeYfFSCpODDMGNxoW5Ls0LoiY7PiAPTZD">
+          <img src="assets/novosessions.png" alt="Projetos">
+        </a>
+      </div>
+      <h3>PROJETOS</h3>
+      <p>PROJETOS MUSICAIS, DIREÇÃO CRIATIVA E +</p>
+    </div>
+
+    <div class="coluna">
+      <div class="capa">
+        <a href="https://novoolimpo.github.io/portfolio">
+          <img src="assets/mrrt.png" alt="Produções">
+        </a>
+      </div>
+      <h3>PRODUÇÕES</h3>
+      <p>PORTIFÓLIO DAS ULTIMAS PRODUÇÕES NO SPOTIFY</p>
+    </div>
+
+    <div class="coluna">
+      <div class="capa">
+        <a href="">
+          <img src="assets/bbl.png" alt="Audiovisual">
+        </a>
+      </div>
+      <h3>AUDIOVISUAL</h3>
+      <p style="text-align:center;">
+        PROJETOS AUDIOVISUAIS EM 3D (VISUALIZERS, VFX, MODELAGEM) <br>
+        APOIO A VIDEOCLIPES CONCEITUAIS E +
+      </p>
+    </div>
+
+  </div>
+
+  <div style="max-width:100%; display:flex; justify-content:center; margin-top:50px;">
+    <iframe style="border-radius:12px; width:600px; max-width:600px; height:150px;"
+      src="https://open.spotify.com/embed/track/64e77ij5tCUcImphsi9ycs?utm_source=generator&theme=0"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+
+<!-- Seção PRODUTOS -->
+<div class="section" id="produtos">
+
+  <a href="https://novoolimpo.github.io/drumkit">
+    <img src="assets/drumkitebook.png" alt="Imagem Produtos"
+      style="width:80%; max-width:800px; display:block; margin:0 auto 20px;">
+  </a>
+
+  <h2>NK DRUMKIT VOL.I + MMM EBOOK</h2>
+
+  <p style="text-align:center;">
+    NA NOVO OLIMPO APOIAMOS O FOMENTO DE CRIAÇÃO MUSICAL, E POR ISSO <br>
+    O PRODUTOR GERAL DISPONIBILIZA UM DRUMKIT COMPACTO <br>
+    PARA INICIANTES E AVANÇADOS + UM EBOOK DE MIX & MASTER RECOMENDANDO <br>
+    OS PLUGINS QUE MAIS FORAM USADOS NESSES 6 ANOS DE CARREIRA.
+  </p>
+
+  <div style="display:flex; justify-content:center; align-items:center; gap:20px;">
+    <button id="comprar"><img src="assets/buygumroad.png" alt="Comprar"></button>
+    <button id="comprar2"><img src="assets/buyhotmart.png" alt="Comprar"></button>
+  </div>
+
+  <div style="margin-top:20px; text-align:center; width:100%;">
+    <h3>INSCREVA-SE PARA RECEBER MMM EBOOK</h3>
+    <form id="contact-form" action="https://formspree.io/f/xyzyedzl" method="POST">
+      <input type="text" name="name" placeholder="Seu Nome" required>
+      <input type="email" name="email" placeholder="Seu Email" required>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+</div>
+
+<div id="comprar-container">
+  <div id="rodape-texto">NK DRUMKIT VOL. I + EBOOK</div>
+  <div style="margin-left:20px;">
+    <button id="comprarrodape"><img src="assets/buygumroad.png" alt="Comprar"></button>
+  </div>
+  <div>
+    <button id="comprarrodape2"><img src="assets/buyhotmart.png" alt="Comprar"></button>
+  </div>
+</div>
+
+<script src="scripts/main.js"></script>
+<script src="scripts/parallax.js"></script>
+<script src="scripts/radio-player.js"></script>
+
 <script>
-async function atualizarMusica() {
-  try {
-    const r = await fetch("https://counsel-dallas-kyle-shakespeare.trycloudflare.com/status-json.xsl");
-    const d = await r.json();
+async function loadConfig() {
+  const r = await fetch("https://novoolimpo.github.io/config.json?nocache=" + Date.now());
+  return await r.json();
+}
 
-    const titulo = d.icestats.source.metadata.x_icy_title
-    document.getElementById("now-playing").textContent =
-      titulo || "Ao vivo";
+async function initRadio() {
+  try {
+    const config = await loadConfig();
+    const BASE = config.baseUrl;
+
+    const audio = document.getElementById("radio-audio");
+    const source = document.getElementById("radio-source");
+
+    source.src = BASE + "/radio.mp3";
+    audio.load();
+
+    async function atualizarMusica() {
+      try {
+        const r = await fetch(BASE + "/status-json.xsl?nocache=" + Date.now());
+        const d = await r.json();
+        const titulo = d.icestats.source.metadata.x_icy_title;
+        document.getElementById("now-playing").textContent = titulo || "Ao vivo";
+      } catch {
+        document.getElementById("now-playing").textContent = "Offline";
+      }
+    }
+
+    atualizarMusica();
+    setInterval(atualizarMusica, 10000);
+
   } catch {
-    document.getElementById("now-playing").textContent = "Offline";
+    document.getElementById("now-playing").textContent = "Erro ao carregar config";
   }
 }
 
-atualizarMusica();
-setInterval(atualizarMusica, 10000);
+initRadio();
 </script>
-  
-</html>
 
+</body>
+</html>
