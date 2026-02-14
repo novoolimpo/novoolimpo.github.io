@@ -27,8 +27,8 @@ html, body {
 
   <div id="radio-content">
     <audio id="radio-audio" autoplay playsinline controls>
-  <source src="https://counsel-dallas-kyle-shakespeare.trycloudflare.com/radio.mp3" type="audio/mpeg">
-</audio>
+      <source id="radio-source" type="audio/mpeg">
+    </audio>
 
     <div id="radio-info">
       <span id="radio-status">AO VIVO</span>
@@ -41,26 +41,47 @@ html, body {
 <script src="../scripts/radio-player.js"></script>
 
 <script>
-const audio = document.getElementById("radio-audio");
-audio.volume = 1;
-audio.play().catch(()=>{});
+async function loadConfig() {
+  const r = await fetch("https://SEU-SERVIDOR-FIXO.com/config.json?nocache=" + Date.now());
+  return await r.json();
+}
 
-  
-
-// --- NOW PLAYING ---
-async function atualizarMusica() {
+async function initOBSPlayer() {
   try {
-    const r = await fetch("https://counsel-dallas-kyle-shakespeare.trycloudflare.com/status-json.xsl");
-    const d = await r.json();
-    const titulo = d.icestats.source.metadata.x_icy_title;
-    document.getElementById("now-playing").textContent = titulo || "AO VIVO";
+    const config = await loadConfig();
+    const BASE = config.baseUrl;
+
+    const audio = document.getElementById("radio-audio");
+    const source = document.getElementById("radio-source");
+
+    // Define stream dinamicamente
+    source.src = BASE + "/radio.mp3";
+    audio.load();
+
+    audio.volume = 1;
+    audio.play().catch(()=>{});
+
+    async function atualizarMusica() {
+      try {
+        const r = await fetch(BASE + "/status-json.xsl?nocache=" + Date.now());
+        const d = await r.json();
+        const titulo = d.icestats.source.metadata.x_icy_title;
+        document.getElementById("now-playing").textContent =
+          titulo || "AO VIVO";
+      } catch {
+        document.getElementById("now-playing").textContent = "OFFLINE";
+      }
+    }
+
+    atualizarMusica();
+    setInterval(atualizarMusica, 10000);
+
   } catch {
-    document.getElementById("now-playing").textContent = "OFFLINE";
+    document.getElementById("now-playing").textContent = "ERRO";
   }
 }
 
-atualizarMusica();
-setInterval(atualizarMusica, 10000);
+initOBSPlayer();
 </script>
 
 </body>
