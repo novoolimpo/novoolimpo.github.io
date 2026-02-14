@@ -1,18 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Rádio Novo Olimpo</title>
+<meta charset="UTF-8">
+<title>Novo Olimpo Radio</title>
 
-  <!-- Redirecionamento imediato -->
-  <meta http-equiv="refresh" content="0; url=https://counsel-dallas-kyle-shakespeare.trycloudflare.com/radio.mp3">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/radio-player.css">
 
-  <!-- Fallback JS -->
-  <script>
-    window.location.href = "https://planned-ellen-cycles-colleague.trycloudflare.com/radio.mp3";
-  </script>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+</style>
 </head>
+
 <body>
-  <p>Redirecionando para a rádio…</p>
+
+<div id="radio-player">
+  <div id="radio-header">
+    <img id="radio-logo" src="../assets/radio-logo.png" alt="Rádio Novo Olimpo">
+    <button id="radio-toggle">×</button>
+  </div>
+
+  <div id="radio-content">
+    <audio id="radio-audio" autoplay playsinline controls>
+      <source id="radio-source" type="audio/mpeg">
+    </audio>
+
+    <div id="radio-info">
+      <span id="radio-status">AO VIVO</span>
+      <span id="now-playing"></span>
+      <span id="radio-volume"></span>
+    </div>
+  </div>
+</div>
+
+<script src="../scripts/radio-player.js"></script>
+
+<script>
+async function loadConfig() {
+  const r = await fetch("https://novoolimpo.github.io/config.json?nocache=" + Date.now());
+  return await r.json();
+}
+
+async function initOBSPlayer() {
+  try {
+    const config = await loadConfig();
+    const BASE = config.baseUrl;
+
+    const audio = document.getElementById("radio-audio");
+    const source = document.getElementById("radio-source");
+
+    // Define stream dinamicamente
+    source.src = BASE + "/radio.mp3";
+    audio.load();
+
+    audio.volume = 1;
+    audio.play().catch(()=>{});
+
+    async function atualizarMusica() {
+      try {
+        const r = await fetch(BASE + "/status-json.xsl?nocache=" + Date.now());
+        const d = await r.json();
+        const titulo = d.icestats.source.metadata.x_icy_title;
+        document.getElementById("now-playing").textContent =
+          titulo || "AO VIVO";
+      } catch {
+        document.getElementById("now-playing").textContent = "OFFLINE";
+      }
+    }
+
+    atualizarMusica();
+    setInterval(atualizarMusica, 10000);
+
+  } catch {
+    document.getElementById("now-playing").textContent = "ERRO";
+  }
+}
+
+initOBSPlayer();
+</script>
+
 </body>
 </html>
