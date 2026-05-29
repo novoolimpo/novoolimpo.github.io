@@ -28,23 +28,20 @@
       color: #b0b0b0;
     }
 
-    /* VIDEO BACKGROUND */
+    /* VIDEO BACKGROUND FIXADO CORRETAMENTE */
     .video-bg {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
-      min-width: 2000px;
-      min-height: 2000px;
       object-fit: cover;
+      object-position: center;
       z-index: -2;
     }
 
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
       background: rgba(255,255,255,0.15);
@@ -101,25 +98,24 @@
       letter-spacing: 3px;
     }
 
-    /* BIO SECTION */
+    /* BIO SLIDER */
     .bio-wrapper {
       width: 100%;
       height: 100vh;
       overflow: hidden;
-      cursor: grab;
     }
 
     .bio-slider {
       width: 400vw;
       height: 100vh;
       display: flex;
-      overflow-x: scroll;
+      overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-
       scrollbar-width: none;
       -ms-overflow-style: none;
+      touch-action: pan-x;
     }
 
     .bio-slider::-webkit-scrollbar {
@@ -181,7 +177,6 @@
 
       .slide-2 {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
       }
 
       .navbar {
@@ -216,10 +211,7 @@
         <div class="bio-slide slide-1">
           <div class="text">
             <h1>BIOGRAFIA</h1>
-            <p>
-              Artista independente. Produtor audiovisual e musical.
-              Construção contínua entre som, imagem e conceito.
-            </p>
+            <p>Artista independente. Produtor audiovisual e musical. Construção contínua entre som, imagem e conceito.</p>
           </div>
           <div class="img"></div>
         </div>
@@ -234,18 +226,14 @@
         <div class="bio-slide">
           <div class="content">
             <h1>EVOLUÇÃO</h1>
-            <p>
-              Processo contínuo de desconstrução estética e reconstrução simbólica.
-            </p>
+            <p>Processo contínuo de desconstrução estética e reconstrução simbólica.</p>
           </div>
         </div>
 
         <div class="bio-slide">
           <div class="content">
             <h1>IDENTIDADE</h1>
-            <p>
-              Entre o som e a imagem, uma linguagem própria em constante mutação.
-            </p>
+            <p>Entre o som e a imagem, uma linguagem própria em constante mutação.</p>
           </div>
         </div>
 
@@ -270,107 +258,55 @@
   </section>
 
   <script>
-
     const slider = document.getElementById('bioSlider');
     const bioSection = document.getElementById('biografia');
 
-    /* WHEEL -> HORIZONTAL */
-
     window.addEventListener('wheel', (e) => {
-
       const rect = bioSection.getBoundingClientRect();
-
-      const isInsideBio =
-        rect.top <= 0 &&
-        rect.bottom >= window.innerHeight;
+      const isInsideBio = rect.top <= 0 && rect.bottom >= window.innerHeight;
 
       if (!isInsideBio) return;
 
-      const maxScroll =
-        slider.scrollWidth - slider.clientWidth;
-
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
       const currentScroll = slider.scrollLeft;
 
-      const scrollingRight = e.deltaY > 0;
-      const scrollingLeft = e.deltaY < 0;
-
-      const canScrollRight = currentScroll < maxScroll;
-      const canScrollLeft = currentScroll > 0;
-
-      if (
-        (scrollingRight && canScrollRight) ||
-        (scrollingLeft && canScrollLeft)
-      ) {
-
+      if ((e.deltaY > 0 && currentScroll < maxScroll) || (e.deltaY < 0 && currentScroll > 0)) {
         e.preventDefault();
-
         slider.scrollLeft += e.deltaY;
-
       }
-
     }, { passive: false });
-
-
-    /* DRAG */
 
     let isDragging = false;
     let startX = 0;
     let initialScroll = 0;
 
     slider.addEventListener('mousedown', (e) => {
-
       isDragging = true;
-
-      slider.classList.add('dragging');
-
       startX = e.pageX;
-
       initialScroll = slider.scrollLeft;
-
     });
 
-    window.addEventListener('mouseup', () => {
-
-      isDragging = false;
-
-      slider.classList.remove('dragging');
-
-    });
+    window.addEventListener('mouseup', () => isDragging = false);
 
     window.addEventListener('mousemove', (e) => {
-
       if (!isDragging) return;
-
       e.preventDefault();
-
-      const delta = e.pageX - startX;
-
+      const delta = (e.pageX - startX) * 2;
       slider.scrollLeft = initialScroll - delta;
-
     });
-
-
-    /* TOUCH */
 
     let touchStartX = 0;
     let touchInitialScroll = 0;
 
     slider.addEventListener('touchstart', (e) => {
-
       touchStartX = e.touches[0].clientX;
-
       touchInitialScroll = slider.scrollLeft;
-
     }, { passive: true });
 
     slider.addEventListener('touchmove', (e) => {
-
       const delta = e.touches[0].clientX - touchStartX;
-
       slider.scrollLeft = touchInitialScroll - delta;
-
     }, { passive: true });
-
   </script>
 
 </body>
