@@ -11,11 +11,15 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       font-family: "Times New Roman", serif;
       background: #ffffff;
       color: #b0b0b0;
       overflow-x: hidden;
+
+      /* scroll snap */
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
     }
 
     /* VIDEO BACKGROUND */
@@ -31,7 +35,6 @@
       z-index: -2;
     }
 
-    /* optional white overlay to keep readability */
     .overlay {
       position: fixed;
       top: 0;
@@ -50,7 +53,7 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      gap: 80px;
+      gap: 100px;
       padding: 18px 20px;
 
       background: rgba(200, 200, 200, 0.25);
@@ -62,11 +65,10 @@
     }
 
     .navbar a {
-      font-size: 13px;
-      letter-spacing: 2px;
       text-decoration: none;
       color: #a8a8a8;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 13px;
       letter-spacing: 2px;
       transition: 0.2s;
     }
@@ -84,6 +86,10 @@
       text-align: center;
       padding: 120px 20px 60px;
       position: relative;
+
+      /* snap behavior */
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
     .content {
