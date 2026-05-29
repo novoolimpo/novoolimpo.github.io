@@ -76,7 +76,6 @@
       font-weight: 600;
       font-size: 13px;
       letter-spacing: 2px;
-      transition: 0.2s;
     }
 
     .navbar a:hover {
@@ -110,6 +109,65 @@
       letter-spacing: 3px;
     }
 
+    /* BIO SLIDER */
+    .bio-slider {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+
+    .bio-slide {
+      flex: 0 0 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+      padding: 40px;
+    }
+
+    /* SLIDE 1: texto + imagem horizontal */
+    .slide-1 {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .slide-1 .text {
+      flex: 1;
+    }
+
+    .slide-1 .img {
+      flex: 1;
+      height: 400px;
+      background: #ddd;
+    }
+
+    /* SLIDE 2: grid 2x2 */
+    .slide-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+      height: 70vh;
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(160,160,160,0.3);
+      padding: 20px;
+    }
+
+    .img-box {
+      background: #e0e0e0;
+    }
+
   </style>
 </head>
 
@@ -129,34 +187,59 @@
     <a href="#contato">CONTATO</a>
   </div>
 
-  <!-- SECTIONS -->
+  <!-- BIOGRAFIA (SLIDER) -->
   <section id="biografia">
-    <div class="content">
-      <h1>BIOGRAFIA</h1>
-      <p>
-        Artista independente. Produtor audiovisual e musical.
-        Construção contínua entre som, imagem e conceito.
-      </p>
+    <div class="bio-slider">
+
+      <!-- SLIDE 1 -->
+      <div class="bio-slide slide-1">
+        <div class="text">
+          <h1>BIOGRAFIA</h1>
+          <p>Artista independente. Produtor audiovisual e musical. Construção contínua entre som, imagem e conceito.</p>
+        </div>
+        <div class="img"></div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="bio-slide slide-2">
+        <div class="box">TEXTO</div>
+        <div class="box img-box"></div>
+        <div class="box img-box"></div>
+        <div class="box">TEXTO</div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="bio-slide">
+        <div class="content">
+          <h1>EVOLUÇÃO</h1>
+          <p>Processo contínuo de desconstrução estética e reconstrução simbólica.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="bio-slide">
+        <div class="content">
+          <h1>IDENTIDADE</h1>
+          <p>Entre o som e a imagem, uma linguagem própria em constante mutação.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- PORTFOLIO -->
   <section id="portfolio">
     <div class="content">
       <h1>PORTFÓLIO</h1>
-      <p>
-        Obras, álbuns, visualizers e projetos experimentais.
-        Linguagem estética em evolução constante.
-      </p>
+      <p>Obras, álbuns, visualizers e projetos experimentais.</p>
     </div>
   </section>
 
+  <!-- CONTATO -->
   <section id="contato">
     <div class="content">
       <h1>CONTATO</h1>
-      <p>
-        E-mail / redes / colaborações abertas.
-        Insira seus links aqui.
-      </p>
+      <p>E-mail / redes / colaborações abertas.</p>
     </div>
   </section>
 
