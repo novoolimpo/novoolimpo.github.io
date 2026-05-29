@@ -3,194 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Profano Site</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      height: 100%;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      height: 100%;
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      font-family: "Times New Roman", serif;
-      background: #ffffff;
-      color: #b0b0b0;
-    }
-
-    /* VIDEO BACKGROUND */
-    .video-bg {
-  position: fixed;
-  inset: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  object-fit: cover;
-  object-position: center center;
-
-  z-index: -2;
-}
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(255,255,255,0.15);
-      z-index: -1;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 100px;
-      padding: 18px 20px;
-      background: rgba(200, 200, 200, 0.25);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(180,180,180,0.3);
-      z-index: 100;
-    }
-
-    .navbar a {
-      text-decoration: none;
-      color: #a8a8a8;
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
-
-    /* SECTIONS */
-    section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px 60px;
-      position: relative;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-    }
-
-    .content {
-      max-width: 900px;
-      font-size: 20px;
-      color: #a8a8a8;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 20px;
-      letter-spacing: 3px;
-    }
-
-    /* BIO SECTION */
-    .bio-wrapper {
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      cursor: grab;
-    }
-
-    .bio-slider {
-      width: 400vw;
-      height: 100vh;
-      display: flex;
-      overflow-x: scroll;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-
-    .bio-slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    .bio-slide {
-      width: 100vw;
-      height: 100vh;
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px;
-    }
-
-    /* slide 1 */
-    .slide-1 {
-      display: flex;
-      gap: 40px;
-    }
-
-    .slide-1 .text,
-    .slide-1 .img {
-      flex: 1;
-    }
-
-    .slide-1 .img {
-      background: rgba(220,220,220,0.7);
-      min-height: 500px;
-    }
-
-    /* slide 2 */
-    .slide-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .box {
-      border: 1px solid rgba(180,180,180,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      font-size: 20px;
-    }
-
-    .img-box {
-      background: rgba(220,220,220,0.6);
-    }
-
-    @media (max-width: 900px) {
-      .slide-1 {
-        flex-direction: column;
-      }
-
-      .slide-2 {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
-
-      .navbar {
-        gap: 40px;
-      }
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -209,105 +25,172 @@
     <a href="#contato">CONTATO</a>
   </div>
 
-  <!-- BIOGRAFIA (SLIDER) -->
+  <!-- BIOGRAFIA -->
   <section id="biografia">
+
     <div class="bio-wrapper">
+
       <div class="bio-slider" id="bioSlider">
 
+        <!-- SLIDE 1 -->
         <div class="bio-slide slide-1">
+
           <div class="text">
             <h1>BIOGRAFIA</h1>
+
             <p>
-              Artista independente. Produtor audiovisual e musical.
+              Artista independente.
+              Produtor audiovisual e musical.
               Construção contínua entre som, imagem e conceito.
             </p>
           </div>
+
           <div class="img"></div>
+
         </div>
 
+        <!-- SLIDE 2 -->
         <div class="bio-slide slide-2">
-          <div class="box">TEXTO</div>
+
+          <div class="box">
+            TEXTO
+          </div>
+
           <div class="box img-box"></div>
+
           <div class="box img-box"></div>
-          <div class="box">TEXTO</div>
+
+          <div class="box">
+            TEXTO
+          </div>
+
         </div>
 
+        <!-- SLIDE 3 -->
         <div class="bio-slide">
+
           <div class="content">
+
             <h1>EVOLUÇÃO</h1>
+
             <p>
-              Processo contínuo de desconstrução estética e reconstrução simbólica.
+              Processo contínuo de desconstrução estética
+              e reconstrução simbólica.
             </p>
+
           </div>
+
         </div>
 
+        <!-- SLIDE 4 -->
         <div class="bio-slide">
+
           <div class="content">
+
             <h1>IDENTIDADE</h1>
+
             <p>
-              Entre o som e a imagem, uma linguagem própria em constante mutação.
+              Entre o som e a imagem,
+              uma linguagem própria em constante mutação.
             </p>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
+
   </section>
 
   <!-- PORTFOLIO -->
   <section id="portfolio">
+
     <div class="content">
+
       <h1>PORTFÓLIO</h1>
-      <p>Obras, álbuns, visualizers e projetos experimentais.</p>
+
+      <p>
+        Obras, álbuns, visualizers e projetos experimentais.
+      </p>
+
     </div>
+
   </section>
 
   <!-- CONTATO -->
   <section id="contato">
+
     <div class="content">
+
       <h1>CONTATO</h1>
-      <p>E-mail / redes / colaborações abertas.</p>
+
+      <p>
+        E-mail / redes / colaborações abertas.
+      </p>
+
     </div>
+
   </section>
 
   <script>
+
     const slider = document.getElementById('bioSlider');
 
     let isInsideBio = false;
 
     window.addEventListener('scroll', () => {
+
       const bioSection = document.getElementById('biografia');
+
       const rect = bioSection.getBoundingClientRect();
 
-      isInsideBio = rect.top <= 0 && rect.bottom > window.innerHeight;
+      isInsideBio =
+        rect.top <= 0 &&
+        rect.bottom > window.innerHeight;
+
     });
 
     window.addEventListener('wheel', (e) => {
+
       if (!isInsideBio) return;
 
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
+      const maxScroll =
+        slider.scrollWidth - slider.clientWidth;
+
       const current = slider.scrollLeft;
 
-      if ((e.deltaY > 0 && current < maxScroll) ||
-          (e.deltaY < 0 && current > 0)) {
+      if (
+        (e.deltaY > 0 && current < maxScroll) ||
+        (e.deltaY < 0 && current > 0)
+      ) {
+
         e.preventDefault();
 
         slider.scrollBy({
           left: e.deltaY,
           behavior: 'smooth'
         });
+
       }
+
     }, { passive: false });
 
-    /* drag mouse */
+    /* DRAG */
+
     let isDown = false;
     let startX;
     let scrollLeft;
 
     slider.addEventListener('mousedown', (e) => {
+
       isDown = true;
+
       startX = e.pageX - slider.offsetLeft;
+
       scrollLeft = slider.scrollLeft;
+
     });
 
     slider.addEventListener('mouseleave', () => {
@@ -319,15 +202,19 @@
     });
 
     slider.addEventListener('mousemove', (e) => {
+
       if (!isDown) return;
 
       e.preventDefault();
 
       const x = e.pageX - slider.offsetLeft;
+
       const walk = (x - startX) * 2;
 
       slider.scrollLeft = scrollLeft - walk;
+
     });
+
   </script>
 
 </body>
