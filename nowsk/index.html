@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profano Site</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Times New Roman", serif;
+      background: #ffffff;
+      color: #b0b0b0;
+      overflow-x: hidden;
+    }
+
+    /* VIDEO BACKGROUND */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      min-width: 2000px;
+      min-height: 2000px;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* optional white overlay to keep readability */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255,255,255,0.15);
+      z-index: -1;
+    }
+
+    /* GLASS NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 18px 20px;
+
+      background: rgba(200, 200, 200, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      border-bottom: 1px solid rgba(180,180,180,0.3);
+      z-index: 10;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #a8a8a8;
+      font-weight: bold;
+      letter-spacing: 2px;
+      transition: 0.2s;
+    }
+
+    .navbar a:hover {
+      color: #8f8f8f;
+    }
+
+    /* SECTIONS */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+      position: relative;
+    }
+
+    .content {
+      max-width: 900px;
+      font-size: 20px;
+      color: #a8a8a8;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- VIDEO BACKGROUND -->
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4" />
+  </video>
+
+  <div class="overlay"></div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="#biografia">BIOGRAFIA</a>
+    <a href="#portfolio">PORTFÓLIO</a>
+    <a href="#contato">CONTATO</a>
+  </div>
+
+  <!-- SECTIONS -->
+  <section id="biografia">
+    <div class="content">
+      <h1>BIOGRAFIA</h1>
+      <p>
+        Artista independente. Produtor audiovisual e musical.
+        Construção contínua entre som, imagem e conceito.
+      </p>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="content">
+      <h1>PORTFÓLIO</h1>
+      <p>
+        Obras, álbuns, visualizers e projetos experimentais.
+        Linguagem estética em evolução constante.
+      </p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="content">
+      <h1>CONTATO</h1>
+      <p>
+        E-mail / redes / colaborações abertas.
+        Insira seus links aqui.
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>
