@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profano Site</title>
+
   <style>
     * {
       margin: 0;
@@ -11,15 +12,20 @@
       box-sizing: border-box;
     }
 
-    html, body {
+    html {
+      height: 100%;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+
       font-family: "Times New Roman", serif;
       background: #ffffff;
       color: #b0b0b0;
-      overflow-x: hidden;
-
-      /* scroll snap */
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
     }
 
     /* VIDEO BACKGROUND */
@@ -87,9 +93,9 @@
       padding: 120px 20px 60px;
       position: relative;
 
-      /* snap behavior */
       scroll-snap-align: start;
       scroll-snap-stop: always;
+      scroll-margin-top: 80px;
     }
 
     .content {
@@ -106,6 +112,7 @@
 
   </style>
 </head>
+
 <body>
 
   <!-- VIDEO BACKGROUND -->
